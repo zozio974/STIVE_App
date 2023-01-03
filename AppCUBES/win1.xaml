@@ -1,0 +1,16 @@
+﻿<Window x:Class="AppCUBES.win1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AppCUBES"
+        mc:Ignorable="d"
+        Title="win1" Height="300" Width="350">
+    <Grid>
+        <Button x:Name="gest" Content="Gestion de stock" HorizontalAlignment="Left" Height="62" Margin="10,48,0,0" VerticalAlignment="Top" Width="196" Click="gest_Click"/>
+        <Button x:Name="inventory" Content="Inventaire" HorizontalAlignment="Left" Height="62" Margin="10,115,0,0" VerticalAlignment="Top" Width="196" Click="Button_Click"/>
+        <Button x:Name="command" Content="Commande fournisseur" HorizontalAlignment="Left" Height="62" Margin="10,182,0,0" VerticalAlignment="Top" Width="196"/>
+        <Button x:Name="disconnect" Content="Déconnecter" HorizontalAlignment="Left" Height="37" Margin="235,56,0,0" VerticalAlignment="Top" Width="90" Click="disconnect_Click"/>
+
+    </Grid>
+</Window>

@@ -1,0 +1,16 @@
+﻿<Window x:Class="AppCUBES.win2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AppCUBES"
+        mc:Ignorable="d"
+        Title="win2" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="cust" Content="Clients" HorizontalAlignment="Left" Height="38" Margin="132,71,0,0" VerticalAlignment="Top" Width="290" Click="Button_Click"/>
+        <Button x:Name="menu" Content="Menu" HorizontalAlignment="Left" Height="38" Margin="604,71,0,0" VerticalAlignment="Top" Width="78" Click="menu_Click"/>
+        <Button x:Name="article" Content="Articles" HorizontalAlignment="Left" Height="40" Margin="132,114,0,0" VerticalAlignment="Top" Width="290" Click="article_Click"/>
+        <Button x:Name="familybutton" Content="Famille" HorizontalAlignment="Left" Height="40" Margin="132,159,0,0" VerticalAlignment="Top" Width="290" Click="familybutton_Click"/>
+
+    </Grid>
+</Window>
