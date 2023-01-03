@@ -51,5 +51,12 @@ namespace AppCUBES
             win.Show();
             this.Close();
         }
+
+        private void supplierbutton_Click(object sender, RoutedEventArgs e)
+        {
+            supplier win = new supplier();
+            win.Show();
+            this.Close();
+        }
     }
 }

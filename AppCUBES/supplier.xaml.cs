@@ -19,36 +19,36 @@ namespace AppCUBES
     /// <summary>
     /// Interaction logic for family.xaml
     /// </summary>
-    public partial class family : Window
+    public partial class supplier : Window
     {
         List<int> list = new List<int>();
         public int c = 0;
-        public family()
+        public supplier()
         {
             InitializeComponent();
             display_family();
         }
         public void display_family()
         {
-            List<Family> families = new List<Family>();
+            List<Supplier> suppliers = new List<Supplier>();
             using HttpClient client = new HttpClient();
             string Url = "https://localhost:7279/";
             client.BaseAddress = new Uri(Url);
-            string parameters = "Display/displayfamily";
+            string parameters = "Display/displaysup";
             HttpResponseMessage response = client.GetAsync(parameters).Result;
             string json = response.Content.ReadAsStringAsync().Result;
             JArray detail = JArray.Parse(json);
 
             for (int i = 0; i < detail.Count; i++)
             {
-                families.Add(new Family(detail[i]["nameFamily"].ToString()));
-                list.Add(Convert.ToInt32(detail[i]["iD_Family"]));
+                suppliers.Add(new Supplier(detail[i]["name"].ToString()));
+                list.Add(Convert.ToInt32(detail[i]["id"]));
             }
-            datafamily.ItemsSource = families;
+            datasupplier.ItemsSource = suppliers;
 
         }
 
-        private void refreshfamily_Click(object sender, RoutedEventArgs e)
+        private void refreshsupplier_Click(object sender, RoutedEventArgs e)
         {
             list.Clear();
             display_family();
@@ -61,60 +61,60 @@ namespace AppCUBES
             this.Close();
         }
 
-        private void delfamily_Click_1(object sender, RoutedEventArgs e)
+        private void delsupplier_Click_1(object sender, RoutedEventArgs e)
         {
-            if (datafamily.SelectedItem == null)
+            if (datasupplier.SelectedItem == null)
             {
-                familyconditionselect.Text = "Veuillez selectionner un élément du tableau";
+                supplierconditionselect.Text = "Veuillez selectionner un élément du tableau";
                 return;
             }
-            int a = list[datafamily.SelectedIndex];
+            int a = list[datasupplier.SelectedIndex];
             using HttpClient client = new HttpClient();
             string Url = "https://localhost:7279/";
             client.BaseAddress = new Uri(Url);
-            string parameters = $"Delete/delete_family?ID={a}";
+            string parameters = $"Delete/delete_sup?ID={a}";
             HttpResponseMessage response = client.DeleteAsync(parameters).Result;
-            familyconditionselect.Text = string.Empty;
-            refreshfamily_Click(sender, e);
+            supplierconditionselect.Text = string.Empty;
+            refreshsupplier_Click(sender, e);
         }
 
-        private void putfamily_Click_1(object sender, RoutedEventArgs e)
+        private void putsupplier_Click_1(object sender, RoutedEventArgs e)
         {
-            if (datafamily.SelectedItem == null)
+            if (datasupplier.SelectedItem == null)
             {
-                familyconditionselect.Text = "Veuillez selectionner un élément du tableau";
+                supplierconditionselect.Text = "Veuillez selectionner un élément du tableau";
                 return;
             }
-            int a = list[datafamily.SelectedIndex];
-            var custo = new familyput();
+            int a = list[datasupplier.SelectedIndex];
+            var custo = new supplierput();
             List<Family> fams = new List<Family>();
             using HttpClient client = new HttpClient();
             string Url = "https://localhost:7279/";
             client.BaseAddress = new Uri(Url);
-            string parameters = $"Display/displayfamilybyid?ID={a}";
+            string parameters = $"Display/displaysupbyid?ID={a}";
             HttpResponseMessage response = client.GetAsync(parameters).Result;
             string json = $"[{response.Content.ReadAsStringAsync().Result}]";
             JArray detail = JArray.Parse(json);
-            custo.nameputfamily.Text = detail[0]["nameFamily"].ToString();   
-            custo.invputfamily.Text = a.ToString();
+            custo.nameputsupplier.Text = detail[0]["name"].ToString();   
+            custo.invputsupplier.Text = a.ToString();
             custo.Show();
-            familyconditionselect.Text = string.Empty;
+            supplierconditionselect.Text = string.Empty;
         }
 
-        private void addfamily_Click(object sender, RoutedEventArgs e)
+        private void addsupplier_Click(object sender, RoutedEventArgs e)
         {
-            var family = new familyadd();
+            var family = new supplieradd();
             family.Show();
         }
     }
 
-    public class Family
+    public class Supplier
     {
 
         public string Nom { get; set; }
 
 
-        public Family(string nom)
+        public Supplier(string nom)
         {
             Nom = nom;
         }

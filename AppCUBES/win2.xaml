@@ -10,7 +10,8 @@
         <Button x:Name="cust" Content="Clients" HorizontalAlignment="Left" Height="38" Margin="132,71,0,0" VerticalAlignment="Top" Width="290" Click="Button_Click"/>
         <Button x:Name="menu" Content="Menu" HorizontalAlignment="Left" Height="38" Margin="604,71,0,0" VerticalAlignment="Top" Width="78" Click="menu_Click"/>
         <Button x:Name="article" Content="Articles" HorizontalAlignment="Left" Height="40" Margin="132,114,0,0" VerticalAlignment="Top" Width="290" Click="article_Click"/>
-        <Button x:Name="familybutton" Content="Famille" HorizontalAlignment="Left" Height="40" Margin="132,159,0,0" VerticalAlignment="Top" Width="290" Click="familybutton_Click"/>
+        <Button x:Name="familybutton" Content="Familles" HorizontalAlignment="Left" Height="40" Margin="132,159,0,0" VerticalAlignment="Top" Width="290" Click="familybutton_Click"/>
+        <Button x:Name="supplierbutton" Content="Fournisseurs" HorizontalAlignment="Left" Height="47" Margin="132,204,0,0" VerticalAlignment="Top" Width="290" Click="supplierbutton_Click"/>
 
     </Grid>
 </Window>

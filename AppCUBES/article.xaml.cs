@@ -28,10 +28,14 @@ namespace AppCUBES
         public article()
         {
             InitializeComponent();
+            list.Clear();
             display_article();
         }
         public void display_article()
+            
         {
+
+            list.Clear();
             List<Article> arts = new List<Article>();
             using HttpClient client = new HttpClient();
             using HttpClient client1 = new HttpClient();
@@ -180,10 +184,8 @@ namespace AppCUBES
         public string Price { get; set; }
         public string Volume { get; set; }
         public string Degree { get; set; }
-        public string Grape { get; set; }
-        
+        public string Grape { get; set; }        
         public string Ladder { get; set; }
-
         
 
         public Article(string nameArticle, string idProvider, string dateFill, string idFamily, string pricesup, string price, string volume, string degree, string grape, string ladder)

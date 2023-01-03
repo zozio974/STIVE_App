@@ -18,9 +18,9 @@ namespace AppCUBES
     /// <summary>
     /// Interaction logic for familyput.xaml
     /// </summary>
-    public partial class familyput : Window
+    public partial class supplierput : Window
     {
-        public familyput()
+        public supplierput()
         {
             InitializeComponent();
         }
@@ -28,18 +28,18 @@ namespace AppCUBES
         
        
 
-        private void returnfamily2_Click_1(object sender, RoutedEventArgs e)
+        private void returnsupplier_Click_1(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
-        private void refreshputfamily_Click_1(object sender, RoutedEventArgs e)
+        private void refreshputsupplier_Click_1(object sender, RoutedEventArgs e)
         {
-            family family = new family();
+            supplier sup = new supplier();
             using HttpClient client = new HttpClient();
             string Url = "https://localhost:7279/";
             client.BaseAddress = new Uri(Url);
-            string parameters = $"PutTable/putfamily?ID={invputfamily.Text}&name={nameputfamily.Text}";
+            string parameters = $"PutTable/putsupplier?ID={invputsupplier.Text}&name={nameputsupplier.Text}";
             HttpResponseMessage response = client.PutAsync(parameters, null).Result;
 
             this.Close();

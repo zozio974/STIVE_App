@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -11,37 +12,36 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using System.Net.Http;
 
 namespace AppCUBES
 {
     /// <summary>
-    /// Interaction logic for familyput.xaml
+    /// Interaction logic for familyadd.xaml
     /// </summary>
-    public partial class familyput : Window
+    public partial class supplieradd : Window
     {
-        public familyput()
+        public supplieradd()
         {
             InitializeComponent();
         }
 
-        
-       
-
-        private void returnfamily2_Click_1(object sender, RoutedEventArgs e)
+        private void returnsupplier_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
-        private void refreshputfamily_Click_1(object sender, RoutedEventArgs e)
+        private void valsupplier_Click(object sender, RoutedEventArgs e)
         {
-            family family = new family();
+            if (namesupplier.Text == "")
+            {
+                ressupplieradd.Text = "Le champ est vide";
+                return;
+            }
             using HttpClient client = new HttpClient();
             string Url = "https://localhost:7279/";
             client.BaseAddress = new Uri(Url);
-            string parameters = $"PutTable/putfamily?ID={invputfamily.Text}&name={nameputfamily.Text}";
-            HttpResponseMessage response = client.PutAsync(parameters, null).Result;
-
+            string parameters = $"Add/add_supplier?name={namesupplier.Text}";
+            HttpResponseMessage response = client.PostAsync(parameters, null).Result;
             this.Close();
         }
     }
