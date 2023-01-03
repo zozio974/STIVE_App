@@ -22,7 +22,7 @@ namespace AppCUBES
     public partial class family : Window
     {
         List<int> list = new List<int>();
-        public int c = 0;
+        
         public family()
         {
             InitializeComponent();
@@ -69,12 +69,29 @@ namespace AppCUBES
                 return;
             }
             int a = list[datafamily.SelectedIndex];
-            using HttpClient client = new HttpClient();
-            string Url = "https://localhost:7279/";
-            client.BaseAddress = new Uri(Url);
-            string parameters = $"Delete/delete_family?ID={a}";
-            HttpResponseMessage response = client.DeleteAsync(parameters).Result;
-            familyconditionselect.Text = string.Empty;
+            using (HttpClient client = new HttpClient())
+            {
+                string Url = "https://localhost:7279/";
+                client.BaseAddress = new Uri(Url);
+                string parameters2 = $"Check/checkfamilyexist?a={a}";
+                HttpResponseMessage response = client.GetAsync(parameters2).Result;
+                string json = response.Content.ReadAsStringAsync().Result;
+                if (json == "true")
+                {
+                    familyconditionselect.Text = "Impossible de supprimer la valeur elle est assignée a des articles existants";
+                    return;
+                }
+            }
+            using (HttpClient client = new HttpClient()) 
+            {
+                string Url = "https://localhost:7279/";
+                client.BaseAddress = new Uri(Url);
+                string parameters = $"Delete/delete_family?ID={a}";
+                HttpResponseMessage response = client.DeleteAsync(parameters).Result;
+                familyconditionselect.Text = string.Empty;
+            }
+            
+
             refreshfamily_Click(sender, e);
         }
 
