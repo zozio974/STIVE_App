@@ -23,8 +23,11 @@ namespace AppCUBES
     public partial class article : Window
     {
         List<int> list = new List<int>();
-        
-        
+       
+
+
+
+
         public article()
         {
             InitializeComponent();
@@ -37,6 +40,7 @@ namespace AppCUBES
 
             list.Clear();
             List<Article> arts = new List<Article>();
+            
             using HttpClient client = new HttpClient();
             using HttpClient client1 = new HttpClient();
             using HttpClient client2 = new HttpClient();
@@ -47,28 +51,30 @@ namespace AppCUBES
             client2.BaseAddress = new Uri(Url);
 
             string parameters = "Display/displayarticle";
-            string parameters2 = "Display/displaysup";
-            string parameters3 = "Display/displayfamily";
+            
 
             HttpResponseMessage response = client.GetAsync(parameters).Result;
             string json = response.Content.ReadAsStringAsync().Result;
-            HttpResponseMessage response2 = client1.GetAsync(parameters2).Result;
-            string json2 = response2.Content.ReadAsStringAsync().Result;
-            HttpResponseMessage response3 = client2.GetAsync(parameters3).Result;
-            string json3 = response3.Content.ReadAsStringAsync().Result;
+            
             JArray detail = JArray.Parse(json);
-            JArray detail2 = JArray.Parse(json2);
-            JArray detail3 = JArray.Parse(json3);
+           
 
             for (int i = 0; i < detail.Count; i++)
             {
-                int a = Convert.ToInt32(detail[i]["idProvider"]);
-                int b = Convert.ToInt32(detail[i]["idFamily"]);
-                arts.Add(new Article(detail[i]["nameArticle"].ToString(), detail2[a-1]["name"].ToString(),
-                    detail[i]["dateFill"].ToString(),detail3[b-1]["nameFamily"].ToString(),
+                string a = detail[i]["idProvider"].ToString();
+                string b = detail[i]["idFamily"].ToString();
+                string parameters2 = $"Display/getnamesupplier?id={a}";
+                string parameters3 = $"Display/getnamefamily?id={b}";
+                HttpResponseMessage response2 = client1.GetAsync(parameters2).Result;
+                string json2 = response2.Content.ReadAsStringAsync().Result;
+                HttpResponseMessage response3 = client2.GetAsync(parameters3).Result;
+                string json3 = response3.Content.ReadAsStringAsync().Result;
+                arts.Add(new Article(detail[i]["nameArticle"].ToString(), json2,
+                    detail[i]["dateFill"].ToString(),json3,
                     detail[i]["priceSup"].ToString(), detail[i]["price"].ToString(), detail[i]["volume"].ToString(),
                     detail[i]["degree"].ToString(), detail[i]["grape"].ToString(), detail[i]["ladder"].ToString()));
                 list.Add(Convert.ToInt32(detail[i]["iD_Article"]));
+                
             }
             articledata.ItemsSource = arts;
 
@@ -100,13 +106,30 @@ namespace AppCUBES
                 articleconditionselect.Text = "Veuillez selectionner un élément du tableau";
                 return;
             }
+
             int a = list[articledata.SelectedIndex];
-            using HttpClient client = new HttpClient();
-            string Url = "https://localhost:7279/";
-            client.BaseAddress = new Uri(Url);
-            string parameters = $"Delete/delete_article?ID={a}";
-            HttpResponseMessage response = client.DeleteAsync(parameters).Result;
-            articleconditionselect.Text = string.Empty;
+            using (HttpClient client = new HttpClient())
+            {
+                string Url = "https://localhost:7279/";
+                client.BaseAddress = new Uri(Url);
+                string parameters2 = $"Check/checkarticlestockexist?a={a}";
+                HttpResponseMessage response = client.GetAsync(parameters2).Result;
+                string json = response.Content.ReadAsStringAsync().Result;
+                if (json == "true")
+                {
+                    articleconditionselect.Text = "Impossible de supprimer l'article il a un stock";
+                    return;
+                }
+            }
+            using (HttpClient client = new HttpClient())
+            {
+                string Url = "https://localhost:7279/";
+                client.BaseAddress = new Uri(Url);
+                string parameters = $"Delete/delete_article?ID={a}";
+                HttpResponseMessage response = client.DeleteAsync(parameters).Result;
+                articleconditionselect.Text = string.Empty;
+            }
+            
             articlerefresh_Click(sender, e);
         }
 

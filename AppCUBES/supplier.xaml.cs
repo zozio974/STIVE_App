@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -69,12 +70,32 @@ namespace AppCUBES
                 return;
             }
             int a = list[datasupplier.SelectedIndex];
-            using HttpClient client = new HttpClient();
-            string Url = "https://localhost:7279/";
-            client.BaseAddress = new Uri(Url);
-            string parameters = $"Delete/delete_sup?ID={a}";
-            HttpResponseMessage response = client.DeleteAsync(parameters).Result;
-            supplierconditionselect.Text = string.Empty;
+            string json = "";
+            using (HttpClient client = new HttpClient())
+            {
+                string Url = "https://localhost:7279/";
+                client.BaseAddress = new Uri(Url);
+                string parameters = $"Check/checksupplierexist?a={a}";
+                HttpResponseMessage response = client.GetAsync(parameters).Result;
+                json = response.Content.ReadAsStringAsync().Result;
+                
+            }
+            if (json == "true")
+            {
+                supplierconditionselect.Text = "Impossible de supprimer la valeur elle est assignée a des articles existants";
+                return;
+            }
+            using (HttpClient client = new HttpClient()) 
+            {
+                string Url = "https://localhost:7279/";
+                client.BaseAddress = new Uri(Url);
+                string parameters = $"Delete/delete_sup?ID={a}";
+                HttpResponseMessage response = client.DeleteAsync(parameters).Result;
+                supplierconditionselect.Text = string.Empty;
+            }
+            
+
+           
             refreshsupplier_Click(sender, e);
         }
 
