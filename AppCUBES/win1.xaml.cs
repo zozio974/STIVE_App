@@ -24,11 +24,6 @@ namespace AppCUBES
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void gest_Click(object sender, RoutedEventArgs e)
         {
             win2 win2 = new win2();
@@ -40,6 +35,13 @@ namespace AppCUBES
         {
             MainWindow win = new MainWindow();
             win.Show();
+            this.Close();
+        }
+
+        private void inventory_Click(object sender, RoutedEventArgs e)
+        {
+            inventaire inv = new inventaire();
+            inv.Show();
             this.Close();
         }
     }

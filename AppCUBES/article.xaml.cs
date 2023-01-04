@@ -133,16 +133,6 @@ namespace AppCUBES
             articlerefresh_Click(sender, e);
         }
 
-        private void articleput_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-        private void precedent_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
         private void articleadd_Click_1(object sender, RoutedEventArgs e)
         {
             articleadd custo = new articleadd();

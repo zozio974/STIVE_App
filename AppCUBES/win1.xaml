@@ -7,9 +7,13 @@
         mc:Ignorable="d"
         Title="win1" Height="300" Width="350">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="181*"/>
+            <RowDefinition Height="103*"/>
+        </Grid.RowDefinitions>
         <Button x:Name="gest" Content="Gestion de stock" HorizontalAlignment="Left" Height="62" Margin="10,48,0,0" VerticalAlignment="Top" Width="196" Click="gest_Click"/>
-        <Button x:Name="inventory" Content="Inventaire" HorizontalAlignment="Left" Height="62" Margin="10,115,0,0" VerticalAlignment="Top" Width="196" Click="Button_Click"/>
-        <Button x:Name="command" Content="Commande fournisseur" HorizontalAlignment="Left" Height="62" Margin="10,182,0,0" VerticalAlignment="Top" Width="196"/>
+        <Button x:Name="inventory" Content="Inventaire" HorizontalAlignment="Left" Height="62" Margin="10,115,0,0" VerticalAlignment="Top" Width="196" Click="inventory_Click" />
+        <Button x:Name="command" Content="Commande fournisseur" HorizontalAlignment="Left" Height="62" Margin="10,1,0,0" VerticalAlignment="Top" Width="196" Grid.Row="1"/>
         <Button x:Name="disconnect" Content="Déconnecter" HorizontalAlignment="Left" Height="37" Margin="235,56,0,0" VerticalAlignment="Top" Width="90" Click="disconnect_Click"/>
 
     </Grid>
