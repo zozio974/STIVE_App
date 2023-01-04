@@ -23,10 +23,7 @@ namespace AppCUBES
         public familyput()
         {
             InitializeComponent();
-        }
-
-        
-       
+        }    
 
         private void returnfamily2_Click_1(object sender, RoutedEventArgs e)
         {

@@ -54,14 +54,14 @@ namespace AppCUBES
             display_family();
         }
 
-        private void precedent_Click_1(object sender, RoutedEventArgs e)
+        private void precedentfamily_Click(object sender, RoutedEventArgs e)
         {
             win2 win2 = new win2();
             win2.Show();
             this.Close();
         }
 
-        private void delfamily_Click_1(object sender, RoutedEventArgs e)
+        private void delfamily_Click(object sender, RoutedEventArgs e)
         {
             if (datafamily.SelectedItem == null)
             {
@@ -95,7 +95,7 @@ namespace AppCUBES
             refreshfamily_Click(sender, e);
         }
 
-        private void putfamily_Click_1(object sender, RoutedEventArgs e)
+        private void putfamily_Click(object sender, RoutedEventArgs e)
         {
             if (datafamily.SelectedItem == null)
             {
@@ -103,7 +103,7 @@ namespace AppCUBES
                 return;
             }
             int a = list[datafamily.SelectedIndex];
-            var custo = new familyput();
+            var win = new familyput();
             List<Family> fams = new List<Family>();
             using HttpClient client = new HttpClient();
             string Url = "https://localhost:7279/";
@@ -112,15 +112,17 @@ namespace AppCUBES
             HttpResponseMessage response = client.GetAsync(parameters).Result;
             string json = $"[{response.Content.ReadAsStringAsync().Result}]";
             JArray detail = JArray.Parse(json);
-            custo.nameputfamily.Text = detail[0]["nameFamily"].ToString();   
-            custo.invputfamily.Text = a.ToString();
-            custo.Show();
+            win.nameputfamily.Text = detail[0]["nameFamily"].ToString();   
+            win.invputfamily.Text = a.ToString();
+            win.Show();
+            win.validputfamily.Click += refreshfamily_Click;
             familyconditionselect.Text = string.Empty;
         }
 
         private void addfamily_Click(object sender, RoutedEventArgs e)
         {
             var family = new familyadd();
+            family.valfamefamily.Click += refreshfamily_Click;
             family.Show();
         }
     }

@@ -1,0 +1,25 @@
+﻿<Window x:Class="AppCUBES.empadd"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AppCUBES"
+        mc:Ignorable="d"
+        Title="empadd" Height="548" Width="400">
+    <Grid Margin="0,0,0,-6">
+        <TextBox x:Name="emplogin" HorizontalAlignment="Left" Height="51" Margin="146,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225"/>
+        <TextBox x:Name="emppassword" HorizontalAlignment="Left" Height="51" Margin="146,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225"/>
+        <TextBox x:Name="empname" HorizontalAlignment="Left" Height="51" Margin="146,201,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225"/>
+        <TextBox x:Name="empfirstname" HorizontalAlignment="Left" Height="51" Margin="146,257,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225"/>
+        <Button x:Name="empval" Content="Valider" HorizontalAlignment="Left" Height="50" Margin="135,449,0,0" VerticalAlignment="Top" Width="92" Click="empval_Click"/>
+        <TextBlock x:Name="infologin" HorizontalAlignment="Left" Height="51" Margin="10,89,0,0" TextWrapping="Wrap" Text="Entrez un login" VerticalAlignment="Top" Width="131"/>
+        <TextBlock x:Name="infopass" HorizontalAlignment="Left" Height="51" Margin="10,145,0,0" TextWrapping="Wrap" Text="Entrez le mot de passe" VerticalAlignment="Top" Width="131"/>
+        <TextBlock HorizontalAlignment="Left" Height="51" Margin="10,201,0,0" TextWrapping="Wrap" Text="Entrez un nom" VerticalAlignment="Top" Width="131"/>
+        <TextBlock HorizontalAlignment="Left" Height="51" Margin="10,257,0,0" TextWrapping="Wrap" Text="Entrez un prénom" VerticalAlignment="Top" Width="131"/>
+        <TextBlock x:Name="resempadd" HorizontalAlignment="Center" Height="34" Margin="0,410,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="334"/>
+        <Button x:Name="precedentemp" Content="Retour" HorizontalAlignment="Left" Height="47" Margin="135,10,0,0" VerticalAlignment="Top" Width="92" Click="precedentemp_Click"/>
+        <ComboBox x:Name="jobempadd" HorizontalAlignment="Left" Height="45" Margin="146,329,0,0" VerticalAlignment="Top" Width="225"/>
+        <TextBlock HorizontalAlignment="Left" Height="45" Margin="10,329,0,0" TextWrapping="Wrap" Text="Choisir le metier" VerticalAlignment="Top" Width="120"/>
+
+    </Grid>
+</Window>

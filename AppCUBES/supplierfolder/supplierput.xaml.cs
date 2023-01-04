@@ -23,17 +23,13 @@ namespace AppCUBES
         public supplierput()
         {
             InitializeComponent();
-        }
-
-        
-       
-
-        private void returnsupplier_Click_1(object sender, RoutedEventArgs e)
+        }      
+        private void returnsupplier_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
-        private void refreshputsupplier_Click_1(object sender, RoutedEventArgs e)
+        private void validateputsupplier_Click(object sender, RoutedEventArgs e)
         {
             supplier sup = new supplier();
             using HttpClient client = new HttpClient();

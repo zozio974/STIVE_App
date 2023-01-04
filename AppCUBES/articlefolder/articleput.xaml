@@ -1,11 +1,11 @@
-﻿<Window x:Class="AppCUBES.articleadd"
+﻿<Window x:Class="AppCUBES.articleput"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppCUBES"
         mc:Ignorable="d"
-        Title="articleadd" Height="450" Width="800">
+        Title="articleput" Height="450" Width="800">
     <Grid>
         <TextBlock HorizontalAlignment="Left" Height="20" Margin="30,44,0,0" TextWrapping="Wrap" Text="Nom article" VerticalAlignment="Top" Width="70"/>
         <TextBlock HorizontalAlignment="Left" Height="20" Margin="30,69,0,0" TextWrapping="Wrap" Text="Nom fournisseur" VerticalAlignment="Top" Width="90"/>
@@ -27,9 +27,10 @@
         <TextBox x:Name="articledegree" HorizontalAlignment="Left" Height="22" Margin="520,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="185"/>
         <TextBox x:Name="articlesep" HorizontalAlignment="Left" Height="22" Margin="520,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="185"/>
         <TextBox x:Name="articleladder" HorizontalAlignment="Left" Height="24" Margin="520,146,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="185"/>
-        <Button x:Name="articleadd_1" Content="Ajouter" HorizontalAlignment="Left" Height="42" Margin="185,217,0,0" VerticalAlignment="Top" Width="133" Click="articleadd_Click_1"/>
-        <Button x:Name="articleaddprec" Content="Retour" HorizontalAlignment="Left" Height="42" Margin="500,217,0,0" VerticalAlignment="Top" Width="135" Click="articleaddprec_Click"/>
-        <TextBlock x:Name="resarticleadd" HorizontalAlignment="Left" Height="42" Margin="360,217,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="108"/>
+        <Button x:Name="validatearticleput" Content="Modifier" HorizontalAlignment="Left" Height="42" Margin="185,217,0,0" VerticalAlignment="Top" Width="133" Click="articleput_Click" />
+        <Button x:Name="articleputprec" Content="Retour" HorizontalAlignment="Left" Height="42" Margin="500,217,0,0" VerticalAlignment="Top" Width="135" Click="articleputprec_Click" />
+        <TextBlock x:Name="resarticleput" HorizontalAlignment="Left" Height="42" Margin="360,217,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="108"/>
+        <TextBlock x:Name="invputarticle" HorizontalAlignment="Left" Height="42" Margin="30,217,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" Visibility="Hidden"/>
 
     </Grid>
 </Window>

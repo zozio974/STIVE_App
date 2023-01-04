@@ -58,5 +58,19 @@ namespace AppCUBES
             win.Show();
             this.Close();
         }
+
+        private void buttonjob_Click(object sender, RoutedEventArgs e)
+        {
+            job win = new job();
+            win.Show();
+            this.Close();
+        }
+
+        private void buttonemp_Click(object sender, RoutedEventArgs e)
+        {
+            emp win = new emp();
+            win.Show();
+            this.Close();
+        }
     }
 }

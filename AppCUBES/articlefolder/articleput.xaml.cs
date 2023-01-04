@@ -56,12 +56,20 @@ namespace AppCUBES
             articlesup.ItemsSource = list;
             articlefamily.ItemsSource = list1;
         }
-
-        private void articleput_Click_1(object sender, RoutedEventArgs e)
+        private bool isinteger(string str)
+        {
+            int res = 0;
+            return int.TryParse(str, out res);
+        }
+        private void articleput_Click(object sender, RoutedEventArgs e)
         {
             string ressup = "";
             string resfam = "";
-            
+            if (isinteger(articledatefill.Text) == false || isinteger(articledegree.Text) == false || isinteger(articlepricesup.Text) == false || isinteger(articleprice.Text) == false)
+            {
+                resarticleput.Text = "Un des champs est mal entré";
+                return;
+            }
             using (HttpClient client = new HttpClient())
             {
                 string Url = "https://localhost:7279/";
@@ -88,13 +96,13 @@ namespace AppCUBES
                 HttpResponseMessage response = client.PutAsync(parameters, null).Result;
             }
 
-            article art = new article();
+            
             
             this.Close();
-            art.articlerefresh_Click(sender, e);
+            
         }
 
-        private void articleaddprec_Click(object sender, RoutedEventArgs e)
+        private void articleputprec_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

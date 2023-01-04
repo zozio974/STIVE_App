@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -12,34 +11,33 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Net.Http;
 
 namespace AppCUBES
 {
     /// <summary>
-    /// Logique d'interaction pour custput.xaml
+    /// Interaction logic for familyput.xaml
     /// </summary>
-    public partial class custput : Window
+    public partial class jobput : Window
     {
-        public custput()
+        public jobput()
         {
             InitializeComponent();
-        }
-
-        private void custval_Click(object sender, RoutedEventArgs e)
+        }      
+        private void returnjob_Click(object sender, RoutedEventArgs e)
         {
-            cust custo = new cust();    
-            using HttpClient client = new HttpClient();
-            string Url = "https://localhost:7279/";
-            client.BaseAddress = new Uri(Url);
-            string parameters = $"PutTable/putcustomer?ID={inv.Text}&login={custloginput.Text}&password={custpasswordput.Text}&name={custnameput.Text}&firstname={custfirstnameput.Text}";
-            HttpResponseMessage response = client.PutAsync(parameters,null).Result;
-            
             this.Close();
         }
 
-        private void returncust2_Click(object sender, RoutedEventArgs e)
+        private void validateputjob_Click(object sender, RoutedEventArgs e)
         {
-            
+            supplier sup = new supplier();
+            using HttpClient client = new HttpClient();
+            string Url = "https://localhost:7279/";
+            client.BaseAddress = new Uri(Url);
+            string parameters = $"PutTable/putjob?ID={invputjob.Text}&name={nameputjob.Text}";
+            HttpResponseMessage response = client.PutAsync(parameters, null).Result;
+
             this.Close();
         }
     }
