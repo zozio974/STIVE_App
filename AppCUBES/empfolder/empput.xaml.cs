@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Newtonsoft.Json.Linq;
 
 namespace AppCUBES
 {
@@ -23,16 +24,45 @@ namespace AppCUBES
         public empput()
         {
             InitializeComponent();
+            List<string> list = new List<string>();
+            using (HttpClient client = new HttpClient())
+            {
+                string Url = "https://localhost:7279/";
+                client.BaseAddress = new Uri(Url);
+                string parameters = "Display/displayjob";
+                HttpResponseMessage response = client.GetAsync(parameters).Result;
+                string json = response.Content.ReadAsStringAsync().Result;
+                JArray detail = JArray.Parse(json);
+                for (int i = 0; i < detail.Count(); i++)
+                {
+                    list.Add(detail[i]["jobName"].ToString());
+                }
+                empjobput.ItemsSource= list;
+            }
         }
 
         public void empval_Click(object sender, RoutedEventArgs e)
         {
-            cust custo = new cust();    
-            using HttpClient client = new HttpClient();
-            string Url = "https://localhost:7279/";
-            client.BaseAddress = new Uri(Url);
-            string parameters = $"PutTable/putcustomer?ID={inv.Text}&login={emploginput.Text}&password={emppasswordput.Text}&name={empnameput.Text}&firstname={empfirstnameput.Text}";
-            HttpResponseMessage response = client.PutAsync(parameters,null).Result;
+            cust custo = new cust();
+            string resjob= "";
+
+            using (HttpClient client = new HttpClient())
+            {
+                string Url = "https://localhost:7279/";
+                client.BaseAddress = new Uri(Url);
+                string parameters = $"Display/getidjob?name={empjobput.SelectedValue}";
+                HttpResponseMessage response = client.GetAsync(parameters).Result;
+                resjob = response.Content.ReadAsStringAsync().Result;
+            }
+
+                using (HttpClient client = new HttpClient())
+            {
+                string Url = "https://localhost:7279/";
+                client.BaseAddress = new Uri(Url);
+                string parameters = $"PutTable/putemployer?ID={inv.Text}&idjob={resjob}&login={emploginput.Text}&password={emppasswordput.Text}&name={empnameput.Text}&firstname={empfirstnameput.Text}";
+                HttpResponseMessage response = client.PutAsync(parameters, null).Result;
+            }
+            
             
             this.Close();
         }
