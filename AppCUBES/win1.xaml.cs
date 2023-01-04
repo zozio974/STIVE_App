@@ -40,7 +40,7 @@ namespace AppCUBES
 
         private void inventory_Click(object sender, RoutedEventArgs e)
         {
-            inventaire inv = new inventaire();
+            inventory inv = new inventory();
             inv.Show();
             this.Close();
         }

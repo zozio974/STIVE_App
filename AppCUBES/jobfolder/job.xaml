@@ -5,15 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppCUBES"
         mc:Ignorable="d"
-        Title="job" Height="450" Width="800">
+        Title="job" Height="450" Width="510">
     <Grid>
-        <DataGrid x:Name="datajob" HorizontalAlignment="Left" Height="323" Margin="213,50,0,0" VerticalAlignment="Top" Width="359" d:ItemsSource="{d:SampleData ItemCount=5}" IsReadOnly="True"/>
-        <Button x:Name="addjob" Content="Ajouter" HorizontalAlignment="Left" Height="46" Margin="593,50,0,0" VerticalAlignment="Top" Width="116" Click="addjob_Click" />
-        <Button x:Name="refreshjob" Content="Actualiser" HorizontalAlignment="Left" Height="57" Margin="107,49,0,0" VerticalAlignment="Top" Width="87" Click="refreshjob_Click" />
-        <Button x:Name="deljob" Content="Supprimer" HorizontalAlignment="Left" Height="44" Margin="594,116,0,0" VerticalAlignment="Top" Width="115" Click="deljob_Click" />
-        <Button x:Name="putjob" Content="Modifier" HorizontalAlignment="Left" Height="49" Margin="593,182,0,0" VerticalAlignment="Top" Width="115" Click="putjob_Click" />
-        <Button x:Name="precedentjob" Content="Retour" HorizontalAlignment="Left" Height="52" Margin="107,284,0,0" VerticalAlignment="Top" Width="87" Click="precedentjob_Click" />
-        <TextBlock x:Name="jobconditionselect" HorizontalAlignment="Left" Height="52" Margin="594,284,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="113"/>
+        <DataGrid x:Name="datajob" HorizontalAlignment="Left" Height="322" Margin="136,51,0,0" VerticalAlignment="Top" Width="187" d:ItemsSource="{d:SampleData ItemCount=5}" IsReadOnly="True" RenderTransformOrigin="0.5,0.5">
+            <DataGrid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="-0.266"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="-0.61"/>
+                </TransformGroup>
+            </DataGrid.RenderTransform>
+        </DataGrid>
+        <Button x:Name="addjob" Content="Ajouter" HorizontalAlignment="Left" Height="46" Margin="358,51,0,0" VerticalAlignment="Top" Width="116" Click="addjob_Click" />
+        <Button x:Name="refreshjob" Content="Actualiser" HorizontalAlignment="Left" Height="57" Margin="22,45,0,0" VerticalAlignment="Top" Width="87" Click="refreshjob_Click" />
+        <Button x:Name="deljob" Content="Supprimer" HorizontalAlignment="Left" Height="44" Margin="358,116,0,0" VerticalAlignment="Top" Width="116" Click="deljob_Click" />
+        <Button x:Name="putjob" Content="Modifier" HorizontalAlignment="Left" Height="49" Margin="359,188,0,0" VerticalAlignment="Top" Width="115" Click="putjob_Click" />
+        <Button x:Name="precedentjob" Content="Retour" HorizontalAlignment="Left" Height="52" Margin="22,321,0,0" VerticalAlignment="Top" Width="87" Click="precedentjob_Click" />
+        <TextBlock x:Name="jobconditionselect" HorizontalAlignment="Left" Height="120" Margin="332,253,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="168"/>
 
     </Grid>
 </Window>

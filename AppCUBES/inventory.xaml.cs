@@ -19,11 +19,11 @@ namespace AppCUBES
     /// <summary>
     /// Interaction logic for inventaire.xaml
     /// </summary>
-    public partial class inventaire : Window
+    public partial class inventory : Window
     {
         List<int> list = new List<int>();
 
-        public inventaire()
+        public inventory()
         {
             list.Clear();
             InitializeComponent();
@@ -70,7 +70,7 @@ namespace AppCUBES
                 list.Add(Convert.ToInt32(detail[i]["iD_Article"]));
 
             }
-            gridinventaire.ItemsSource = arts;
+            gridinventory.ItemsSource = arts;
         }
     }
 
