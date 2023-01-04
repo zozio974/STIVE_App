@@ -55,14 +55,14 @@ namespace AppCUBES
             display_family();
         }
 
-        private void precedent_Click_1(object sender, RoutedEventArgs e)
+        private void precedentsupplier_Click(object sender, RoutedEventArgs e)
         {
             win2 win2 = new win2();
             win2.Show();
             this.Close();
         }
 
-        private void delsupplier_Click_1(object sender, RoutedEventArgs e)
+        private void delsupplier_Click(object sender, RoutedEventArgs e)
         {
             if (datasupplier.SelectedItem == null)
             {
@@ -99,7 +99,7 @@ namespace AppCUBES
             refreshsupplier_Click(sender, e);
         }
 
-        private void putsupplier_Click_1(object sender, RoutedEventArgs e)
+        private void putsupplier_Click(object sender, RoutedEventArgs e)
         {
             if (datasupplier.SelectedItem == null)
             {
@@ -119,12 +119,14 @@ namespace AppCUBES
             custo.nameputsupplier.Text = detail[0]["name"].ToString();   
             custo.invputsupplier.Text = a.ToString();
             custo.Show();
+            custo.validateputsupplier.Click += refreshsupplier_Click;
             supplierconditionselect.Text = string.Empty;
         }
 
         private void addsupplier_Click(object sender, RoutedEventArgs e)
         {
             var family = new supplieradd();
+            family.validatesupplier.Click += refreshsupplier_Click;
             family.Show();
         }
     }

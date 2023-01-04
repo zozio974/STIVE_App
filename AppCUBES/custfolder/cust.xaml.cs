@@ -50,25 +50,23 @@ namespace AppCUBES
             
         }
 
-        private void custdata_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
 
-        }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void addcust_Click(object sender, RoutedEventArgs e)
         {
             var custo = new custadd();
+            custo.custval.Click += Refreshcust_Click;
             custo.Show();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        public void Refreshcust_Click(object sender, RoutedEventArgs e)
         {
             list.Clear();
             display_cust();
             
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void Deletecust_Click(object sender, RoutedEventArgs e)
         {
             if (custdata.SelectedItem == null) {
                 custconditionselect.Text = "Veuillez selectionner un élément du tableau";
@@ -81,6 +79,7 @@ namespace AppCUBES
             string parameters = $"Delete/delete_cust?ID={a}";
             HttpResponseMessage response = client.DeleteAsync(parameters).Result;
             custconditionselect.Text = string.Empty;
+            Refreshcust_Click(sender, e);
         }
 
         private void putcust_Click(object sender, RoutedEventArgs e)
@@ -106,30 +105,33 @@ namespace AppCUBES
             custo.custfirstnameput.Text = detail[0]["firstNameCus"].ToString();
             custo.inv.Text = a.ToString(); 
             custo.Show();
+            custo.custvalput.Click += Refreshcust_Click;
             custconditionselect.Text = string.Empty;
         }
 
-        private void precedent_Click(object sender, RoutedEventArgs e)
+        private void precedentcust_Click(object sender, RoutedEventArgs e)
         {
             win2 win2 = new win2();
             win2.Show();
             this.Close();
         }
+
+        
     }
 
     public class Cust
     {
-        public string Login{ get; set; }
+        public string Email{ get; set; }
 
-        public string Name { get; set; }
+        public string Nom { get; set; }
 
-        public string Firstname { get; set; }
+        public string Prenom { get; set; }
 
         public Cust (string login, string name, string firsname)
         {
-            Login = login;
-            Name = name;
-            Firstname = firsname;
+            Email = login;
+            Nom = name;
+            Prenom = firsname;
         }
     }
 }

@@ -8,7 +8,7 @@
         Title="familyput" Height="450" Width="800">
     <Grid>
         <TextBox x:Name="nameputfamily" HorizontalAlignment="Left" Height="51" Margin="310,217,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="224"/>
-        <Button x:Name="refreshputfamily" Content="Modifier" HorizontalAlignment="Left" Height="50" Margin="376,330,0,0" VerticalAlignment="Top" Width="92" Click="refreshputfamily_Click_1" />
+        <Button x:Name="validputfamily" Content="Modifier" HorizontalAlignment="Left" Height="50" Margin="376,330,0,0" VerticalAlignment="Top" Width="92" Click="refreshputfamily_Click_1" />
         <TextBlock HorizontalAlignment="Left" Height="51" Margin="138,217,0,0" TextWrapping="Wrap" Text="Entrez un nom" VerticalAlignment="Top" Width="132" RenderTransformOrigin="0.464,0.64"/>
         <Button x:Name="returnfamily2" Content="Retour" HorizontalAlignment="Left" Height="45" Margin="376,130,0,0" VerticalAlignment="Top" Width="92" Click="returnfamily2_Click_1" />
         <TextBox x:Name="invputfamily" HorizontalAlignment="Left" Margin="182,308,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>

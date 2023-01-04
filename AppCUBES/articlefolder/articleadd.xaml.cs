@@ -60,16 +60,25 @@ namespace AppCUBES
             articlefamily.ItemsSource = list1;
 
         }
+        private bool isinteger(string str)
+        {
+            int res = 0;
+            return int.TryParse(str,out res);
+        }
 
-
-        private void articleadd_Click_1(object sender, RoutedEventArgs e)
+        private void validatearticleadd_Click(object sender, RoutedEventArgs e)
         {
             string ressup  = "";
             string resfam= "";
             if (articlename.Text == "" || articlesup.SelectedValue == "" || articledatefill.Text == "" || articlefamily.SelectedValue == ""
-                ||articlepricesup.Text ==""||articleprice.Text ==""||articledegree.Text ==""||articlesep.Text =="")
+                ||articlepricesup.Text ==""||articleprice.Text ==""||articledegree.Text ==""||articlesep.Text ==""|| articleladder.Text == "")
             {
                 resarticleadd.Text = "Un ou plusieurs champs est vide";
+                return;
+            }
+            if (isinteger(articledatefill.Text) == false|| isinteger(articledegree.Text) == false|| isinteger(articlepricesup.Text) == false || isinteger(articleprice.Text) == false)
+            {
+                resarticleadd.Text = "Un des champs est mal entré";
                 return;
             }
             using (HttpClient client = new HttpClient())
@@ -99,7 +108,7 @@ namespace AppCUBES
             article art = new article();
             
             this.Close();
-            art.articlerefresh_Click(sender, e);
+            art.refresharticle_Click(sender, e);
         }
 
         private void articleaddprec_Click(object sender, RoutedEventArgs e)
