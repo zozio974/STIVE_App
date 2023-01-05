@@ -8,6 +8,8 @@
         Title="inventory" Height="450" Width="800">
     <Grid>
         <DataGrid x:Name="gridinventory" HorizontalAlignment="Left" Height="364" Margin="23,33,0,0" VerticalAlignment="Top" Width="470" d:ItemsSource="{d:SampleData ItemCount=5}" RenderTransformOrigin="0.512,0.527"/>
+        <Button x:Name="Plus" Content="+" HorizontalAlignment="Left" Height="40" Margin="619,68,0,0" VerticalAlignment="Top" Width="40" FontSize="22" Click="Plus_Click"/>
+        <Button x:Name="Moins" Content="-" HorizontalAlignment="Left" Height="40" Margin="619,138,0,0" VerticalAlignment="Top" Width="40" FontSize="22" Click="Moins_Click"/>
 
     </Grid>
 </Window>
