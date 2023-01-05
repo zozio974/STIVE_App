@@ -58,6 +58,7 @@ namespace AppCUBES
 
             articlesup.ItemsSource = list;
             articlefamily.ItemsSource = list1;
+            
 
         }
         private bool isinteger(string str)
@@ -70,7 +71,7 @@ namespace AppCUBES
         {
             string ressup  = "";
             string resfam= "";
-            if (articlename.Text == "" || articlesup.SelectedValue == "" || articledatefill.Text == "" || articlefamily.SelectedValue == ""
+            if (articlename.Text == "" || articlesup.SelectedValue == null || articledatefill.Text == "" || articlefamily.SelectedValue == null
                 ||articlepricesup.Text ==""||articleprice.Text ==""||articledegree.Text ==""||articlesep.Text ==""|| articleladder.Text == "")
             {
                 resarticleadd.Text = "Un ou plusieurs champs est vide";
