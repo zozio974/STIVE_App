@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -27,13 +28,13 @@ namespace AppCUBES
         {
             list.Clear();
             InitializeComponent();
-            display_article();
+            display_inventaire();
         }
 
-        public void display_article() 
+        public void display_inventaire() 
         {
             list.Clear();
-            List<Article> arts = new List<Article>();
+            List<Inventaire> arts = new List<Inventaire>();
 
             using HttpClient client = new HttpClient();
             using HttpClient client1 = new HttpClient();
@@ -63,22 +64,36 @@ namespace AppCUBES
                 string json2 = response2.Content.ReadAsStringAsync().Result;
                 HttpResponseMessage response3 = client2.GetAsync(parameters3).Result;
                 string json3 = response3.Content.ReadAsStringAsync().Result;
-                arts.Add(new Article(detail[i]["nameArticle"].ToString(), json2,
+                arts.Add(new Inventaire(detail[i]["nameArticle"].ToString(), json2,
                     detail[i]["dateFill"].ToString(), json3,
                     detail[i]["priceSup"].ToString(), detail[i]["price"].ToString(), detail[i]["volume"].ToString(),
                     detail[i]["degree"].ToString(), detail[i]["grape"].ToString(), detail[i]["ladder"].ToString()));
                 list.Add(Convert.ToInt32(detail[i]["iD_Article"]));
 
             }
+
             gridinventory.ItemsSource = arts;
+        }
+
+        private void Moins_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Plus_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 
     }
     public class Inventaire
     {
-        public string IDArticle { get;set; }
+
         public string NameArticle { get; set; }
+        public string Stock { get; set; }
+        public string StockActuel { get; set; }
+        public string StockMin { get; set; }
         public string NameProvider { get; set; }
         public string DateFill { get; set; }
         public string NameFamily { get; set; }
@@ -91,9 +106,12 @@ namespace AppCUBES
 
 
 
-        public Inventaire(string nameArticle, string idProvider, string dateFill, string idFamily, string pricesup, string price, string volume, string degree, string cepage, string recompense)
+
+
+
+    public Inventaire(string NomArticle, string idProvider, string dateFill, string idFamily, string pricesup, string price, string volume, string degree, string cepage, string recompense, string stock,string stockActuel, string stockmin)
         {
-            NameArticle = nameArticle;
+            NameArticle = NomArticle;
             NameProvider = idProvider;
             DateFill = dateFill;
             NameFamily = idFamily;
@@ -103,6 +121,9 @@ namespace AppCUBES
             Degree = degree;
             Cepage = cepage;
             Recompense = recompense;
+            Stock = stock;
+        
+
         }
     }
 
