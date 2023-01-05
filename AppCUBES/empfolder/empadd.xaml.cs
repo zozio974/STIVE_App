@@ -44,7 +44,7 @@ namespace AppCUBES
         private void empval_Click(object sender, RoutedEventArgs e)
         {
             string resjob = "";
-            if (emplogin.Text ==""|| emppassword.Text == "" || empname.Text == "" || empfirstname.Text == "" || jobempadd.SelectedValue == "")
+            if (emplogin.Text ==""|| emppassword.Text == "" || empname.Text == "" || empfirstname.Text == "" || jobempadd.SelectedValue == null)
             {
                 resempadd.Text = "Un ou plusieurs champs est vide";
                 return;
