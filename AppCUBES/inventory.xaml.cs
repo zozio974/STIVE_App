@@ -23,20 +23,61 @@ namespace AppCUBES
     /// </summary>
     public partial class inventory : Window
     {
-        List<int> list = new List<int>();
-        JArray detail= new JArray();
+        List<int> list = new List<int>(); 
+        List<int> liststmin = new List<int>();
+        List<int> listst = new List<int>();
+
+
+        JArray detail = new JArray();
         JArray detail1 = new JArray();
         List<int> listidsup = new List<int>();
         List<int> listidfam = new List<int>();
         List<string> listnamesup = new List<string>();
         List<string> listnamefam = new List<string>();
+        int sel = 0 ;
         public inventory()
         {
             list.Clear();
             InitializeComponent();
             display_inventaire();
-        }
+            List<string> listsearchsup = new List<string>();
+            List<string> listsearchfam = new List<string>();
+            using (HttpClient client = new HttpClient())
+            {
+                string Url = "https://localhost:7279/";
+                client.BaseAddress = new Uri(Url);
+                string parameters = "Display/displaysup";
+                HttpResponseMessage response = client.GetAsync(parameters).Result;
+                string json = response.Content.ReadAsStringAsync().Result;
+                JArray detail5 = JArray.Parse(json);
+                for (int i = 0; i < detail5.Count(); i++)
+                {
+                    listsearchsup.Add(detail5[i]["name"].ToString());
+                }
+            }
+            using (HttpClient client = new HttpClient())
+            {
+                string Url = "https://localhost:7279/";
+                client.BaseAddress = new Uri(Url);
+                string parameters = "Display/displayfamily";
+                HttpResponseMessage response = client.GetAsync(parameters).Result;
+                string json = response.Content.ReadAsStringAsync().Result;
+                JArray detail6 = JArray.Parse(json);
+                for (int i = 0; i < detail6.Count(); i++)
+                {
+                    listsearchfam.Add(detail6[i]["nameFamily"].ToString());
+                }
+            }
+            trichoicesup.ItemsSource = listsearchsup;
+            trichoicefam.ItemsSource = listsearchfam;
 
+
+        }
+        private bool isinteger(string str)
+        {
+            int res = 0;
+            return int.TryParse(str, out res);
+        }
         public string createparameter(List<int> list)
         {
             string a = "";
@@ -47,11 +88,12 @@ namespace AppCUBES
             var output = a.Remove(a.Length - 1);
             return output;
         }
+
         public void display_inventaire() 
         {
             List<Inventaire> inv = new List<Inventaire>();
             List<int> listidstock = new List<int>();
-            
+
             using (HttpClient client = new HttpClient())
             {
                 string Url = "https://localhost:7279/";
@@ -64,6 +106,8 @@ namespace AppCUBES
                 {
                     listidstock.Add(Convert.ToInt32(detail[i]["idArticle"]));
                     list.Add(Convert.ToInt32(detail[i]["iD_Stock"]));
+                    liststmin.Add(Convert.ToInt32(detail[i]["stockMin"]));
+                    listst.Add(Convert.ToInt32(detail[i]["stockActual"]));
                 }
 
 
@@ -115,15 +159,9 @@ namespace AppCUBES
             for (int i = 0; i < detail.Count; i++)
             {
                 inv.Add(new Inventaire(detail1[i]["nameArticle"].ToString(), detail[i]["stockActual"].ToString(), detail[i]["stockProv"].ToString(), detail[i]["stockMin"].ToString(), listnamesup[i], detail1[i]["dateFill"].ToString(), listnamefam[i], detail1[i]["priceSup"].ToString(), detail1[i]["price"].ToString(),detail1[i]["volume"].ToString(),detail1[i]["degree"].ToString(),detail1[i]["grape"].ToString(),detail1[i]["ladder"].ToString()));
-                
-
-            }
-                
-
-
-
+               
+            }               
             gridinventory.ItemsSource = inv;
-
         }
 
             
@@ -131,12 +169,172 @@ namespace AppCUBES
 
         private void Moins_Click(object sender, RoutedEventArgs e)
         {
+            int a = list[gridinventory.SelectedIndex];
+
+            if (gridinventory.SelectedItem == null)
+            {
+                resinventory.Text = "Veuillez selectionner un élément du tableau";
+
+                return;
+            }
+            if (invquantsous.Text == "")
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    string Url = "https://localhost:7279/";
+                    client.BaseAddress = new Uri(Url);
+                    string parameters = $"PutStock/dropstockunitid?idstock={a}";
+                    HttpResponseMessage response = client.PutAsync(parameters, null).Result;
+                    sel = gridinventory.SelectedIndex;
+                    inventoryrefresh_Click(sender, e);
+
+                    return;
+
+                }
+            }
+            if (isinteger(invquantsous.Text) == false)
+            {
+                resinventory.Text = "Le champs est mal entré";
+
+                return;
+            }
+            using (HttpClient client = new HttpClient())
+            {
+                string Url = "https://localhost:7279/";
+                client.BaseAddress = new Uri(Url);
+                string parameters = $"PutStock/dropstockmulid?idstock={a}&i={invquantsous.Text}";
+                HttpResponseMessage response = client.PutAsync(parameters, null).Result;
+                sel = gridinventory.SelectedIndex;
+                inventoryrefresh_Click(sender, e);
+
+                return;
+
+            }
 
         }
 
         private void Plus_Click(object sender, RoutedEventArgs e)
         {
+            int a = list[gridinventory.SelectedIndex];
 
+            if (gridinventory.SelectedItem == null)
+            {
+                resinventory.Text = "Veuillez selectionner un élément du tableau";
+                
+                return;
+            }
+            
+            if (invquantplus.Text == "")
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    string Url = "https://localhost:7279/";
+                    client.BaseAddress = new Uri(Url);
+                    string parameters = $"PutStock/addstockunitid?idstock={a}";
+                    HttpResponseMessage response = client.PutAsync(parameters, null).Result;
+                    sel = gridinventory.SelectedIndex;
+                    inventoryrefresh_Click(sender, e);
+
+                    return;
+
+                }
+            }
+            if (isinteger(invquantplus.Text) == false)
+            {
+                resinventory.Text = "Le champs est mal entré";
+                
+                return;
+            }
+            using (HttpClient client = new HttpClient())
+            {
+                string Url = "https://localhost:7279/";
+                client.BaseAddress = new Uri(Url);
+                string parameters = $"PutStock/addstockmulid?idstock={a}&i={invquantplus.Text}";
+                HttpResponseMessage response = client.PutAsync(parameters, null).Result;
+                sel = gridinventory.SelectedIndex;
+                inventoryrefresh_Click(sender, e);
+
+                return;
+
+            }
+
+        }
+
+        private void inventoryrefresh_Click(object sender, RoutedEventArgs e)
+        {
+            list.Clear();
+            display_inventaire();
+            gridinventory.SelectedIndex = sel;
+            invquantplus.Text = "";
+            invquantsous.Text = "";
+            putstock1.Text = "";
+        }
+
+        private void stockmin_Click(object sender, RoutedEventArgs e)
+        {
+            int a = list[gridinventory.SelectedIndex];
+            if (isinteger(putstockmin.Text) == false || putstockmin.Text=="")
+            {
+                resinventory.Text = "Le champs est mal entré";
+                return;
+            }
+            using (HttpClient client = new HttpClient())
+            {
+
+                string Url = "https://localhost:7279/";
+                client.BaseAddress = new Uri(Url);
+                string parameters = $"PutStock/putstockmin?idstock={a}&i={putstockmin.Text}";
+                HttpResponseMessage response = client.PutAsync(parameters, null).Result;
+                sel = gridinventory.SelectedIndex;
+                inventoryrefresh_Click(sender, e);
+
+                return;
+
+            }
+        }
+
+        private void gridinventory_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(gridinventory.SelectedIndex >= 0)
+            {
+                int b = liststmin[gridinventory.SelectedIndex];
+                putstockmin.Text = b.ToString();
+                int c = listst[gridinventory.SelectedIndex];
+                putstock1.Text = c.ToString();
+            }
+            
+        }
+
+        private void invretmenu_Click(object sender, RoutedEventArgs e)
+        {
+            win2 win = new win2();
+            win.Show();
+            this.Close();
+        }
+
+        
+
+        private void putstock_Click(object sender, RoutedEventArgs e)
+        {
+            int a = list[gridinventory.SelectedIndex];
+            if (isinteger(putstock1.Text) == false || putstock1.Text == "")
+            {
+                resinventory.Text = "Le champs est mal entré";
+                return;
+            }
+            using (HttpClient client = new HttpClient())
+            {
+
+                string Url = "https://localhost:7279/";
+                client.BaseAddress = new Uri(Url);
+                string parameters = $"PutStock/putstock?idstock={a}&i={putstock1.Text}";
+                HttpResponseMessage response = client.PutAsync(parameters, null).Result;
+                sel = gridinventory.SelectedIndex;
+                inventoryrefresh_Click(sender, e);
+
+                return;
+
+            }
         }
     }
 
