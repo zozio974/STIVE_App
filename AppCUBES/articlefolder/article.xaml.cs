@@ -66,6 +66,7 @@ namespace AppCUBES
                 for (int i = 0; i < detail.Count; i++)
                 {
                     listidsup.Add(Convert.ToInt32(detail[i]["idProvider"]));
+                    listidfam.Add(Convert.ToInt32(detail[i]["idFamily"]));
                 }
             }
             using (HttpClient client = new HttpClient())
@@ -79,21 +80,10 @@ namespace AppCUBES
                 for (int i = 0; i < detail.Count; i++)
                 {
                     listnamesup.Add((detail[i]).ToString());
+
                 }
             }
-            using (HttpClient client = new HttpClient())
-            {
-                string Url = "https://localhost:7279/";
-                client.BaseAddress = new Uri(Url);
-                string parameters = "Display/displayarticle";
-                HttpResponseMessage response = client.GetAsync(parameters).Result;
-                string json = response.Content.ReadAsStringAsync().Result;
-                JArray detail = JArray.Parse(json);
-                for (int i = 0; i < detail.Count; i++)
-                {
-                    listidfam.Add(Convert.ToInt32(detail[i]["idFamily"]));
-                }
-            }
+          
             using (HttpClient client = new HttpClient())
             {
                 string Url = "https://localhost:7279/";
