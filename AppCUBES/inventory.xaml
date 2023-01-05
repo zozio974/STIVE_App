@@ -20,11 +20,12 @@
         <Button x:Name="invretmenu" Content="Retour" HorizontalAlignment="Left" Height="30" Margin="645,361,0,0" VerticalAlignment="Top" Width="67" Click="invretmenu_Click"/>
         <Button x:Name="putstock" Content="Modifier le stock direct" HorizontalAlignment="Left" Height="40" Margin="645,234,0,0" VerticalAlignment="Top" Width="145" Click="putstock_Click"/>
         <TextBox x:Name="putstock1" HorizontalAlignment="Left" Height="30" Margin="645,279,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145"/>
-        <ComboBox x:Name="trichoicesup" HorizontalAlignment="Left" Height="58" Margin="23,36,0,0" VerticalAlignment="Top" Width="105"/>
-        <Button x:Name="buttontri" Content="Trier" HorizontalAlignment="Left" Height="58" Margin="135,36,0,0" VerticalAlignment="Top" Width="110"/>
-        <Button x:Name="researchnamebut" Content="Rechercher par nom" HorizontalAlignment="Left" Height="58" Margin="520,36,0,0" VerticalAlignment="Top" Width="110"/>
-        <TextBox x:Name="researchname" HorizontalAlignment="Left" Height="58" Margin="352,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="163"/>
-        <ComboBox x:Name="trichoicefam" HorizontalAlignment="Left" Height="58" Margin="250,36,0,0" VerticalAlignment="Top" Width="97"/>
+        <ComboBox x:Name="trichoicesup" HorizontalAlignment="Left" Height="29" Margin="23,36,0,0" VerticalAlignment="Top" Width="163"/>
+        <Button x:Name="buttontri" Content="Trier" HorizontalAlignment="Left" Height="29" Margin="23,68,0,0" VerticalAlignment="Top" Width="163"/>
+        <Button x:Name="researchnamebut" Content="Rechercher par nom" HorizontalAlignment="Left" Height="61" Margin="520,36,0,0" VerticalAlignment="Top" Width="110"/>
+        <TextBox x:Name="researchname" HorizontalAlignment="Left" Height="61" Margin="352,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="163"/>
+        <ComboBox x:Name="trichoicefam" HorizontalAlignment="Left" Height="29" Margin="191,36,0,0" VerticalAlignment="Top" Width="156"/>
+        <Button x:Name="buttontri2" Content="Trier" HorizontalAlignment="Left" Height="29" Margin="191,68,0,0" VerticalAlignment="Top" Width="156"/>
 
     </Grid>
 </Window>
