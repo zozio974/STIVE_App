@@ -26,7 +26,8 @@ namespace AppCUBES
         List<int> list = new List<int>(); 
         List<int> liststmin = new List<int>();
         List<int> listst = new List<int>();
-
+        int resup = 0;
+        int refam = 0;
 
         JArray detail = new JArray();
         JArray detail1 = new JArray();
@@ -304,30 +305,34 @@ namespace AppCUBES
             list.Clear();
 
             List<int> listidstock = new List<int>();
-
-            using (HttpClient client = new HttpClient())
+            if(refam == 0 && resup == 0)
             {
-                string Url = "https://localhost:7279/";
-                client.BaseAddress = new Uri(Url);
-                string parameters = "Display/displaystock";
-                HttpResponseMessage response = client.GetAsync(parameters).Result;
-                string json = response.Content.ReadAsStringAsync().Result;
-                detail = JArray.Parse(json);
-                for (int i = 0; i < detail.Count; i++)
+                using (HttpClient client = new HttpClient())
                 {
-                    listidstock.Add(Convert.ToInt32(detail[i]["idArticle"]));
-                    list.Add(Convert.ToInt32(detail[i]["iD_Stock"]));
-                    liststmin.Add(Convert.ToInt32(detail[i]["stockMin"]));
-                    listst.Add(Convert.ToInt32(detail[i]["stockActual"]));
+                    string Url = "https://localhost:7279/";
+                    client.BaseAddress = new Uri(Url);
+                    string parameters = "Display/displaystock";
+                    HttpResponseMessage response = client.GetAsync(parameters).Result;
+                    string json = response.Content.ReadAsStringAsync().Result;
+                    detail = JArray.Parse(json);
+                    for (int i = 0; i < detail.Count; i++)
+                    {
+                        listidstock.Add(Convert.ToInt32(detail[i]["idArticle"]));
+                        list.Add(Convert.ToInt32(detail[i]["iD_Stock"]));
+                        liststmin.Add(Convert.ToInt32(detail[i]["stockMin"]));
+                        listst.Add(Convert.ToInt32(detail[i]["stockActual"]));
+                    }
+
+
                 }
-
-
+                display_inventaire(list);
+                gridinventory.SelectedIndex = sel;
+                invquantplus.Text = "";
+                invquantsous.Text = "";
+                putstock1.Text = "";
+                return;
             }
-            display_inventaire(list);
-            gridinventory.SelectedIndex = sel;
-            invquantplus.Text = "";
-            invquantsous.Text = "";
-            putstock1.Text = "";
+           
         }
 
         private void stockmin_Click(object sender, RoutedEventArgs e)
@@ -395,6 +400,21 @@ namespace AppCUBES
                 return;
 
             }
+        }
+
+        private void buttontrisup_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void buttontrifam_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void detribut_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 
