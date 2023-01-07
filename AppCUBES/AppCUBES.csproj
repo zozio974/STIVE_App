@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="empfolder\" />
+    <Folder Include="gest\empfolder\" />
     <Folder Include="Model\" />
   </ItemGroup>
 

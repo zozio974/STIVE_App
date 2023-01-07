@@ -452,11 +452,14 @@ namespace AppCUBES
             invquantsous.Text = "";
             putstock1.Text = "";
             putstockmin.Text = "";
-            
+
+
 
 
 
         }
+
+        
 
         private void stockmin_Click(object sender, RoutedEventArgs e)
         {
