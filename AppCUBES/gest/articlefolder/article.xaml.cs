@@ -14,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 
 namespace AppCUBES
 {
@@ -23,15 +24,36 @@ namespace AppCUBES
     public partial class article : Window
     {
         List<int> list = new List<int>();
-       
+        List<int> listidsup = new List<int>();
+        List<int> listidfam = new List<int>();
+        List<string> listnamesup = new List<string>();
+        List<string> listnamefam = new List<string>();
 
+        JArray detail = new JArray();
 
-
+        int a = 0;
 
         public article()
         {
+            
+
             InitializeComponent();
-            list.Clear();
+            using (HttpClient client = new HttpClient())
+            {
+                string Url = "https://localhost:7279/";
+                client.BaseAddress = new Uri(Url);
+                string parameters = "Display/displayarticle";
+                HttpResponseMessage response = client.GetAsync(parameters).Result;
+                string json = response.Content.ReadAsStringAsync().Result;
+                detail = JArray.Parse(json);
+                for (int i = 0; i < detail.Count; i++)
+                {
+                    listidsup.Add(Convert.ToInt32(detail[i]["idProvider"]));
+                    listidfam.Add(Convert.ToInt32(detail[i]["idFamily"]));
+                    list.Add(Convert.ToInt32(detail[i]["iD_Article"]));
+
+                }
+            }
             display_article();
         }
         public string createparameter(List<int> list)
@@ -41,34 +63,21 @@ namespace AppCUBES
             {
                 a += $"listOfIds={item}&";
             }
-            var output = a.Remove(a.Length - 1);
-            return output;
+            if (a.Length > 0)
+            {
+                var output = a.Remove(a.Length - 1);
+                return output;
+
+            }
+            return a;
         }
         public void display_article()
             
         {
-            List<int> listidsup = new List<int>();
-            List<int> listidfam = new List<int>();
-            List<string> listnamesup= new List<string>();
-            List<string> listnamefam= new List<string>();
-            List<Article> arts = new List<Article>();
-            list.Clear();
-            
 
-            using (HttpClient client = new HttpClient())
-            {
-                string Url = "https://localhost:7279/";
-                client.BaseAddress = new Uri(Url);
-                string parameters = "Display/displayarticle";
-                HttpResponseMessage response = client.GetAsync(parameters).Result;
-                string json = response.Content.ReadAsStringAsync().Result;
-                JArray detail = JArray.Parse(json);
-                for (int i = 0; i < detail.Count; i++)
-                {
-                    listidsup.Add(Convert.ToInt32(detail[i]["idProvider"]));
-                    listidfam.Add(Convert.ToInt32(detail[i]["idFamily"]));
-                }
-            }
+            List<Article> arts = new List<Article>();
+
+
             using (HttpClient client = new HttpClient())
             {
                 string Url = "https://localhost:7279/";
@@ -76,10 +85,10 @@ namespace AppCUBES
                 string parameters = $"Display/getlistnamesup?{createparameter(listidsup)}";
                 HttpResponseMessage response = client.GetAsync(parameters).Result;
                 string json = response.Content.ReadAsStringAsync().Result;
-                JArray detail = JArray.Parse(json);
-                for (int i = 0; i < detail.Count; i++)
+                JArray detail1 = JArray.Parse(json);
+                for (int i = 0; i < detail1.Count; i++)
                 {
-                    listnamesup.Add((detail[i]).ToString());
+                    listnamesup.Add((detail1[i]).ToString());
 
                 }
             }
@@ -91,36 +100,48 @@ namespace AppCUBES
                 string parameters = $"Display/getlistnamefam?{createparameter(listidfam)}";
                 HttpResponseMessage response = client.GetAsync(parameters).Result;
                 string json = response.Content.ReadAsStringAsync().Result;
-                JArray detail = JArray.Parse(json);
-                for (int i = 0; i < detail.Count; i++)
+                JArray detail2 = JArray.Parse(json);
+                for (int i = 0; i < detail2.Count; i++)
                 {
-                    listnamefam.Add((detail[i]).ToString());
+                    listnamefam.Add((detail2[i]).ToString());
                 }
             }
+
+            for (int i = 0; i < detail.Count; i++)
+            {
+                arts.Add(new Article(detail[i]["nameArticle"].ToString(), listnamesup[i],
+                                  detail[i]["dateFill"].ToString(), listnamefam[i],
+                                  detail[i]["priceSup"].ToString(), detail[i]["price"].ToString(), detail[i]["volume"].ToString(),
+                                  detail[i]["degree"].ToString(), detail[i]["grape"].ToString(), detail[i]["ladder"].ToString()));
+                
+            }
+
+            articledata.ItemsSource = arts;
+
+        }
+
+        public void display_articlebyname()
+        {
+            List<int> listidstock = new List<int>();
 
             using (HttpClient client = new HttpClient())
             {
                 string Url = "https://localhost:7279/";
                 client.BaseAddress = new Uri(Url);
-                string parameters = "Display/displayarticle";
+                string parameters = $"Display/displayarticlebyname?name={nameart.Text}";
                 HttpResponseMessage response = client.GetAsync(parameters).Result;
                 string json = response.Content.ReadAsStringAsync().Result;
-                JArray detail = JArray.Parse(json);
+                detail = JArray.Parse(json);
                 for (int i = 0; i < detail.Count; i++)
                 {
-                    arts.Add(new Article(detail[i]["nameArticle"].ToString(), listnamesup[i],
-                                      detail[i]["dateFill"].ToString(), listnamefam[i],
-                                      detail[i]["priceSup"].ToString(), detail[i]["price"].ToString(), detail[i]["volume"].ToString(),
-                                      detail[i]["degree"].ToString(), detail[i]["grape"].ToString(), detail[i]["ladder"].ToString()));
                     list.Add(Convert.ToInt32(detail[i]["iD_Article"]));
+                    listidsup.Add(Convert.ToInt32(detail[i]["idProvider"]));
+                    listidfam.Add(Convert.ToInt32(detail[i]["idFamily"]));
                 }
+
             }
-           
-            articledata.ItemsSource = arts;
-
+            display_article();
         }
-
-        
 
         private void addarticle_Click(object sender, RoutedEventArgs e)
         {
@@ -133,6 +154,32 @@ namespace AppCUBES
         public void refresharticle_Click(object sender, RoutedEventArgs e)
         {
             list.Clear();
+            listidfam.Clear();
+            listidsup.Clear();
+            listnamefam.Clear();
+            listnamesup.Clear();
+            if (a == 1)
+            {
+                display_articlebyname();
+                return;
+            }
+            
+            using (HttpClient client = new HttpClient())
+            {
+                string Url = "https://localhost:7279/";
+                client.BaseAddress = new Uri(Url);
+                string parameters = "Display/displayarticle";
+                HttpResponseMessage response = client.GetAsync(parameters).Result;
+                string json = response.Content.ReadAsStringAsync().Result;
+                detail = JArray.Parse(json);
+                for (int i = 0; i < detail.Count; i++)
+                {
+                    listidsup.Add(Convert.ToInt32(detail[i]["idProvider"]));
+                    listidfam.Add(Convert.ToInt32(detail[i]["idFamily"]));
+                    list.Add(Convert.ToInt32(detail[i]["iD_Article"]));
+
+                }
+            }
             display_article();
 
         }
@@ -247,6 +294,34 @@ namespace AppCUBES
             this.Close();
 
 
+        }
+
+        private void artbyname_Click(object sender, RoutedEventArgs e)
+        {
+            string json = "";
+            using (HttpClient client = new HttpClient())
+            {
+                string Url = "https://localhost:7279/";
+                client.BaseAddress = new Uri(Url);
+                string parameters = $"Check/articlebynameexist?name={nameart.Text}";
+                HttpResponseMessage response = client.GetAsync(parameters).Result;
+                json = response.Content.ReadAsStringAsync().Result;
+
+            }
+
+            if (nameart.Text == "" || json == "false")
+            {
+                articleconditionselect.Text = "L'article n'existe pas";
+                return;
+            }
+            a = 1;
+            refresharticle_Click(sender, e);
+        }
+
+        private void deselectart_Click(object sender, RoutedEventArgs e)
+        {
+            a = 0;
+            refresharticle_Click(sender, e);
         }
     }
 
