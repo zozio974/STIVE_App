@@ -13,9 +13,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Newtonsoft.Json.Linq;
 
 namespace AppCUBES
 {
+    static class Connect
+    {
+        public static int iduser;
+        public static int idjobuser;
+
+    }
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -25,28 +32,69 @@ namespace AppCUBES
         {
             InitializeComponent();
         }
+        
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            using HttpClient client = new HttpClient();
-            string Url = "https://localhost:7279/";
-            client.BaseAddress = new Uri(Url);
-            string parameters = $"Connect/connectemp?username={login.Text}&password={password.Password}";
-            HttpResponseMessage response = client.GetAsync(parameters).Result;
-            string json = response.Content.ReadAsStringAsync().Result;
-            if (json == "true")
+            using (HttpClient client = new HttpClient())
             {
-                win1 win1 = new win1();
-                win1.Show();
-                this.Close();
-                return;
+                string Url = "https://localhost:7279/";
+                client.BaseAddress = new Uri(Url);
+                string parameters = $"Connect/connectemp?username={login.Text}&password={password.Password}";
+                HttpResponseMessage response = client.GetAsync(parameters).Result;
+                string json = response.Content.ReadAsStringAsync().Result;
+                if (json == "false")
+                {
+                    res.Text = "Mauvais identifiant ou mot de passe, réessayez";
+                    return;
+
+                }
             }
-            res.Text = "Mauvais identifiant ou mot de passe, réessayez";
+            using (HttpClient client = new HttpClient())
+            {
+                string Url = "https://localhost:7279/";
+                client.BaseAddress = new Uri(Url);
+                string parameters = $"Connect/getjobbylogin?name={login.Text}";
+                HttpResponseMessage response = client.GetAsync(parameters).Result;
+                string json = $"[{response.Content.ReadAsStringAsync().Result}]";
+                JArray detail = JArray.Parse(json);
+                Connect.iduser = Convert.ToInt32(detail[0]["iD_Employer"]);
+                Connect.idjobuser = Convert.ToInt32(detail[0]["idjob"]);
+                
+                if (Connect.idjobuser == 1)
+                {
+                    win1 win1 = new win1();
+                    win1.Show();
+                    this.Close();
+                    return;
+
+                }
+                if (Connect.idjobuser == 2)
+                {
+                    gestwin win1 = new gestwin();
+                    win1.Show();
+                    this.Close();
+                    return;
+                }
+                if (Connect.idjobuser == 3)
+                {
+                    inventwin win1 = new inventwin();
+                    win1.Show();
+                    this.Close();
+                    return;
+
+                }
+                if (Connect.idjobuser == 4)
+                {
+                    commandwin win1 = new commandwin();
+                    win1.Show();
+                    this.Close();
+                    return;
+                }
+            }
+           
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
+       
     }
 }

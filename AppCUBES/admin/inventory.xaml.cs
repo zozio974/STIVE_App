@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.Design.Serialization;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -15,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 
 namespace AppCUBES
 {
@@ -23,14 +25,14 @@ namespace AppCUBES
     /// </summary>
     public partial class inventory : Window
     {
-        List<int> list = new List<int>(); 
-        List<int> liststmin = new List<int>();
-        List<int> listst = new List<int>();
+        List<int> list = new List<int>();
+        List<int> listactual = new List<int>();
+        List<int> listmin = new List<int>();
+
         int resup = 0;
         int refam = 0;
-
+        int rename = 0;
         JArray detail = new JArray();
-        JArray detail1 = new JArray();
         List<int> listidsup = new List<int>();
         List<int> listidfam = new List<int>();
         List<string> listnamesup = new List<string>();
@@ -47,16 +49,16 @@ namespace AppCUBES
             {
                 string Url = "https://localhost:7279/";
                 client.BaseAddress = new Uri(Url);
-                string parameters = "Display/displaystock";
+                string parameters = "Display/displayarticle";
                 HttpResponseMessage response = client.GetAsync(parameters).Result;
                 string json = response.Content.ReadAsStringAsync().Result;
                 detail = JArray.Parse(json);
                 for (int i = 0; i < detail.Count; i++)
                 {
-                    listidstock.Add(Convert.ToInt32(detail[i]["idArticle"]));
-                    list.Add(Convert.ToInt32(detail[i]["iD_Stock"]));
-                    liststmin.Add(Convert.ToInt32(detail[i]["stockMin"]));
-                    listst.Add(Convert.ToInt32(detail[i]["stockActual"]));
+                    listidstock.Add(Convert.ToInt32(detail[i]["iD_Article"]));
+                    list.Add(Convert.ToInt32(detail[i]["iD_Article"]));
+                    listactual.Add(Convert.ToInt32(detail[i]["stockActual"]));
+                    listmin.Add(Convert.ToInt32(detail[i]["stockMin"]));
                 }
 
 
@@ -121,11 +123,11 @@ namespace AppCUBES
                 string parameters = $"Display/getlistarticleinstock?{createparameter(listo)}";
                 HttpResponseMessage response = client.GetAsync(parameters).Result;
                 string json = response.Content.ReadAsStringAsync().Result;
-                detail1 = JArray.Parse(json);
-                for (int i = 0; i < detail1.Count; i++)
+                JArray detail10 = JArray.Parse(json);
+                for (int i = 0; i < detail10.Count; i++)
                 {
-                    listidsup.Add(Convert.ToInt32(detail1[i]["idProvider"])); 
-                    listidfam.Add(Convert.ToInt32(detail1[i]["idFamily"]));
+                    listidsup.Add(Convert.ToInt32(detail10[i]["idProvider"])); 
+                    listidfam.Add(Convert.ToInt32(detail10[i]["idFamily"]));
 
                 }
 
@@ -160,7 +162,7 @@ namespace AppCUBES
             }
             for (int i = 0; i < detail.Count; i++)
             {
-                inv.Add(new Inventaire(detail1[i]["nameArticle"].ToString(), detail[i]["stockActual"].ToString(), detail[i]["stockProv"].ToString(), detail[i]["stockMin"].ToString(), listnamesup[i], detail1[i]["dateFill"].ToString(), listnamefam[i], detail1[i]["priceSup"].ToString(), detail1[i]["price"].ToString(),detail1[i]["volume"].ToString(),detail1[i]["degree"].ToString(),detail1[i]["grape"].ToString(),detail1[i]["ladder"].ToString()));
+                inv.Add(new Inventaire(detail[i]["nameArticle"].ToString(), detail[i]["stockActual"].ToString(), detail[i]["stockProv"].ToString(), detail[i]["stockMin"].ToString(), listnamesup[i], detail[i]["dateFill"].ToString(), listnamefam[i], detail[i]["priceSup"].ToString(), detail[i]["price"].ToString(),detail[i]["volume"].ToString(),detail[i]["degree"].ToString(),detail[i]["grape"].ToString(),detail[i]["ladder"].ToString()));
                
             }               
             gridinventory.ItemsSource = inv;
@@ -208,10 +210,11 @@ namespace AppCUBES
                 detail = JArray.Parse(json);
                 for (int i = 0; i < detail.Count; i++)
                 {
-                    listidstock.Add(Convert.ToInt32(detail[i]["idArticle"]));
-                    list.Add(Convert.ToInt32(detail[i]["iD_Stock"]));
-                    liststmin.Add(Convert.ToInt32(detail[i]["stockMin"]));
-                    listst.Add(Convert.ToInt32(detail[i]["stockActual"]));
+                    listidstock.Add(Convert.ToInt32(detail[i]["iD_Article"]));
+                    list.Add(Convert.ToInt32(detail[i]["iD_Article"]));
+                    listactual.Add(Convert.ToInt32(detail[i]["stockActual"]));
+                    listmin.Add(Convert.ToInt32(detail[i]["stockMin"]));
+
                 }
 
 
@@ -233,10 +236,11 @@ namespace AppCUBES
                 detail = JArray.Parse(json);
                 for (int i = 0; i < detail.Count; i++)
                 {
-                    listidstock.Add(Convert.ToInt32(detail[i]["idArticle"]));
-                    list.Add(Convert.ToInt32(detail[i]["iD_Stock"]));
-                    liststmin.Add(Convert.ToInt32(detail[i]["stockMin"]));
-                    listst.Add(Convert.ToInt32(detail[i]["stockActual"]));
+                    listidstock.Add(Convert.ToInt32(detail[i]["iD_Article"]));
+                    list.Add(Convert.ToInt32(detail[i]["iD_Article"]));
+                    listactual.Add(Convert.ToInt32(detail[i]["stockActual"]));
+                    listmin.Add(Convert.ToInt32(detail[i]["stockMin"]));
+
                 }
 
 
@@ -252,17 +256,18 @@ namespace AppCUBES
                 string Url = "https://localhost:7279/";
                 client.BaseAddress = new Uri(Url);
                 int va = getIdsup(trichoicesup.SelectedValue.ToString());
-                int vb = getIdsup(trichoicefam.SelectedValue.ToString());
+                int vb = getIdfam(trichoicefam.SelectedValue.ToString());
                 string parameters = $"Tri/displayarticlebySupFam?idsup={va}&idfam={vb}";
                 HttpResponseMessage response = client.GetAsync(parameters).Result;
                 string json = response.Content.ReadAsStringAsync().Result;
                 detail = JArray.Parse(json);
                 for (int i = 0; i < detail.Count; i++)
                 {
-                    listidstock.Add(Convert.ToInt32(detail[i]["idArticle"]));
-                    list.Add(Convert.ToInt32(detail[i]["iD_Stock"]));
-                    liststmin.Add(Convert.ToInt32(detail[i]["stockMin"]));
-                    listst.Add(Convert.ToInt32(detail[i]["stockActual"]));
+                    listidstock.Add(Convert.ToInt32(detail[i]["iD_Article"]));
+                    list.Add(Convert.ToInt32(detail[i]["iD_Article"]));
+                    listactual.Add(Convert.ToInt32(detail[i]["stockActual"]));
+                    listmin.Add(Convert.ToInt32(detail[i]["stockMin"]));
+
                 }
 
 
@@ -270,7 +275,31 @@ namespace AppCUBES
             display_inventaire(listidstock);
         }
 
+        public void display_inventairebyname()
+        {
+            List<int> listidstock = new List<int>();
 
+            using (HttpClient client = new HttpClient())
+            {
+                string Url = "https://localhost:7279/";
+                client.BaseAddress = new Uri(Url);                
+                string parameters = $"Display/displayarticlebyname?name={researchname.Text}";
+                HttpResponseMessage response = client.GetAsync(parameters).Result;
+                string json = response.Content.ReadAsStringAsync().Result;
+                detail = JArray.Parse(json);
+                for (int i = 0; i < detail.Count; i++)
+                {
+                    listidstock.Add(Convert.ToInt32(detail[i]["iD_Article"]));
+                    list.Add(Convert.ToInt32(detail[i]["iD_Article"]));
+                    listactual.Add(Convert.ToInt32(detail[i]["stockActual"]));
+                    listmin.Add(Convert.ToInt32(detail[i]["stockMin"]));
+
+                }
+
+
+            }
+            display_inventaire(listidstock);
+        }
         private void Moins_Click(object sender, RoutedEventArgs e)
         {
             int a = list[gridinventory.SelectedIndex];
@@ -367,47 +396,66 @@ namespace AppCUBES
         private void inventoryrefresh_Click(object sender, RoutedEventArgs e)
         {
             list.Clear();
+            listactual.Clear();
+            listmin.Clear();
+            listidfam.Clear();
+            listidsup.Clear();
+            listnamefam.Clear();
+            listnamesup.Clear();
 
             List<int> listidstock = new List<int>();
-            if(refam == 0 && resup == 0)
+            if(refam == 0 && resup == 0 &&rename ==0)
             {
                 using (HttpClient client = new HttpClient())
                 {
                     string Url = "https://localhost:7279/";
                     client.BaseAddress = new Uri(Url);
-                    string parameters = "Display/displaystock";
+                    string parameters = "Display/displayarticle";
                     HttpResponseMessage response = client.GetAsync(parameters).Result;
                     string json = response.Content.ReadAsStringAsync().Result;
                     detail = JArray.Parse(json);
                     for (int i = 0; i < detail.Count; i++)
                     {
-                        listidstock.Add(Convert.ToInt32(detail[i]["idArticle"]));
-                        list.Add(Convert.ToInt32(detail[i]["iD_Stock"]));
-                        liststmin.Add(Convert.ToInt32(detail[i]["stockMin"]));
-                        listst.Add(Convert.ToInt32(detail[i]["stockActual"]));
+                        listidstock.Add(Convert.ToInt32(detail[i]["iD_Article"]));
+                        list.Add(Convert.ToInt32(detail[i]["iD_Article"]));
+                        listactual.Add(Convert.ToInt32(detail[i]["stockActual"]));
+                        listmin.Add(Convert.ToInt32(detail[i]["stockMin"]));
+
+
                     }
 
 
                 }
-                display_inventaire(list);
+                display_inventaire(listidstock);
                 
-                return;
+                
             }
-            if(refam ==1 && resup == 0)
+            if(refam ==1 && resup == 0 && rename == 0)
             {
                 display_inventairebyfam();
-                return;
+                
             }
-            if (refam == 0 && resup == 1)
+            if (refam == 0 && resup == 1 && rename == 0)
             {
                 display_inventairebysup();
-                return;
             }
-            display_inventairebyfamsup();
+            if (refam == 1 && resup == 1 && rename == 0) {
+                display_inventairebyfamsup();
+            }
+            if (rename == 1) {
+                display_inventairebyname();
+            
+            }
+
             gridinventory.SelectedIndex = sel;
             invquantplus.Text = "";
             invquantsous.Text = "";
             putstock1.Text = "";
+            putstockmin.Text = "";
+            
+
+
+
         }
 
         private void stockmin_Click(object sender, RoutedEventArgs e)
@@ -435,19 +483,19 @@ namespace AppCUBES
 
         private void gridinventory_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(gridinventory.SelectedIndex >= 0)
+            if (gridinventory.SelectedIndex >= 0)
             {
-                int b = liststmin[gridinventory.SelectedIndex];
-                putstockmin.Text = b.ToString();
-                int c = listst[gridinventory.SelectedIndex];
-                putstock1.Text = c.ToString();
+                int resactual = listactual[gridinventory.SelectedIndex];
+                putstock1.Text = resactual.ToString();
+                int resamin = listmin[gridinventory.SelectedIndex];
+                putstockmin.Text = resamin.ToString();
             }
-            
+                
         }
 
         private void invretmenu_Click(object sender, RoutedEventArgs e)
         {
-            win2 win = new win2();
+            win1 win = new win1();
             win.Show();
             this.Close();
         }
@@ -479,7 +527,14 @@ namespace AppCUBES
 
         private void buttontrisup_Click(object sender, RoutedEventArgs e)
         {
+            if (trichoicesup.SelectedValue == null)
+            {
+                resinventory.Text = "Aucun champs sélectionné";
+                return;
+            }
             resup = 1;
+            rename = 0;
+            researchname.Text = "";
             inventoryrefresh_Click(sender, e);
 
 
@@ -487,7 +542,14 @@ namespace AppCUBES
 
         private void buttontrifam_Click(object sender, RoutedEventArgs e)
         {
+            if (trichoicefam.SelectedValue == null)
+            {
+                resinventory.Text = "Aucun champs sélectionné";
+                return;
+            }
             refam = 1;
+            rename = 0;
+            researchname.Text = "";
             inventoryrefresh_Click(sender, e);
         }
 
@@ -495,8 +557,32 @@ namespace AppCUBES
         {
             refam = 0;
             resup = 0;
+            rename = 0;
+            researchname.Text = "";
             inventoryrefresh_Click(sender, e);
 
+        }
+
+        private void researchnamebut_Click(object sender, RoutedEventArgs e)
+        {
+            string json = "";
+            using (HttpClient client = new HttpClient())
+            {
+                string Url = "https://localhost:7279/";
+                client.BaseAddress = new Uri(Url);
+                string parameters = $"Check/articlebynameexist?name={researchname.Text}";
+                HttpResponseMessage response = client.GetAsync(parameters).Result;               
+                json = response.Content.ReadAsStringAsync().Result;
+                
+            }
+
+            if (researchname.Text == ""||json == "false")
+            {
+                resinventory.Text = "L'article n'existe pas";
+                return;
+            }
+            rename = 1;
+            inventoryrefresh_Click(sender, e);
         }
     }
 
