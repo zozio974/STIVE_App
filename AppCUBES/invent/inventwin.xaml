@@ -1,0 +1,32 @@
+﻿<Window x:Class="AppCUBES.inventwin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AppCUBES"
+        mc:Ignorable="d"
+        Title="inventwin" Height="450" Width="850">
+    <Grid>
+        <DataGrid x:Name="gridinventory" HorizontalAlignment="Left" Height="298" Margin="23,99,0,0" VerticalAlignment="Top" Width="607" d:ItemsSource="{d:SampleData ItemCount=5}" RenderTransformOrigin="0.512,0.527" SelectionChanged="gridinventory_SelectionChanged" IsReadOnly="True"/>
+        <Button x:Name="Plus" Content="+" HorizontalAlignment="Left" Height="40" Margin="645,68,0,0" VerticalAlignment="Top" Width="40" FontSize="22" Click="Plus_Click"/>
+        <Button x:Name="Moins" Content="-" HorizontalAlignment="Left" Height="40" Margin="645,113,0,0" VerticalAlignment="Top" Width="40" FontSize="22" Click="Moins_Click"/>
+        <TextBox x:Name="invquantplus" HorizontalAlignment="Left" Height="40" Margin="690,68,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="105"/>
+        <TextBox x:Name="invquantsous" HorizontalAlignment="Left" Height="40" Margin="690,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="105"/>
+        <TextBlock x:Name="resinventory" HorizontalAlignment="Left" Height="42" Margin="635,314,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186"/>
+        <Button x:Name="inventoryrefresh" Content="Actualiser" HorizontalAlignment="Left" Height="30" Margin="742,356,0,0" VerticalAlignment="Top" Width="70" Click="inventoryrefresh_Click"/>
+        <TextBlock HorizontalAlignment="Left" Height="16" Margin="715,36,0,0" TextWrapping="Wrap" Text="Quantité" VerticalAlignment="Top" Width="80"/>
+        <Button x:Name="stockmin" Content="Modifier le stock minimum" HorizontalAlignment="Left" Height="36" Margin="645,158,0,0" VerticalAlignment="Top" Width="150" Click="stockmin_Click"/>
+        <TextBox x:Name="putstockmin" HorizontalAlignment="Left" Height="30" Margin="645,199,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
+        <Button x:Name="putstock" Content="Modifier le stock direct" HorizontalAlignment="Left" Height="40" Margin="645,234,0,0" VerticalAlignment="Top" Width="150" Click="putstock_Click"/>
+        <TextBox x:Name="putstock1" HorizontalAlignment="Left" Height="30" Margin="645,279,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
+        <ComboBox x:Name="trichoicesup" HorizontalAlignment="Left" Height="29" Margin="23,36,0,0" VerticalAlignment="Top" Width="163"/>
+        <Button x:Name="buttontrisup" Content="Trier" HorizontalAlignment="Left" Height="29" Margin="23,68,0,0" VerticalAlignment="Top" Width="163" Click="buttontrisup_Click"/>
+        <Button x:Name="researchnamebut" Content="Rechercher par nom" HorizontalAlignment="Left" Height="29" Margin="467,36,0,0" VerticalAlignment="Top" Width="163" Click="researchnamebut_Click"/>
+        <TextBox x:Name="researchname" HorizontalAlignment="Left" Height="29" Margin="467,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="163"/>
+        <ComboBox x:Name="trichoicefam" HorizontalAlignment="Left" Height="29" Margin="191,36,0,0" VerticalAlignment="Top" Width="156"/>
+        <Button x:Name="buttontrifam" Content="Trier" HorizontalAlignment="Left" Height="29" Margin="191,68,0,0" VerticalAlignment="Top" Width="156" Click="buttontrifam_Click"/>
+        <Button x:Name="detribut" Content="Deselectionner" HorizontalAlignment="Left" Height="61" Margin="352,36,0,0" VerticalAlignment="Top" Width="110" Click="detribut_Click"/>
+        <Button Content="Deconnexion" HorizontalAlignment="Left" Height="30" Margin="635,356,0,0" VerticalAlignment="Top" Width="107" Click="invretmenu_Click"/>
+
+    </Grid>
+</Window>

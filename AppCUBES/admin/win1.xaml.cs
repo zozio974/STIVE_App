@@ -33,6 +33,8 @@ namespace AppCUBES
 
         private void disconnect_Click(object sender, RoutedEventArgs e)
         {
+            Connect.idjobuser = 0;
+            Connect.iduser = 0;
             MainWindow win = new MainWindow();
             win.Show();
             this.Close();
@@ -42,6 +44,13 @@ namespace AppCUBES
         {
             inventory inv = new inventory();
             inv.Show();
+            this.Close();
+        }
+
+        private void command_Click(object sender, RoutedEventArgs e)
+        {
+            command win = new command();
+            win.Show();
             this.Close();
         }
     }
