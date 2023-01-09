@@ -50,7 +50,7 @@ namespace AppCUBES
             {
                 string Url = "https://localhost:7279/";
                 client.BaseAddress = new Uri(Url);
-                string parameters = "Display/displayemployer";
+                string parameters = "Display/displayemployers";
                 HttpResponseMessage response = client.GetAsync(parameters).Result;
                 string json = response.Content.ReadAsStringAsync().Result;
                 JArray detail = JArray.Parse(json);
@@ -77,15 +77,15 @@ namespace AppCUBES
             {
                 string Url = "https://localhost:7279/";
                 client.BaseAddress = new Uri(Url);
-                string parameters = "Display/displayemployer";
+                string parameters = "Display/displayemployers";
                 HttpResponseMessage response = client.GetAsync(parameters).Result;
                 string json = response.Content.ReadAsStringAsync().Result;
                 JArray detail = JArray.Parse(json);
 
                 for (int i = 0; i < detail.Count; i++)
                 {
-                    emps.Add(new Emp(detail[i]["logInEmp"].ToString(), detail[i]["nameEmp"].ToString(), detail[i]["firstNameEmp"].ToString(), listnamejob[i]));
-                    list.Add(Convert.ToInt32(detail[i]["iD_Employer"]));
+                    emps.Add(new Emp(detail[i]["logInUser"].ToString(), detail[i]["nameUser"].ToString(), detail[i]["firstNameUser"].ToString(), listnamejob[i]));
+                    list.Add(Convert.ToInt32(detail[i]["iD_User"]));
                 }
             }
             
@@ -119,7 +119,7 @@ namespace AppCUBES
             using HttpClient client = new HttpClient();
             string Url = "https://localhost:7279/";
             client.BaseAddress = new Uri(Url);
-            string parameters = $"Delete/delete_emp?ID={a}";
+            string parameters = $"Delete/delete_user?ID={a}";
             HttpResponseMessage response = client.DeleteAsync(parameters).Result;
             empconditionselect.Text = string.Empty;
             Refreshemp_Click(sender, e);
@@ -139,14 +139,14 @@ namespace AppCUBES
             {
                 string Url = "https://localhost:7279/";
                 client.BaseAddress = new Uri(Url);
-                string parameters = $"Display/displayemployersbyid?ID={a}";
+                string parameters = $"Display/displayusersbyid?ID={a}";
                 HttpResponseMessage response = client.GetAsync(parameters).Result;
                 string json = $"[{response.Content.ReadAsStringAsync().Result}]";
                 JArray detail = JArray.Parse(json);
-                empo.emploginput.Text = detail[0]["logInEmp"].ToString();         
-                empo.emppasswordput.Text = detail[0]["passWordEmp"].ToString();
-                empo.empnameput.Text = detail[0]["nameEmp"].ToString();
-                empo.empfirstnameput.Text = detail[0]["firstNameEmp"].ToString();
+                empo.emploginput.Text = detail[0]["logInUser"].ToString();         
+                empo.emppasswordput.Text = detail[0]["passWordUser"].ToString();
+                empo.empnameput.Text = detail[0]["nameUser"].ToString();
+                empo.empfirstnameput.Text = detail[0]["firstNameUser"].ToString();
                 b = Convert.ToInt32(detail[0]["idjob"]);
 
                 empo.inv.Text = a.ToString();

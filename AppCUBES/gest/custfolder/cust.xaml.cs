@@ -43,11 +43,30 @@ namespace AppCUBES
 
             for (int i = 0; i < detail.Count; i++)
             {
-                custs.Add(new Cust(detail[i]["logInCus"].ToString(), detail[i]["nameCus"].ToString(), detail[i]["firstNameCus"].ToString()));
-                list.Add(Convert.ToInt32(detail[i]["iD_Customer"]));
+                custs.Add(new Cust(detail[i]["logInUser"].ToString(), detail[i]["nameUser"].ToString(), detail[i]["firstNameUser"].ToString()));
+                list.Add(Convert.ToInt32(detail[i]["iD_User"]));
             }
             custdata.ItemsSource = custs;
             
+        }
+        public void display_custbyname()
+        {
+            List<Cust> custs = new List<Cust>();
+            using HttpClient client = new HttpClient();
+            string Url = "https://localhost:7279/";
+            client.BaseAddress = new Uri(Url);
+            string parameters = $"Tri/displaycustbyname?name={namecust.Text}";
+            HttpResponseMessage response = client.GetAsync(parameters).Result;
+            string json = response.Content.ReadAsStringAsync().Result;
+            JArray detail = JArray.Parse(json);
+
+            for (int i = 0; i < detail.Count; i++)
+            {
+                custs.Add(new Cust(detail[i]["logInUser"].ToString(), detail[i]["nameUser"].ToString(), detail[i]["firstNameUser"].ToString()));
+                list.Add(Convert.ToInt32(detail[i]["iD_User"]));
+            }
+            custdata.ItemsSource = custs;
+
         }
 
 
@@ -62,8 +81,15 @@ namespace AppCUBES
         public void Refreshcust_Click(object sender, RoutedEventArgs e)
         {
             list.Clear();
+            if (c == 1)
+            {
+                display_custbyname();
+                return;
+            }
             display_cust();
-            
+            namecust.Text = "";
+
+
         }
 
         private void Deletecust_Click(object sender, RoutedEventArgs e)
@@ -76,7 +102,7 @@ namespace AppCUBES
             using HttpClient client = new HttpClient();
             string Url = "https://localhost:7279/";
             client.BaseAddress = new Uri(Url);
-            string parameters = $"Delete/delete_cust?ID={a}";
+            string parameters = $"Delete/delete_user?ID={a}";
             HttpResponseMessage response = client.DeleteAsync(parameters).Result;
             custconditionselect.Text = string.Empty;
             Refreshcust_Click(sender, e);
@@ -95,14 +121,14 @@ namespace AppCUBES
             using HttpClient client = new HttpClient();
             string Url = "https://localhost:7279/";
             client.BaseAddress = new Uri(Url);
-            string parameters = $"Display/displaycustomersbyid?ID={a}";        
+            string parameters = $"Display/displayusersbyid?ID={a}";        
             HttpResponseMessage response = client.GetAsync(parameters).Result;
             string json = $"[{ response.Content.ReadAsStringAsync().Result}]";
             JArray detail = JArray.Parse(json);
-            custo.custloginput.Text= detail[0]["logInCus"].ToString();
-            custo.custpasswordput.Text = detail[0]["passWordCus"].ToString();
-            custo.custnameput.Text = detail[0]["nameCus"].ToString();
-            custo.custfirstnameput.Text = detail[0]["firstNameCus"].ToString();
+            custo.custloginput.Text= detail[0]["logInUser"].ToString();
+            custo.custpasswordput.Text = detail[0]["passWordUser"].ToString();
+            custo.custnameput.Text = detail[0]["nameUser"].ToString();
+            custo.custfirstnameput.Text = detail[0]["firstNameUser"].ToString();
             custo.inv.Text = a.ToString(); 
             custo.Show();
             custo.custvalput.Click += Refreshcust_Click;
@@ -123,7 +149,34 @@ namespace AppCUBES
             this.Close();
         }
 
-        
+        private void deseleccust_Click(object sender, RoutedEventArgs e)
+        {
+            c = 0;
+            Refreshcust_Click(sender, e);
+        }
+
+        private void custbyname_Click(object sender, RoutedEventArgs e)
+        {
+
+            string json = "";
+            using (HttpClient client = new HttpClient())
+            {
+                string Url = "https://localhost:7279/";
+                client.BaseAddress = new Uri(Url);
+                string parameters = $"Check/custbynameexist?name={namecust.Text}";
+                HttpResponseMessage response = client.GetAsync(parameters).Result;
+                json = response.Content.ReadAsStringAsync().Result;
+
+            }
+
+            if (    namecust.Text == "" || json == "false")
+            {
+                custconditionselect.Text = "Le client n'existe pas";
+                return;
+            }
+            c = 1;
+            Refreshcust_Click(sender, e);
+        }
     }
 
     public class Cust
