@@ -13,7 +13,7 @@
         <Button x:Name="putarticle" Content="Modifier" HorizontalAlignment="Left" Height="52" Margin="636,186,0,0" VerticalAlignment="Top" Width="105" Click="putarticle_Click"/>
         <Button x:Name="refresharticle" Content="Actualiser" HorizontalAlignment="Left" Height="52" Margin="636,243,0,0" VerticalAlignment="Top" Width="105" Click="refresharticle_Click"/>
         <Button x:Name="precedentarticle" Content="Retour" HorizontalAlignment="Left" Height="52" Margin="636,300,0,0" VerticalAlignment="Top" Width="105" Click="precedentarticle_Click" RenderTransformOrigin="0.477,0.901"/>
-        <TextBlock x:Name="articleconditionselect" HorizontalAlignment="Left" Height="52" Margin="474,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="267"/>
+        <TextBlock x:Name="articleconditionselect" HorizontalAlignment="Left" Height="52" Margin="479,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="262"/>
         <Button x:Name="artbyname" Content="Rechercher un nom" HorizontalAlignment="Left" Height="52" Margin="55,15,0,0" VerticalAlignment="Top" Width="154" Click="artbyname_Click"/>
         <TextBox x:Name="nameart" HorizontalAlignment="Left" Height="52" Margin="219,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="122"/>
         <Button x:Name="deselectart" Content="Deselectionner" HorizontalAlignment="Left" Height="52" Margin="346,15,0,0" VerticalAlignment="Top" Width="128" Click="deselectart_Click" RenderTransformOrigin="0.496,0.845"/>

@@ -58,7 +58,7 @@ namespace AppCUBES
                 HttpResponseMessage response = client.GetAsync(parameters).Result;
                 string json = $"[{response.Content.ReadAsStringAsync().Result}]";
                 JArray detail = JArray.Parse(json);
-                Connect.iduser = Convert.ToInt32(detail[0]["iD_Employer"]);
+                Connect.iduser = Convert.ToInt32(detail[0]["iD_User"]);
                 Connect.idjobuser = Convert.ToInt32(detail[0]["idjob"]);
                 
                 if (Connect.idjobuser == 1)
