@@ -18,15 +18,12 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Xml.Linq;
 
-
-
 namespace AppCUBES
 {
-
     /// <summary>
     /// Interaction logic for inventaire.xaml
     /// </summary>
-    public partial class inventwin : Window
+    public partial class commandadd : Window
     {
         List<int> list = new List<int>();
         List<int> listactual = new List<int>();
@@ -40,12 +37,12 @@ namespace AppCUBES
         List<int> listidfam = new List<int>();
         List<string> listnamesup = new List<string>();
         List<string> listnamefam = new List<string>();
-        int sel = 0;
-        public inventwin()
+        int sel = 0 ;
+        public commandadd()
         {
             list.Clear();
             InitializeComponent();
-
+            
             List<int> listidstock = new List<int>();
 
             using (HttpClient client = new HttpClient())
@@ -116,9 +113,9 @@ namespace AppCUBES
             return output;
         }
 
-        public void display_inventaire(List<int> listo)
+        public void display_inventaire(List<int> listo) 
         {
-            List<Inventaire> inv = new List<Inventaire>();
+            List<ListCommand> inv = new List<ListCommand>();
             using (HttpClient client = new HttpClient())
             {
                 string Url = "https://localhost:7279/";
@@ -129,7 +126,7 @@ namespace AppCUBES
                 JArray detail10 = JArray.Parse(json);
                 for (int i = 0; i < detail10.Count; i++)
                 {
-                    listidsup.Add(Convert.ToInt32(detail10[i]["idProvider"]));
+                    listidsup.Add(Convert.ToInt32(detail10[i]["idProvider"])); 
                     listidfam.Add(Convert.ToInt32(detail10[i]["idFamily"]));
 
                 }
@@ -165,9 +162,9 @@ namespace AppCUBES
             }
             for (int i = 0; i < detail.Count; i++)
             {
-                inv.Add(new Inventaire(detail[i]["nameArticle"].ToString(), detail[i]["stockActual"].ToString(), detail[i]["stockProv"].ToString(), detail[i]["stockMin"].ToString(), listnamesup[i], detail[i]["dateFill"].ToString(), listnamefam[i], detail[i]["priceSup"].ToString(), detail[i]["price"].ToString(), detail[i]["volume"].ToString(), detail[i]["degree"].ToString(), detail[i]["grape"].ToString(), detail[i]["ladder"].ToString()));
-
-            }
+                inv.Add(new ListCommand(detail[i]["nameArticle"].ToString(), listnamesup[i], detail[i]["dateFill"].ToString(), listnamefam[i], detail[i]["priceSup"].ToString(), detail[i]["price"].ToString(),detail[i]["volume"].ToString(),detail[i]["degree"].ToString(),detail[i]["grape"].ToString(),detail[i]["ladder"].ToString()));
+               
+            }               
             gridinventory.ItemsSource = inv;
         }
         public int getIdsup(string namesup)
@@ -285,7 +282,7 @@ namespace AppCUBES
             using (HttpClient client = new HttpClient())
             {
                 string Url = "https://localhost:7279/";
-                client.BaseAddress = new Uri(Url);
+                client.BaseAddress = new Uri(Url);                
                 string parameters = $"Display/displayarticlebyname?name={researchname.Text}";
                 HttpResponseMessage response = client.GetAsync(parameters).Result;
                 string json = response.Content.ReadAsStringAsync().Result;
@@ -303,98 +300,9 @@ namespace AppCUBES
             }
             display_inventaire(listidstock);
         }
-        private void Moins_Click(object sender, RoutedEventArgs e)
-        {
-            int a = list[gridinventory.SelectedIndex];
+       
 
-            if (gridinventory.SelectedItem == null)
-            {
-                resinventory.Text = "Veuillez selectionner un élément du tableau";
-
-                return;
-            }
-            if (invquantsous.Text == "")
-            {
-                using (HttpClient client = new HttpClient())
-                {
-                    string Url = "https://localhost:7279/";
-                    client.BaseAddress = new Uri(Url);
-                    string parameters = $"Commands/dropstockunitid?idstock={a}";
-                    HttpResponseMessage response = client.PutAsync(parameters, null).Result;
-                    sel = gridinventory.SelectedIndex;
-                    inventoryrefresh_Click(sender, e);
-
-                    return;
-
-                }
-            }
-            if (isinteger(invquantsous.Text) == false)
-            {
-                resinventory.Text = "Le champs est mal entré";
-
-                return;
-            }
-            using (HttpClient client = new HttpClient())
-            {
-                string Url = "https://localhost:7279/";
-                client.BaseAddress = new Uri(Url);
-                string parameters = $"Commands/dropstockmulid?idstock={a}&i={invquantsous.Text}";
-                HttpResponseMessage response = client.PutAsync(parameters, null).Result;
-                sel = gridinventory.SelectedIndex;
-                inventoryrefresh_Click(sender, e);
-
-                return;
-
-            }
-
-        }
-
-        private void Plus_Click(object sender, RoutedEventArgs e)
-        {
-            int a = list[gridinventory.SelectedIndex];
-
-            if (gridinventory.SelectedItem == null)
-            {
-                resinventory.Text = "Veuillez selectionner un élément du tableau";
-
-                return;
-            }
-
-            if (invquantplus.Text == "")
-            {
-                using (HttpClient client = new HttpClient())
-                {
-                    string Url = "https://localhost:7279/";
-                    client.BaseAddress = new Uri(Url);
-                    string parameters = $"PutStock/addstockunitid?idstock={a}";
-                    HttpResponseMessage response = client.PutAsync(parameters, null).Result;
-                    sel = gridinventory.SelectedIndex;
-                    inventoryrefresh_Click(sender, e);
-
-                    return;
-
-                }
-            }
-            if (isinteger(invquantplus.Text) == false)
-            {
-                resinventory.Text = "Le champs est mal entré";
-
-                return;
-            }
-            using (HttpClient client = new HttpClient())
-            {
-                string Url = "https://localhost:7279/";
-                client.BaseAddress = new Uri(Url);
-                string parameters = $"PutStock/addstockmulid?idstock={a}&i={invquantplus.Text}";
-                HttpResponseMessage response = client.PutAsync(parameters, null).Result;
-                sel = gridinventory.SelectedIndex;
-                inventoryrefresh_Click(sender, e);
-
-                return;
-
-            }
-
-        }
+       
 
         private void inventoryrefresh_Click(object sender, RoutedEventArgs e)
         {
@@ -407,7 +315,7 @@ namespace AppCUBES
             listnamesup.Clear();
 
             List<int> listidstock = new List<int>();
-            if (refam == 0 && resup == 0 && rename == 0)
+            if(refam == 0 && resup == 0 &&rename ==0)
             {
                 using (HttpClient client = new HttpClient())
                 {
@@ -430,107 +338,54 @@ namespace AppCUBES
 
                 }
                 display_inventaire(listidstock);
-
-
+                
+                
             }
-            if (refam == 1 && resup == 0 && rename == 0)
+            if(refam ==1 && resup == 0 && rename == 0)
             {
                 display_inventairebyfam();
-
+                
             }
             if (refam == 0 && resup == 1 && rename == 0)
             {
                 display_inventairebysup();
             }
-            if (refam == 1 && resup == 1 && rename == 0)
-            {
+            if (refam == 1 && resup == 1 && rename == 0) {
                 display_inventairebyfamsup();
             }
-            if (rename == 1)
-            {
+            if (rename == 1) {
                 display_inventairebyname();
-
+            
             }
 
             gridinventory.SelectedIndex = sel;
-            invquantplus.Text = "";
-            invquantsous.Text = "";
-            putstock1.Text = "";
-            putstockmin.Text = "";
+           
 
 
 
 
         }
 
-        private void stockmin_Click(object sender, RoutedEventArgs e)
-        {
-            int a = list[gridinventory.SelectedIndex];
-            if (isinteger(putstockmin.Text) == false || putstockmin.Text == "")
-            {
-                resinventory.Text = "Le champs est mal entré";
-                return;
-            }
-            using (HttpClient client = new HttpClient())
-            {
+        
 
-                string Url = "https://localhost:7279/";
-                client.BaseAddress = new Uri(Url);
-                string parameters = $"PutStock/putstockmin?idstock={a}&i={putstockmin.Text}";
-                HttpResponseMessage response = client.PutAsync(parameters, null).Result;
-                sel = gridinventory.SelectedIndex;
-                inventoryrefresh_Click(sender, e);
-
-                return;
-
-            }
-        }
+      
 
         private void gridinventory_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (gridinventory.SelectedIndex >= 0)
-            {
-                int resactual = listactual[gridinventory.SelectedIndex];
-                putstock1.Text = resactual.ToString();
-                int resamin = listmin[gridinventory.SelectedIndex];
-                putstockmin.Text = resamin.ToString();
-            }
-
+           
+                
         }
 
         private void invretmenu_Click(object sender, RoutedEventArgs e)
         {
-            Connect.idjobuser = 0;
-            Connect.iduser = 0;
-            MainWindow win = new MainWindow();
+            win1 win = new win1();
             win.Show();
             this.Close();
         }
 
+        
 
-
-        private void putstock_Click(object sender, RoutedEventArgs e)
-        {
-            int a = list[gridinventory.SelectedIndex];
-            if (isinteger(putstock1.Text) == false || putstock1.Text == "")
-            {
-                resinventory.Text = "Le champs est mal entré";
-                return;
-            }
-            using (HttpClient client = new HttpClient())
-            {
-
-                string Url = "https://localhost:7279/";
-                client.BaseAddress = new Uri(Url);
-                string parameters = $"Commands/putstock?idstock={a}&i={putstock1.Text}";
-                HttpResponseMessage response = client.PutAsync(parameters, null).Result;
-                sel = gridinventory.SelectedIndex;
-                inventoryrefresh_Click(sender, e);
-
-                return;
-
-            }
-        }
+      
 
         private void buttontrisup_Click(object sender, RoutedEventArgs e)
         {
@@ -566,7 +421,10 @@ namespace AppCUBES
             resup = 0;
             rename = 0;
             researchname.Text = "";
+            
             inventoryrefresh_Click(sender, e);
+            trichoicesup.SelectedValue = null;
+            trichoicefam.SelectedValue = null;
 
         }
 
@@ -578,12 +436,12 @@ namespace AppCUBES
                 string Url = "https://localhost:7279/";
                 client.BaseAddress = new Uri(Url);
                 string parameters = $"Check/articlebynameexist?name={researchname.Text}";
-                HttpResponseMessage response = client.GetAsync(parameters).Result;
+                HttpResponseMessage response = client.GetAsync(parameters).Result;               
                 json = response.Content.ReadAsStringAsync().Result;
-
+                
             }
 
-            if (researchname.Text == "" || json == "false")
+            if (researchname.Text == ""||json == "false")
             {
                 resinventory.Text = "L'article n'existe pas";
                 return;
@@ -591,8 +449,45 @@ namespace AppCUBES
             rename = 1;
             inventoryrefresh_Click(sender, e);
         }
-
     }
 
     }
-   
+    public class ListCommand
+    {
+
+        public string Nom { get; set; }
+        public string StockActuel { get; set; }
+        public string StockProvisoire{ get; set; }
+        public string StockMinimum { get; set; }
+        public string Fournisseur { get; set; }
+        public string Millesime { get; set; }
+        public string Famille { get; set; }
+        public string PrixFournisseur { get; set; }
+        public string Prix { get; set; }
+        public string Volume { get; set; }
+        public string Degree { get; set; }
+        public string Cepage { get; set; }
+        public string Recompense { get; set; }
+
+
+
+
+
+
+    public ListCommand(string NomArticle, string idProvider, string dateFill, string idFamily, string pricesup, string price, string volume, string degree, string cepage, string recompense)
+        {
+            Nom = NomArticle;
+            Fournisseur = idProvider;
+            Millesime = dateFill;
+            Famille = idFamily;
+            PrixFournisseur = pricesup;
+            Prix = price;
+            Volume = volume;
+            Degree = degree;
+            Cepage = cepage;
+            Recompense = recompense;
+        
+
+        }
+    }
+

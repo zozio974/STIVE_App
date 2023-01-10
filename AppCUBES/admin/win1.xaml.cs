@@ -49,7 +49,7 @@ namespace AppCUBES
 
         private void command_Click(object sender, RoutedEventArgs e)
         {
-            command win = new command();
+            commands win = new commands();
             win.Show();
             this.Close();
         }
