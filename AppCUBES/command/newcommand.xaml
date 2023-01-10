@@ -1,0 +1,18 @@
+﻿<Window x:Class="AppCUBES.command.newcommand"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AppCUBES.command"
+        mc:Ignorable="d"
+        Title="newcommand" Height="450" Width="800">
+    <Grid>
+        <DataGrid x:Name="gridnewcommand" HorizontalAlignment="Left" Height="230" Margin="140,64,0,0" VerticalAlignment="Top" Width="365" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+        <Button x:Name="addline" Content="Ajouter un article au panier" HorizontalAlignment="Left" Height="80" Margin="525,64,0,0" VerticalAlignment="Top" Width="160" Click="addline_Click"/>
+        <Button x:Name="deleteline" Content="Supprimer la ligne" HorizontalAlignment="Left" Height="70" Margin="525,149,0,0" VerticalAlignment="Top" Width="160" Click="deleteline_Click"/>
+        <Button x:Name="valcommand" Content="Valider la commande" HorizontalAlignment="Left" Height="70" Margin="525,224,0,0" VerticalAlignment="Top" Width="160" Click="valcommand_Click"/>
+        <Button x:Name="refreshnewcommand" Content="Actualiser" HorizontalAlignment="Left" Height="80" Margin="25,64,0,0" VerticalAlignment="Top" Width="95" Click="refreshnewcommand_Click"/>
+        <Button x:Name="retnewcommmand" Content="Retour" HorizontalAlignment="Left" Height="68" Margin="25,149,0,0" VerticalAlignment="Top" Width="95" Click="retnewcommmand_Click"/>
+
+    </Grid>
+</Window>

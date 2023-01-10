@@ -316,7 +316,7 @@ namespace AppCUBES
                 {
                     string Url = "https://localhost:7279/";
                     client.BaseAddress = new Uri(Url);
-                    string parameters = $"PutStock/dropstockunitid?idstock={a}";
+                    string parameters = $"Commands/dropstockunitid?idstock={a}";
                     HttpResponseMessage response = client.PutAsync(parameters, null).Result;
                     sel = gridinventory.SelectedIndex;
                     inventoryrefresh_Click(sender, e);
@@ -335,7 +335,7 @@ namespace AppCUBES
             {
                 string Url = "https://localhost:7279/";
                 client.BaseAddress = new Uri(Url);
-                string parameters = $"PutStock/dropstockmulid?idstock={a}&i={invquantsous.Text}";
+                string parameters = $"Commands/dropstockmulid?idstock={a}&i={invquantsous.Text}";
                 HttpResponseMessage response = client.PutAsync(parameters, null).Result;
                 sel = gridinventory.SelectedIndex;
                 inventoryrefresh_Click(sender, e);
@@ -518,7 +518,7 @@ namespace AppCUBES
 
                 string Url = "https://localhost:7279/";
                 client.BaseAddress = new Uri(Url);
-                string parameters = $"PutStock/putstock?idstock={a}&i={putstock1.Text}";
+                string parameters = $"Commands/putstock?idstock={a}&i={putstock1.Text}";
                 HttpResponseMessage response = client.PutAsync(parameters, null).Result;
                 sel = gridinventory.SelectedIndex;
                 inventoryrefresh_Click(sender, e);
@@ -562,7 +562,10 @@ namespace AppCUBES
             resup = 0;
             rename = 0;
             researchname.Text = "";
+            
             inventoryrefresh_Click(sender, e);
+            trichoicesup.SelectedValue = null;
+            trichoicefam.SelectedValue = null;
 
         }
 

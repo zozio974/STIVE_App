@@ -12,23 +12,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace AppCUBES
+namespace AppCUBES.command
 {
     /// <summary>
-    /// Logique d'interaction pour command.xaml
+    /// Logique d'interaction pour commandinfo.xaml
     /// </summary>
-    public partial class command : Window
+    public partial class commandinfo : Window
     {
-        public command()
+        public commandinfo()
         {
             InitializeComponent();
-        }
-
-        private void menu_Click(object sender, RoutedEventArgs e)
-        {
-            win1 win = new win1();
-            win.Show();
-            this.Close();
         }
     }
 }
