@@ -16,10 +16,4 @@
     <Folder Include="Model\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Compile Update="command\commandwin.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-  </ItemGroup>
-
 </Project>

@@ -42,7 +42,15 @@ namespace AppCUBES
         {
             list.Clear();
             InitializeComponent();
-            
+            if (Connect.idjobuser == 1)
+            {
+                invretmenu.Content = "Menu";
+            }
+            else
+            {
+                invretmenu.Content = "Déconnecter";
+            }
+
             List<int> listidstock = new List<int>();
 
             using (HttpClient client = new HttpClient())
@@ -498,8 +506,17 @@ namespace AppCUBES
 
         private void invretmenu_Click(object sender, RoutedEventArgs e)
         {
-            win1 win = new win1();
-            win.Show();
+            if (Connect.idjobuser == 1)
+            {
+                win1 win2 = new win1();
+                win2.Show();
+                this.Close();
+                return;
+            }
+            Connect.idjobuser = 0;
+            Connect.iduser = 0;
+            MainWindow win1 = new MainWindow();
+            win1.Show();
             this.Close();
         }
 

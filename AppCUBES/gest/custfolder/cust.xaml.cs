@@ -137,15 +137,8 @@ namespace AppCUBES
 
         private void precedentcust_Click(object sender, RoutedEventArgs e)
         {
-            if (Connect.idjobuser == 1)
-            {
-                win2 win2 = new win2();
-                win2.Show();
-                this.Close();
-                return;
-            }
-            gestwin win1 = new gestwin();
-            win1.Show();
+            win2 win2 = new win2();
+            win2.Show();
             this.Close();
         }
 

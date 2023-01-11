@@ -1,0 +1,14 @@
+﻿<Window x:Class="AppCUBES.command.commandinfoart"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AppCUBES.command"
+        mc:Ignorable="d"
+        Title="commandinfoart" Height="140" Width="800">
+    <Grid>
+        <DataGrid x:Name="gridartdet" HorizontalAlignment="Left" Height="79" Margin="35,10,0,0" VerticalAlignment="Top" Width="610" d:ItemsSource="{d:SampleData ItemCount=5}" IsReadOnly="True"/>
+        <Button x:Name="retcommand" Content="Fermer" HorizontalAlignment="Left" Height="75" Margin="650,12,0,0" VerticalAlignment="Top" Width="95" Click="retcommand_Click"/>
+
+    </Grid>
+</Window>

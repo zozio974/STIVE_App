@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AppCUBES.command;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace AppCUBES
 {
@@ -49,7 +51,7 @@ namespace AppCUBES
 
         private void command_Click(object sender, RoutedEventArgs e)
         {
-            commands win = new commands();
+            dispcommand win = new dispcommand();
             win.Show();
             this.Close();
         }

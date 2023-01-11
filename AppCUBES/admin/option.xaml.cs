@@ -12,25 +12,33 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace AppCUBES
+namespace AppCUBES.admin
 {
     /// <summary>
-    /// Logique d'interaction pour command.xaml
+    /// Logique d'interaction pour option.xaml
     /// </summary>
-    public partial class commandwin : Window
+    public partial class option : Window
     {
-        public commandwin()
+        public option()
         {
             InitializeComponent();
         }
 
-        private void menu_Click(object sender, RoutedEventArgs e)
+        private void retouroption_Click(object sender, RoutedEventArgs e)
         {
-            Connect.idjobuser = 0;
-            Connect.iduser = 0;
-            MainWindow win = new MainWindow();
+            win1 win = new win1();
             win.Show();
             this.Close();
+        }
+
+        private void commandauto_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void changestockminadd_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
