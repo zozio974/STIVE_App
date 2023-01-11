@@ -46,16 +46,10 @@ namespace AppCUBES.command
 
         private void retnewcommmand_Click(object sender, RoutedEventArgs e)
         {
-            if (Connect.idjobuser == 1)
-            {
-                commands win2 = new commands();
-                win2.Show();
-                this.Close();
-                return;
-            }
-            commandwin win1 = new commandwin();
-            win1.Show();
+            dispcommand win = new dispcommand();
+            win.Show();
             this.Close();
+            
         }
     }
 }

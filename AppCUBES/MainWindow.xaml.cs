@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AppCUBES.command;
 using Newtonsoft.Json.Linq;
 
 namespace AppCUBES
@@ -71,14 +72,14 @@ namespace AppCUBES
                 }
                 if (Connect.idjobuser == 2)
                 {
-                    gestwin win1 = new gestwin();
+                    win2 win1 = new win2();
                     win1.Show();
                     this.Close();
                     return;
                 }
                 if (Connect.idjobuser == 3)
                 {
-                    inventwin win1 = new inventwin();
+                    inventory win1 = new inventory();
                     win1.Show();
                     this.Close();
                     return;
@@ -86,7 +87,7 @@ namespace AppCUBES
                 }
                 if (Connect.idjobuser == 4)
                 {
-                    commandwin win1 = new commandwin();
+                    dispcommand win1 = new dispcommand();
                     win1.Show();
                     this.Close();
                     return;

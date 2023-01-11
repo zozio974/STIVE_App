@@ -16,6 +16,12 @@ using System.Windows.Shapes;
 
 namespace AppCUBES.command
 {
+    static class VarCommand
+    {
+        public static string refcom ;
+        public static int idarticlecom;
+
+    }
     /// <summary>
     /// Logique d'interaction pour dispcommand.xaml
     /// </summary>
@@ -37,6 +43,14 @@ namespace AppCUBES.command
         public dispcommand()
         {
             InitializeComponent();
+            if (Connect.idjobuser == 1)
+            {
+                retdispcommand.Content = "Menu";
+            }
+            else
+            {
+                retdispcommand.Content = "Déconnecter";
+            }
             display_command();
         }
 
@@ -133,24 +147,38 @@ namespace AppCUBES.command
         {
             if (Connect.idjobuser == 1)
             {
-                commands win2 = new commands();
+                win1 win2 = new win1();
                 win2.Show();
                 this.Close();
                 return;
             }
-            commandwin win1 = new commandwin();
+            Connect.idjobuser = 0;
+            Connect.iduser = 0;
+            MainWindow win1 = new MainWindow();
             win1.Show();
             this.Close();
         }
 
         private void cominfo_Click(object sender, RoutedEventArgs e)
         {
-            commandinfo win = new commandinfo();
-            win.resref.Text = refe[gridcommand.SelectedIndex];
+            if (gridcommand.SelectedValue == null)
+            {
+                rescommand.Text = "Aucune valeur séléctionnée";
+                return;
+            }
+            VarCommand.refcom = refe[gridcommand.SelectedIndex];
+            var win = new commandinfo();
+            
+            win.Show();
         }
 
         private void validcommand_Click(object sender, RoutedEventArgs e)
         {
+            if (gridcommand.SelectedValue == null) 
+            {
+                rescommand.Text = "Aucune valeur séléctionnée";
+                return;
+            }
             string json = "";
             int a = list[gridcommand.SelectedIndex];
             using (HttpClient client = new HttpClient())
@@ -182,6 +210,13 @@ namespace AppCUBES.command
         {
             list.Clear();
             display_command();
+        }
+
+        private void addcommand_Click(object sender, RoutedEventArgs e)
+        {
+            newcommand win = new newcommand();
+            win.Show();
+            this.Close();
         }
     }
 }
