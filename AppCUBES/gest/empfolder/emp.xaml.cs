@@ -174,7 +174,10 @@ namespace AppCUBES
             this.Close();
         }
 
-        
+        private void empdata_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 
     public class Emp

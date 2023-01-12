@@ -129,6 +129,11 @@ namespace AppCUBES
             family.validatesupplier.Click += refreshsupplier_Click;
             family.Show();
         }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 
     public class Supplier
