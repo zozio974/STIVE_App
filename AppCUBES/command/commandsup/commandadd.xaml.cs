@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using AppCUBES.command;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -378,8 +379,7 @@ namespace AppCUBES
 
         private void invretmenu_Click(object sender, RoutedEventArgs e)
         {
-            win1 win = new win1();
-            win.Show();
+            
             this.Close();
         }
 
@@ -449,16 +449,36 @@ namespace AppCUBES
             rename = 1;
             inventoryrefresh_Click(sender, e);
         }
+
+        private void addlinecommand_Click(object sender, RoutedEventArgs e)
+        {
+            if (quantnewcom.Text == "")
+            {
+                resinventory.Text = "Veuillez entrer une quantité";
+                return;
+            }
+            if (isinteger(quantnewcom.Text) == false)
+            {
+                resinventory.Text = "Le champs est mal entré";
+
+                return;
+            }
+            using (HttpClient client = new HttpClient())
+            {
+                string Url = "https://localhost:7279/";
+                client.BaseAddress = new Uri(Url);
+                string parameters = $"Commands/addlinecommand?idart={list[gridinventory.SelectedIndex]}&refcom={VarCommand.refcom}&quant={quantnewcom.Text}";
+                HttpResponseMessage response = client.PostAsync(parameters,null).Result;
+
+            }
+        }
     }
 
     }
     public class ListCommand
     {
 
-        public string Nom { get; set; }
-        public string StockActuel { get; set; }
-        public string StockProvisoire{ get; set; }
-        public string StockMinimum { get; set; }
+        public string Nom { get; set; }      
         public string Fournisseur { get; set; }
         public string Millesime { get; set; }
         public string Famille { get; set; }

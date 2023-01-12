@@ -11,27 +11,93 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using static AppCUBES.command.dispcommand;
+using static AppCUBES.command.commandinfo;
 
 namespace AppCUBES.command
 {
-    
+
     /// <summary>
-    /// Logique d'interaction pour commandinfo.xaml
+    /// Logique d'interaction pour newcommand.xaml
     /// </summary>
-    public partial class commandinfo : Window
+    public partial class newcommand : Window
     {
         List<int> list = new List<int>();
         List<string> listname = new List<string>();
-        
-        public commandinfo()
+        List<int> listidline = new List<int>();
+
+        public newcommand()
         {
             InitializeComponent();
+        }
+
+        private void addline_Click(object sender, RoutedEventArgs e)
+        {
+            commandadd win = new commandadd();
+            win.Show();
+            win.addlinecommand.Click += refreshnewcommand_Click;
+
+        }
+        public string createparameter(List<int> list)
+        {
+            string a = "";
+            foreach (int item in list)
+            {
+                a += $"listOfIds={item}&";
+            }
+            if (a.Length > 0)
+            {
+                var output = a.Remove(a.Length - 1);
+                return output;
+
+            }
+            return a;
+        }
+        private void deleteline_Click(object sender, RoutedEventArgs e)
+        {
+            if (gridcomminfo.SelectedItem == null)
+            {
+                resinfonewcom.Text = "Veuillez selectionner un élément de la liste";
+                return;
+            }
+
+            int a = listidline[gridcomminfo.SelectedIndex];
+            
+            using (HttpClient client = new HttpClient())
+            {
+                string Url = "https://localhost:7279/";
+                client.BaseAddress = new Uri(Url);
+                string parameters = $"Delete/delete_linecommand?ID={a}";
+                HttpResponseMessage response = client.DeleteAsync(parameters).Result;
+                resinfonewcom.Text = string.Empty;
+            }
+            refreshnewcommand_Click(sender, e);
+        }
+
+        private void valcommand_Click(object sender, RoutedEventArgs e)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                string Url = "https://localhost:7279/";
+                client.BaseAddress = new Uri(Url);
+                string parameters = $"Commands/addcommand?refcom={VarCommand.refcom}&iduser={Connect.iduser}";
+                HttpResponseMessage response = client.PostAsync(parameters,null).Result;
+                resinfonewcom.Text = string.Empty;
+            }
+            dispcommand win = new dispcommand();
+            win.Show();
+            this.Close();
+
+        }
+
+        private void refreshnewcommand_Click(object sender, RoutedEventArgs e)
+        {
             List<CommandInfo> comms = new List<CommandInfo>();
             list.Clear();
             listname.Clear();
+            listidline.Clear();
 
 
             using (HttpClient client = new HttpClient())
@@ -46,6 +112,7 @@ namespace AppCUBES.command
                 for (int i = 0; i < detail.Count; i++)
                 {
                     list.Add(Convert.ToInt32(detail[i]["id_article"]));
+                    listidline.Add(Convert.ToInt32(detail[i]["id_LineCommande"]));
                 }
             }
             using (HttpClient client = new HttpClient())
@@ -74,55 +141,18 @@ namespace AppCUBES.command
                 {
                     comms.Add(new CommandInfo(detail[i]["ref_Command"].ToString(), listname[i], detail[i]["quantity"].ToString(), detail[i]["price"].ToString()));
                 }
-                gridcomminfo.ItemsSource= comms;
-            }
-        }
-        public string createparameter(List<int> list)
-        {
-            string a = "";
-            foreach (int item in list)
-            {
-                a += $"listOfIds={item}&";
-            }
-            if (a.Length > 0)
-            {
-                var output = a.Remove(a.Length - 1);
-                return output;
-
-            }
-            return a;
-        }
-        private void retcominfo_Click(object sender, RoutedEventArgs e)
-        {
-            
-            this.Close();
-        }
-
-        public class CommandInfo
-        {
-            public string Reference { get; set; }
-            public string NomArticle { get; set; }
-            public string Quantite { get; set;}
-            public string PrixTotal { get; set;}
-            public CommandInfo(string reference,string nomArticle,string quantite,string prixtotal)
-            {
-                Reference = reference;
-                NomArticle = nomArticle;
-                Quantite = quantite;
-                PrixTotal = prixtotal;
+                gridcomminfo.ItemsSource = comms;
             }
         }
 
-        private void detarticle_Click(object sender, RoutedEventArgs e)
+        private void retnewcommmand_Click(object sender, RoutedEventArgs e)
         {
-            if (gridcomminfo.SelectedValue == null)
-            {
-                
-                return;
-            }
-            VarCommand.idarticlecom = list[gridcomminfo.SelectedIndex];
-            commandinfoart win = new commandinfoart();
+            dispcommand win = new dispcommand();
             win.Show();
+            this.Close();
+
+
+
         }
     }
 }
