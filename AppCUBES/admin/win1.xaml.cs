@@ -1,4 +1,5 @@
-﻿using AppCUBES.command;
+﻿using AppCUBES.admin;
+using AppCUBES.command;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,7 +52,14 @@ namespace AppCUBES
 
         private void command_Click(object sender, RoutedEventArgs e)
         {
-            dispcommand win = new dispcommand();
+            choicecommand win = new choicecommand();
+            win.Show();
+            this.Close();
+        }
+
+        private void optmenu_Click(object sender, RoutedEventArgs e)
+        {
+            option win = new option();
             win.Show();
             this.Close();
         }

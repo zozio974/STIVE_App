@@ -10,9 +10,9 @@
         
         <Button x:Name="gest" Content="Gestion de stock" HorizontalAlignment="Left" Height="62" Margin="10,28,0,0" VerticalAlignment="Top" Width="196" Click="gest_Click"/>
         <Button x:Name="inventory" Content="Inventaire" HorizontalAlignment="Left" Height="62" Margin="10,96,0,0" VerticalAlignment="Top" Width="196" Click="inventory_Click" />
-        <Button x:Name="command" Content="Commande fournisseur" HorizontalAlignment="Left" Height="62" Margin="10,163,0,0" VerticalAlignment="Top" Width="196" Grid.RowSpan="2" Click="command_Click"/>
+        <Button x:Name="command" Content="Commande" HorizontalAlignment="Left" Height="62" Margin="10,163,0,0" VerticalAlignment="Top" Width="196" Grid.RowSpan="2" Click="command_Click"/>
         <Button x:Name="disconnect" Content="Déconnecter" HorizontalAlignment="Left" Height="37" Margin="211,73,0,0" VerticalAlignment="Top" Width="90" Click="disconnect_Click"/>
-        <Button x:Name="optmenu" Content="Options" HorizontalAlignment="Left" Height="39" Margin="211,28,0,0" VerticalAlignment="Top" Width="90"/>
+        <Button x:Name="optmenu" Content="Options" HorizontalAlignment="Left" Height="39" Margin="211,28,0,0" VerticalAlignment="Top" Width="90" Click="optmenu_Click"/>
 
     </Grid>
 </Window>

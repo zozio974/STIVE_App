@@ -16,16 +16,11 @@ using System.Windows.Shapes;
 
 namespace AppCUBES.command
 {
-    static class VarCommand
-    {
-        public static string refcom ;
-        public static int idarticlecom;
-
-    }
+    
     /// <summary>
     /// Logique d'interaction pour dispcommand.xaml
     /// </summary>
-    public partial class dispcommand : Window
+    public partial class dispcommandclient : Window
     {
         List<int> list = new List<int>();
         List<string> refe = new List<string>();
@@ -39,18 +34,12 @@ namespace AppCUBES.command
             var output = a.Remove(a.Length - 1);
             return output;
         }
+        
 
-        public dispcommand()
+        public dispcommandclient()
         {
             InitializeComponent();
-            if (Connect.idjobuser == 1)
-            {
-                retdispcommand.Content = "Menu";
-            }
-            else
-            {
-                retdispcommand.Content = "Déconnecter";
-            }
+            
             display_command();
         }
 
@@ -67,7 +56,7 @@ namespace AppCUBES.command
             {
                 string Url = "https://localhost:7279/";
                 client.BaseAddress = new Uri(Url);
-                string parameters = "Commands/displaycommands";
+                string parameters = "Commands/displaycommandclient";
                 HttpResponseMessage response = client.GetAsync(parameters).Result;
                 string json = response.Content.ReadAsStringAsync().Result;
                 JArray detail = JArray.Parse(json);
@@ -112,7 +101,7 @@ namespace AppCUBES.command
             {
                 string Url = "https://localhost:7279/";
                 client.BaseAddress = new Uri(Url);
-                string parameters = "Commands/displaycommands";
+                string parameters = "Commands/displaycommandclient";
                 HttpResponseMessage response = client.GetAsync(parameters).Result;
                 string json = response.Content.ReadAsStringAsync().Result;
                 JArray detail = JArray.Parse(json);
@@ -145,17 +134,8 @@ namespace AppCUBES.command
 
         private void retdispcommand_Click(object sender, RoutedEventArgs e)
         {
-            if (Connect.idjobuser == 1)
-            {
-                win1 win2 = new win1();
-                win2.Show();
-                this.Close();
-                return;
-            }
-            Connect.idjobuser = 0;
-            Connect.iduser = 0;
-            MainWindow win1 = new MainWindow();
-            win1.Show();
+            choicecommand win = new choicecommand();
+            win.Show();
             this.Close();
         }
 
@@ -214,9 +194,33 @@ namespace AppCUBES.command
 
         private void addcommand_Click(object sender, RoutedEventArgs e)
         {
+            string json = "";
+            using (HttpClient client = new HttpClient())
+            {
+                string Url = "https://localhost:7279/";
+                client.BaseAddress = new Uri(Url);
+                string parameters = $"Check/custbynameexist?name={refnewcommand.Text}";
+                HttpResponseMessage response = client.GetAsync(parameters).Result;
+                json = response.Content.ReadAsStringAsync().Result;
+
+            }
+            if (refnewcommand.Text == "")
+            {
+                rescommand.Text = "Veuillez entrer une référence";
+                return;
+            }
+            if ( json == "true")
+            {
+                rescommand.Text = "Il y a déjà une commande avec cette référence";
+                return;
+            }
+            VarCommand.refcom = refnewcommand.Text;
             newcommand win = new newcommand();
             win.Show();
+
             this.Close();
+            win.valcommand.Click += Refresh_comm_Click;
+
         }
     }
 }
