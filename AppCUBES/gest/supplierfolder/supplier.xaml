@@ -7,13 +7,14 @@
         mc:Ignorable="d"
         Title="supplier" Height="450" Width="800">
     <Grid>
-        <DataGrid x:Name="datasupplier" HorizontalAlignment="Left" Height="323" Margin="213,50,0,0" VerticalAlignment="Top" Width="359" d:ItemsSource="{d:SampleData ItemCount=5}" IsReadOnly="True"/>
-        <Button x:Name="addsupplier" Content="Ajouter" HorizontalAlignment="Left" Height="46" Margin="593,50,0,0" VerticalAlignment="Top" Width="116" Click="addsupplier_Click" />
-        <Button x:Name="refreshsupplier" Content="Actualiser" HorizontalAlignment="Left" Height="57" Margin="107,49,0,0" VerticalAlignment="Top" Width="87" Click="refreshsupplier_Click" />
-        <Button x:Name="delsupplier" Content="Supprimer" HorizontalAlignment="Left" Height="44" Margin="594,116,0,0" VerticalAlignment="Top" Width="115" Click="delsupplier_Click" />
-        <Button x:Name="putsupplier" Content="Modifier" HorizontalAlignment="Left" Height="49" Margin="593,182,0,0" VerticalAlignment="Top" Width="115" Click="putsupplier_Click" />
-        <Button x:Name="precedentsupplier" Content="Retour" HorizontalAlignment="Left" Height="52" Margin="107,284,0,0" VerticalAlignment="Top" Width="87" Click="precedentsupplier_Click" />
-        <TextBlock x:Name="supplierconditionselect" HorizontalAlignment="Left" Height="52" Margin="594,284,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="113"/>
+        <DataGrid x:Name="datasupplier" HorizontalAlignment="Left" Height="295" Margin="40,116,0,0" VerticalAlignment="Top" Width="570" d:ItemsSource="{d:SampleData ItemCount=5}" IsReadOnly="True"/>
+        <Button x:Name="addsupplier" Content="Ajouter" HorizontalAlignment="Left" Height="65" Margin="636,116,0,0" VerticalAlignment="Top" Width="120" Click="addsupplier_Click" />
+        <Button x:Name="refreshsupplier" Content="Actualiser" HorizontalAlignment="Left" Height="54" Margin="655,293,0,0" VerticalAlignment="Top" Width="122" Click="refreshsupplier_Click" BorderBrush="Black" Visibility="Hidden" />
+        <Button x:Name="delsupplier" Content="Supprimer" HorizontalAlignment="Left" Height="65" Margin="636,186,0,0" VerticalAlignment="Top" Width="120" Click="delsupplier_Click" />
+        <Button x:Name="putsupplier" Content="Modifier" HorizontalAlignment="Left" Height="65" Margin="636,256,0,0" VerticalAlignment="Top" Width="120" Click="putsupplier_Click" />
+        <Button x:Name="precedentsupplier" Content="Retour" HorizontalAlignment="Left" Height="54" Margin="634,357,0,0" VerticalAlignment="Top" Width="122" Click="precedentsupplier_Click" />
+        <TextBlock x:Name="supplierconditionselect" HorizontalAlignment="Left" Height="72" Margin="636,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="Title" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="72" Margin="40,28,0,0" TextWrapping="Wrap" Text="Fournisseur" VerticalAlignment="Top" Width="570" TextChanged="TextBox_TextChanged" FontSize="48" BorderBrush="Black"/>
 
     </Grid>
 </Window>
