@@ -20,6 +20,7 @@ namespace AppCUBES.command
     {
         public static string refcom ;
         public static int idarticlecom;
+        public static string login;
 
     }
     /// <summary>

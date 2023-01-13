@@ -24,7 +24,7 @@ namespace AppCUBES
     /// <summary>
     /// Interaction logic for inventaire.xaml
     /// </summary>
-    public partial class commandadd : Window
+    public partial class commandaddclient : Window
     {
         List<int> list = new List<int>();
         List<int> listactual = new List<int>();
@@ -39,7 +39,7 @@ namespace AppCUBES
         List<string> listnamesup = new List<string>();
         List<string> listnamefam = new List<string>();
         int sel = 0 ;
-        public commandadd()
+        public commandaddclient()
         {
             list.Clear();
             InitializeComponent();
@@ -467,7 +467,7 @@ namespace AppCUBES
             {
                 string Url = "https://localhost:7279/";
                 client.BaseAddress = new Uri(Url);
-                string parameters = $"Commands/addlinecommandsup?idart={list[gridinventory.SelectedIndex]}&refcom={VarCommand.refcom}&quant={quantnewcom.Text}";
+                string parameters = $"Commands/addlinecommand?idart={list[gridinventory.SelectedIndex]}&refcom={VarCommand.refcom}&quant={quantnewcom.Text}";
                 HttpResponseMessage response = client.PostAsync(parameters,null).Result;
 
             }
@@ -475,39 +475,9 @@ namespace AppCUBES
     }
 
     }
-    public class ListCommand
-    {
-
-        public string Nom { get; set; }      
-        public string Fournisseur { get; set; }
-        public string Millesime { get; set; }
-        public string Famille { get; set; }
-        public string PrixFournisseur { get; set; }
-        public string Prix { get; set; }
-        public string Volume { get; set; }
-        public string Degree { get; set; }
-        public string Cepage { get; set; }
-        public string Recompense { get; set; }
+   
 
 
 
-
-
-
-    public ListCommand(string NomArticle, string idProvider, string dateFill, string idFamily, string pricesup, string price, string volume, string degree, string cepage, string recompense)
-        {
-            Nom = NomArticle;
-            Fournisseur = idProvider;
-            Millesime = dateFill;
-            Famille = idFamily;
-            PrixFournisseur = pricesup;
-            Prix = price;
-            Volume = volume;
-            Degree = degree;
-            Cepage = cepage;
-            Recompense = recompense;
-        
-
-        }
-    }
+    
 

@@ -210,6 +210,8 @@ namespace AppCUBES.command
         private void addcommand_Click(object sender, RoutedEventArgs e)
         {
             string json = "";
+            string rep = "";
+
             using (HttpClient client = new HttpClient())
             {
                 string Url = "https://localhost:7279/";
@@ -219,18 +221,34 @@ namespace AppCUBES.command
                 json = response.Content.ReadAsStringAsync().Result;
 
             }
-            if (refnewcommand.Text == "")
+            using (HttpClient client = new HttpClient())
             {
-                rescommand.Text = "Veuillez entrer une référence";
+                string Url = "https://localhost:7279/";
+                client.BaseAddress = new Uri(Url);
+                string parameters = $"Check/userbyloginexist?login={loginnewcommand.Text}";
+                HttpResponseMessage response = client.GetAsync(parameters).Result;
+                rep = response.Content.ReadAsStringAsync().Result;
+
+            }
+            if (refnewcommand.Text == "" || loginnewcommand.Text =="")
+            {
+                rescommand.Text = "Veuillez entrer une référence et un login";
                 return;
             }
-            if ( json == "true")
+            if (json == "true")
             {
                 rescommand.Text = "Il y a déjà une commande avec cette référence";
                 return;
             }
+            if (rep == "false")
+            {
+                rescommand.Text = "Il n'y a aucun client avec ce login";
+                return;
+            }
+
             VarCommand.refcom = refnewcommand.Text;
-            newcommand win = new newcommand();
+            VarCommand.login =loginnewcommand.Text;
+            newcommandclient win = new newcommandclient();
             win.Show();
 
             this.Close();
