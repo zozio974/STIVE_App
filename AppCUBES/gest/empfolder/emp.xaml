@@ -14,7 +14,7 @@
         <Button x:Name="putemp" Content="Modifier" HorizontalAlignment="Left" Height="65" Margin="632,256,0,0" VerticalAlignment="Top" Width="116" Click="putemp_Click"/>
         <Button x:Name="precedent" Content="Retour" HorizontalAlignment="Left" Height="54" Margin="632,352,0,0" VerticalAlignment="Top" Width="116" Click="precedentemp_Click" RenderTransformOrigin="0.426,0.508"/>
         <TextBlock x:Name="empconditionselect" HorizontalAlignment="Left" Height="52" Margin="632,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="113"/>
-        <TextBox HorizontalAlignment="Left" HorizontalContentAlignment="Center" Height="70" Margin="26,24,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="570" FontSize="48" BorderBrush="Black"/>
+        <TextBox HorizontalAlignment="Left" HorizontalContentAlignment="Center" Height="70" Margin="26,24,0,0" TextWrapping="Wrap" Text="Employés" VerticalAlignment="Top" Width="570" FontSize="48" BorderBrush="Black" IsEnabled="False"/>
 
     </Grid>
 </Window>

@@ -87,7 +87,7 @@ namespace AppCUBES
                 }
                 if (Connect.idjobuser == 4)
                 {
-                    dispcommand win1 = new dispcommand();
+                    choicecommand win1 = new choicecommand();
                     win1.Show();
                     this.Close();
                     return;

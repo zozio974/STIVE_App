@@ -129,10 +129,7 @@ namespace AppCUBES
 
     public class Family
     {
-
         public string Nom { get; set; }
-
-
         public Family(string nom)
         {
             Nom = nom;

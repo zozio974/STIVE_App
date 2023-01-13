@@ -22,6 +22,8 @@ namespace AppCUBES.admin
         public option()
         {
             InitializeComponent();
+            List<string> list = new List<string>() { "Activer", "Desactiver" } ;
+            commandautoselect.ItemsSource = list;
         }
 
         private void retouroption_Click(object sender, RoutedEventArgs e)
@@ -33,7 +35,10 @@ namespace AppCUBES.admin
 
         private void commandauto_Click(object sender, RoutedEventArgs e)
         {
-
+            if(commandautoselect.SelectedValue =="Activer")
+            {
+                return;
+            }
         }
 
         private void changestockminadd_Click(object sender, RoutedEventArgs e)
