@@ -14,7 +14,7 @@
         <Button x:Name="putsupplier" Content="Modifier" HorizontalAlignment="Left" Height="65" Margin="636,256,0,0" VerticalAlignment="Top" Width="120" Click="putsupplier_Click" />
         <Button x:Name="precedentsupplier" Content="Retour" HorizontalAlignment="Left" Height="54" Margin="634,357,0,0" VerticalAlignment="Top" Width="122" Click="precedentsupplier_Click" />
         <TextBlock x:Name="supplierconditionselect" HorizontalAlignment="Left" Height="72" Margin="636,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="Title" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="72" Margin="40,28,0,0" TextWrapping="Wrap" Text="Fournisseur" VerticalAlignment="Top" Width="570" TextChanged="TextBox_TextChanged" FontSize="48" BorderBrush="Black"/>
+        <TextBox x:Name="Title" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="72" Margin="40,28,0,0" TextWrapping="Wrap" Text="Fournisseur" VerticalAlignment="Top" Width="570" TextChanged="TextBox_TextChanged" FontSize="48" BorderBrush="Black" IsEnabled="False"/>
 
     </Grid>
 </Window>

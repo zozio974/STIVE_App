@@ -27,7 +27,7 @@
         <Button x:Name="putjob" Content="Modifier" HorizontalAlignment="Left" Height="65" Margin="653,12,0,0" VerticalAlignment="Top" Width="116" Click="putjob_Click" Grid.Row="1" />
         <Button x:Name="precedentjob" Content="Retour" HorizontalAlignment="Left" Height="54" Margin="653,113,0,0" VerticalAlignment="Top" Width="116" Click="precedentjob_Click" Grid.Row="1" />
         <TextBlock x:Name="jobconditionselect" HorizontalAlignment="Left" Height="65" Margin="653,32,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116"/>
-        <TextBox HorizontalAlignment="Left" HorizontalContentAlignment="Center" Height="72" Margin="45,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="570" FontSize="48" Text="Fonction" BorderBrush="Black"/>
+        <TextBox HorizontalAlignment="Left" HorizontalContentAlignment="Center" Height="72" Margin="45,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="570" FontSize="48" Text="Fonction" BorderBrush="Black" IsEnabled="False" />
 
     </Grid>
 </Window>

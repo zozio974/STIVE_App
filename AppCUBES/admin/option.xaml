@@ -10,7 +10,7 @@
         <Button x:Name="changestockminadd" Content="Changer le montant commandé en automatique" HorizontalAlignment="Left" Height="65" Margin="155,59,0,0" VerticalAlignment="Top" Width="265" Click="changestockminadd_Click"/>
         <TextBox x:Name="amountchangemin" HorizontalAlignment="Left" Height="65" Margin="425,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110"/>
         <Button x:Name="commandauto" Content="Activer / desactiver la commande auto" HorizontalAlignment="Left" Height="48" Margin="155,169,0,0" VerticalAlignment="Top" Width="265" Click="commandauto_Click"/>
-        <ComboBox HorizontalAlignment="Left" Height="48" Margin="425,169,0,0" VerticalAlignment="Top" Width="110"/>
+        <ComboBox x:Name="commandautoselect" HorizontalAlignment="Left" Height="48" Margin="425,169,0,0" VerticalAlignment="Top" Width="110"/>
         <Button x:Name="retouroption" Content="Retour" HorizontalAlignment="Left" Height="45" Margin="155,324,0,0" VerticalAlignment="Top" Width="85" Click="retouroption_Click"/>
 
     </Grid>

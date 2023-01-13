@@ -165,6 +165,21 @@ namespace AppCUBES.command
             {
                 string Url = "https://localhost:7279/";
                 client.BaseAddress = new Uri(Url);
+                string parameters = $"Commands/checkvalidatecommandclient?id={a}";
+                HttpResponseMessage response = client.GetAsync(parameters).Result;
+                json = response.Content.ReadAsStringAsync().Result;
+
+            }
+
+            if (json == "false")
+            {
+                rescommand.Text = "Impossible de valider la commande plus de stock disponible";
+                return;
+            }
+            using (HttpClient client = new HttpClient())
+            {
+                string Url = "https://localhost:7279/";
+                client.BaseAddress = new Uri(Url);
                 string parameters = $"Check/checkstatuscommand?id={a}";
                 HttpResponseMessage response = client.GetAsync(parameters).Result;
                 json = response.Content.ReadAsStringAsync().Result;

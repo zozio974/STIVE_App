@@ -14,7 +14,7 @@
         <Button x:Name="putfamily" Content="Modifier" HorizontalAlignment="Left" Height="65" Margin="624,237,0,0" VerticalAlignment="Top" Width="116" Click="putfamily_Click" />
         <Button x:Name="precedentfamily" Content="Retour" HorizontalAlignment="Left" Height="54" Margin="624,339,0,0" VerticalAlignment="Top" Width="116" Click="precedentfamily_Click" />
         <TextBlock x:Name="familyconditionselect" HorizontalAlignment="Left" Height="65" Margin="627,17,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="113"/>
-        <TextBox HorizontalAlignment="Left" Height="70" HorizontalContentAlignment="Center" Margin="24,12,0,0" TextWrapping="Wrap" Text="Famille" VerticalAlignment="Top" Width="570" FontSize="48" BorderBrush="Black"/>
+        <TextBox HorizontalAlignment="Left" Height="70" HorizontalContentAlignment="Center" Margin="24,12,0,0" TextWrapping="Wrap" Text="Famille" VerticalAlignment="Top" Width="570" FontSize="48" BorderBrush="Black" IsEnabled="False"/>
 
     </Grid>
 </Window>
