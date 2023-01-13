@@ -14,8 +14,10 @@
         <TextBlock x:Name="rescommand" HorizontalAlignment="Left" Height="45" Margin="470,184,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
         <Button x:Name="Refresh_comm" Content="Actualiser" HorizontalAlignment="Left" Height="50" Margin="560,254,0,0" VerticalAlignment="Top" Width="130" Click="Refresh_comm_Click" Visibility="Hidden"/>
         <Button x:Name="addcommand" Content="Faire une nouvelle commande" HorizontalAlignment="Left" Height="45" Margin="470,234,0,0" VerticalAlignment="Top" Width="200" Click="addcommand_Click"/>
-        <TextBlock HorizontalAlignment="Left" Height="20" Margin="470,295,0,0" TextWrapping="Wrap" Text="Ref :" VerticalAlignment="Top" Width="20" RenderTransformOrigin="1.25,0.652"/>
-        <TextBox x:Name="refnewcommand" HorizontalAlignment="Left" Height="40" Margin="495,284,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175"/>
+        <TextBlock HorizontalAlignment="Left" Height="20" Margin="470,281,0,0" TextWrapping="Wrap" Text="Ref :" VerticalAlignment="Top" Width="20" RenderTransformOrigin="1.25,0.652"/>
+        <TextBox x:Name="refnewcommand" HorizontalAlignment="Left" Height="29" Margin="470,295,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60"/>
+        <TextBlock HorizontalAlignment="Left" Height="20" Margin="585,279,0,0" TextWrapping="Wrap" Text="Login client" VerticalAlignment="Top" Width="40"/>
+        <TextBox x:Name="loginnewcommand" HorizontalAlignment="Left" Height="29" Margin="585,295,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60"/>
 
     </Grid>
 </Window>
