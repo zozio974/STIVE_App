@@ -147,7 +147,7 @@ namespace AppCUBES
         {
             articleadd custo = new articleadd();
             custo.validatearticleadd.Click += refresharticle_Click;
-            custo.Show();
+            custo.ShowDialog();
             
         }
 
@@ -275,7 +275,7 @@ namespace AppCUBES
                 articlo.articlefamily.SelectedValue = json;
             }
 
-            articlo.Show();
+            articlo.ShowDialog();
             articlo.validatearticleput.Click += refresharticle_Click;
             articleconditionselect.Text = string.Empty;
         }

@@ -118,7 +118,7 @@ namespace AppCUBES
             JArray detail = JArray.Parse(json);
             custo.nameputsupplier.Text = detail[0]["name"].ToString();   
             custo.invputsupplier.Text = a.ToString();
-            custo.Show();
+            custo.ShowDialog();
             custo.validateputsupplier.Click += refreshsupplier_Click;
             supplierconditionselect.Text = string.Empty;
         }
@@ -127,7 +127,7 @@ namespace AppCUBES
         {
             var family = new supplieradd();
             family.validatesupplier.Click += refreshsupplier_Click;
-            family.Show();
+            family.ShowDialog();
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)

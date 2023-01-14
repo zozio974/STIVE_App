@@ -99,7 +99,7 @@ namespace AppCUBES
         {
             var custo = new empadd();
             custo.empval.Click += Refreshemp_Click;
-            custo.Show();
+            custo.ShowDialog();
         }
 
         public void Refreshemp_Click(object sender, RoutedEventArgs e)
@@ -161,7 +161,7 @@ namespace AppCUBES
                 string json = response.Content.ReadAsStringAsync().Result;
                 empo.empjobput.SelectedValue = json;
             }
-            empo.Show();
+            empo.ShowDialog();
             empo.empvalput.Click += Refreshemp_Click;
             empconditionselect.Text = string.Empty;
         }

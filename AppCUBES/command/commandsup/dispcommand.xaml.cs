@@ -154,7 +154,7 @@ namespace AppCUBES.command
             VarCommand.refcom = refe[gridcommand.SelectedIndex];
             var win = new commandinfo();
             
-            win.Show();
+            win.ShowDialog();
         }
 
         private void validcommand_Click(object sender, RoutedEventArgs e)
