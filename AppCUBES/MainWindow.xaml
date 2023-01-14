@@ -5,14 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppCUBES"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+
+        Title="MainWindow" Height="249" Width="630">
     <Grid>
-        <Button Content="Connexion" HorizontalAlignment="Left" Height="94" Margin="186,286,0,0" VerticalAlignment="Top" Width="407" Click="Button_Click"/>
-        <TextBlock x:Name="res" HorizontalAlignment="Left" Height="27" Margin="186,385,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="407"/>
-        <TextBox x:Name="login" HorizontalAlignment="Left" Height="102" Margin="186,37,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="407"/>
-        <TextBlock HorizontalAlignment="Left" Height="24" Margin="96,37,0,0" TextWrapping="Wrap" Text="Identifiant" VerticalAlignment="Top" Width="88"/>
-        <TextBlock HorizontalAlignment="Left" Height="24" Margin="96,164,0,0" TextWrapping="Wrap" Text="Mot de passe" VerticalAlignment="Top" Width="74"/>
-        <PasswordBox x:Name="password" HorizontalAlignment="Left" Height="106" Margin="186,0,0,0" VerticalAlignment="Center" Width="407"/>
+
+
+        <Button Content="Connexion" Margin="142,104,0,0" Click="Button_Click" Height="63" VerticalAlignment="Top" HorizontalAlignment="Left" Width="407" />
+        <TextBlock x:Name="res" HorizontalAlignment="Left" Height="27" Margin="142,172,0,0" VerticalAlignment="Top" Width="407" />
+        <TextBox x:Name="login" Margin="142,37,0,0"   HorizontalAlignment="Left" Width="407" Height="27" VerticalAlignment="Top"/>
+        <TextBlock Margin="38,37,0,0"  Text="Identifiant" Height="16" VerticalAlignment="Top" HorizontalAlignment="Left" Width="74"/>
+        <TextBlock Margin="38,58,0,0"  Text="Mot de passe" HorizontalAlignment="Left" Width="74" Height="19" VerticalAlignment="Top"/>
+        <PasswordBox x:Name="password" Margin="142,69,0,0" HorizontalAlignment="Left" Width="407" Height="30" VerticalAlignment="Top" />
 
     </Grid>
 </Window>

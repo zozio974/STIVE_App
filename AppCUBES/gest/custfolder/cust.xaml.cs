@@ -75,7 +75,7 @@ namespace AppCUBES
         {
             var custo = new custadd();
             custo.custval.Click += Refreshcust_Click;
-            custo.Show();
+            custo.ShowDialog();
         }
 
         public void Refreshcust_Click(object sender, RoutedEventArgs e)
@@ -130,7 +130,7 @@ namespace AppCUBES
             custo.custnameput.Text = detail[0]["nameUser"].ToString();
             custo.custfirstnameput.Text = detail[0]["firstNameUser"].ToString();
             custo.inv.Text = a.ToString(); 
-            custo.Show();
+            custo.ShowDialog();
             custo.custvalput.Click += Refreshcust_Click;
             custconditionselect.Text = string.Empty;
         }

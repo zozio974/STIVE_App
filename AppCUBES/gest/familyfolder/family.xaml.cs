@@ -114,7 +114,7 @@ namespace AppCUBES
             JArray detail = JArray.Parse(json);
             win.nameputfamily.Text = detail[0]["nameFamily"].ToString();   
             win.invputfamily.Text = a.ToString();
-            win.Show();
+            win.ShowDialog();
             win.validputfamily.Click += refreshfamily_Click;
             familyconditionselect.Text = string.Empty;
         }
@@ -123,7 +123,7 @@ namespace AppCUBES
         {
             var family = new familyadd();
             family.valfamefamily.Click += refreshfamily_Click;
-            family.Show();
+            family.ShowDialog();
         }
     }
 

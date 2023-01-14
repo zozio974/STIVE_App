@@ -121,7 +121,7 @@ namespace AppCUBES.command
             }
             VarCommand.idarticlecom = list[gridcomminfo.SelectedIndex];
             commandinfoart win = new commandinfoart();
-            win.Show();
+            win.ShowDialog();
         }
     }
 }
