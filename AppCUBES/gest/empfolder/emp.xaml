@@ -5,16 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppCUBES"
         mc:Ignorable="d"
-        Title="emp" Height="450" Width="800">
+        Title="emp" Height="440" Width="800">
     <Grid>
-        <DataGrid x:Name="empdata" HorizontalAlignment="Left" Height="295" Margin="26,111,0,0" VerticalAlignment="Top" Width="570" d:ItemsSource="{d:SampleData ItemCount=5}"  IsReadOnly="True" SelectionChanged="empdata_SelectionChanged"/>
-        <Button x:Name="addemp" Content="Ajouter" HorizontalAlignment="Left" Height="65" Margin="632,116,0,0" VerticalAlignment="Top" Width="116" Click="addemp_Click"/>
+        <DataGrid x:Name="empdata" HorizontalAlignment="Left" Height="209" Margin="26,111,0,0" VerticalAlignment="Top" Width="570" d:ItemsSource="{d:SampleData ItemCount=5}"  IsReadOnly="True" SelectionChanged="empdata_SelectionChanged"/>
+        <Button x:Name="addemp" Content="Ajouter" HorizontalAlignment="Left" Height="65" Margin="615,111,0,0" VerticalAlignment="Top" Width="116" Click="addemp_Click"/>
         <Button x:Name="emprefresh" Content="Actualiser" HorizontalAlignment="Left" Height="65" Margin="10,46,0,0" VerticalAlignment="Top" Width="116" Click="Refreshemp_Click" Visibility="Hidden"/>
-        <Button x:Name="deletemp" Content="Supprimer" HorizontalAlignment="Left" Height="65" Margin="632,186,0,0" VerticalAlignment="Top" Width="116" Click="Deleteemp_Click"/>
-        <Button x:Name="putemp" Content="Modifier" HorizontalAlignment="Left" Height="65" Margin="632,256,0,0" VerticalAlignment="Top" Width="116" Click="putemp_Click"/>
-        <Button x:Name="precedent" Content="Retour" HorizontalAlignment="Left" Height="54" Margin="632,352,0,0" VerticalAlignment="Top" Width="116" Click="precedentemp_Click" RenderTransformOrigin="0.426,0.508"/>
-        <TextBlock x:Name="empconditionselect" HorizontalAlignment="Left" Height="52" Margin="632,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="113"/>
-        <TextBox HorizontalAlignment="Left" HorizontalContentAlignment="Center" Height="70" Margin="26,24,0,0" TextWrapping="Wrap" Text="Employés" VerticalAlignment="Top" Width="570" FontSize="48" BorderBrush="Black" IsEnabled="False"/>
+        <Button x:Name="deletemp" Content="Supprimer" HorizontalAlignment="Left" Height="65" Margin="615,0,0,0" VerticalAlignment="Center" Width="116" Click="Deleteemp_Click"/>
+        <Button x:Name="putemp" Content="Modifier" HorizontalAlignment="Left" Height="65" Margin="615,255,0,0" VerticalAlignment="Top" Width="116" Click="putemp_Click"/>
+        <Button x:Name="precedent" Content="Retour" HorizontalAlignment="Left" Height="54" Margin="26,325,0,0" VerticalAlignment="Top" Width="116" Click="precedentemp_Click" RenderTransformOrigin="0.426,0.508"/>
+        <TextBlock x:Name="empconditionselect" HorizontalAlignment="Left" Height="52" Margin="168,327,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="580"/>
+        <TextBox HorizontalAlignment="Left" HorizontalContentAlignment="Center" Height="70" Margin="26,24,0,0" TextWrapping="Wrap" Text="Employés" VerticalAlignment="Top" Width="705" FontSize="48" BorderBrush="Black" IsEnabled="False"/>
 
     </Grid>
 </Window>

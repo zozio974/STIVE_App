@@ -5,16 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppCUBES"
         mc:Ignorable="d"
-        Title="family" Height="450" Width="800">
+        Title="family" Height="403" Width="458">
     <Grid>
-        <DataGrid x:Name="datafamily" HorizontalAlignment="Left" Height="295" Margin="24,98,0,0" VerticalAlignment="Top" Width="570" d:ItemsSource="{d:SampleData ItemCount=5}" IsReadOnly="True"/>
-        <Button x:Name="addfamily" Content="Ajouter" HorizontalAlignment="Left" Height="65" Margin="624,97,0,0" VerticalAlignment="Top" Width="116" Click="addfamily_Click" />
+        <DataGrid x:Name="datafamily" HorizontalAlignment="Left" Height="205" Margin="24,98,0,0" VerticalAlignment="Top" Width="265" d:ItemsSource="{d:SampleData ItemCount=5}" IsReadOnly="True"/>
+        <Button x:Name="addfamily" Content="Ajouter" HorizontalAlignment="Left" Height="65" Margin="304,98,0,0" VerticalAlignment="Top" Width="116" Click="addfamily_Click" />
         <Button x:Name="refreshfamily" Content="Actualiser" HorizontalAlignment="Left" Height="65" Margin="107,49,0,0" VerticalAlignment="Top" Width="116" Click="refreshfamily_Click" Visibility="Hidden" />
-        <Button x:Name="delfamily" Content="Supprimer" HorizontalAlignment="Left" Height="65" Margin="624,167,0,0" VerticalAlignment="Top" Width="116" Click="delfamily_Click" />
-        <Button x:Name="putfamily" Content="Modifier" HorizontalAlignment="Left" Height="65" Margin="624,237,0,0" VerticalAlignment="Top" Width="116" Click="putfamily_Click" />
-        <Button x:Name="precedentfamily" Content="Retour" HorizontalAlignment="Left" Height="54" Margin="624,339,0,0" VerticalAlignment="Top" Width="116" Click="precedentfamily_Click" />
-        <TextBlock x:Name="familyconditionselect" HorizontalAlignment="Left" Height="65" Margin="627,17,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="113"/>
-        <TextBox HorizontalAlignment="Left" Height="70" HorizontalContentAlignment="Center" Margin="24,12,0,0" TextWrapping="Wrap" Text="Famille" VerticalAlignment="Top" Width="570" FontSize="48" BorderBrush="Black" IsEnabled="False"/>
+        <Button x:Name="delfamily" Content="Supprimer" HorizontalAlignment="Left" Height="65" Margin="304,168,0,0" VerticalAlignment="Top" Width="116" Click="delfamily_Click" />
+        <Button x:Name="putfamily" Content="Modifier" HorizontalAlignment="Left" Height="65" Margin="304,238,0,0" VerticalAlignment="Top" Width="116" Click="putfamily_Click" />
+        <Button x:Name="precedentfamily" Content="Retour" HorizontalAlignment="Left" Height="54" Margin="24,308,0,0" VerticalAlignment="Top" Width="116" Click="precedentfamily_Click" />
+        <TextBlock x:Name="familyconditionselect" HorizontalAlignment="Left" Height="54" Margin="165,308,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="255"/>
+        <TextBox HorizontalAlignment="Left" Height="70" HorizontalContentAlignment="Center" Margin="24,12,0,0" TextWrapping="Wrap" Text="Famille" VerticalAlignment="Top" Width="396" FontSize="48" BorderBrush="Black" IsEnabled="False"/>
 
     </Grid>
 </Window>

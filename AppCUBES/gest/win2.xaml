@@ -5,15 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppCUBES"
         mc:Ignorable="d"
-        Title="win2" Height="450" Width="700">
+        Title="win2" Height="406" Width="358">
     <Grid>
-        <Button x:Name="cust" Content="Clients" HorizontalAlignment="Left" Height="40" Margin="132,209,0,0" VerticalAlignment="Top" Width="290" Click="Button_Click"/>
-        <Button x:Name="menu" Content="Menu" HorizontalAlignment="Left" Height="40" Margin="455,74,0,0" VerticalAlignment="Top" Width="138" Click="menu_Click"/>
-        <Button x:Name="article" Content="Articles" HorizontalAlignment="Left" Height="40" Margin="132,74,0,0" VerticalAlignment="Top" Width="290" Click="article_Click"/>
-        <Button x:Name="familybutton" Content="Familles" HorizontalAlignment="Left" Height="40" Margin="132,164,0,0" VerticalAlignment="Top" Width="290" Click="familybutton_Click"/>
-        <Button x:Name="supplierbutton" Content="Fournisseurs" HorizontalAlignment="Left" Height="40" Margin="132,119,0,0" VerticalAlignment="Top" Width="290" Click="supplierbutton_Click"/>
-        <Button x:Name="buttonjob" Content="Metier" HorizontalAlignment="Left" Height="40" Margin="132,299,0,0" VerticalAlignment="Top" Width="290" Click="buttonjob_Click"/>
-        <Button x:Name="buttonemp" Content="Employés" HorizontalAlignment="Left" Height="40" Margin="132,254,0,0" VerticalAlignment="Top" Width="290" Click="buttonemp_Click"/>
+        <Button x:Name="cust" Content="Clients" HorizontalAlignment="Left" Height="40" Margin="31,166,0,0" VerticalAlignment="Top" Width="290" Click="Button_Click"/>
+        <Button x:Name="menu" Content="Retour Menu" HorizontalAlignment="Left" Height="40" Margin="31,319,0,0" VerticalAlignment="Top" Width="290" Click="menu_Click"/>
+        <Button x:Name="article" Content="Articles" HorizontalAlignment="Left" Height="40" Margin="31,31,0,0" VerticalAlignment="Top" Width="290" Click="article_Click"/>
+        <Button x:Name="familybutton" Content="Familles" HorizontalAlignment="Left" Height="40" Margin="31,121,0,0" VerticalAlignment="Top" Width="290" Click="familybutton_Click"/>
+        <Button x:Name="supplierbutton" Content="Fournisseurs" HorizontalAlignment="Left" Height="40" Margin="31,76,0,0" VerticalAlignment="Top" Width="290" Click="supplierbutton_Click"/>
+        <Button x:Name="buttonjob" Content="Fonctions" HorizontalAlignment="Left" Height="40" Margin="31,256,0,0" VerticalAlignment="Top" Width="290" Click="buttonjob_Click"/>
+        <Button x:Name="buttonemp" Content="Employés" HorizontalAlignment="Left" Height="40" Margin="31,211,0,0" VerticalAlignment="Top" Width="290" Click="buttonemp_Click"/>
 
     </Grid>
 </Window>

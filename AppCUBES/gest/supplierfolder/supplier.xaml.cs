@@ -118,8 +118,9 @@ namespace AppCUBES
             JArray detail = JArray.Parse(json);
             custo.nameputsupplier.Text = detail[0]["name"].ToString();   
             custo.invputsupplier.Text = a.ToString();
-            custo.ShowDialog();
             custo.validateputsupplier.Click += refreshsupplier_Click;
+
+            custo.ShowDialog();
             supplierconditionselect.Text = string.Empty;
         }
 

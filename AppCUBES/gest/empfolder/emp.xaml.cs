@@ -161,8 +161,9 @@ namespace AppCUBES
                 string json = response.Content.ReadAsStringAsync().Result;
                 empo.empjobput.SelectedValue = json;
             }
-            empo.ShowDialog();
             empo.empvalput.Click += Refreshemp_Click;
+
+            empo.ShowDialog();
             empconditionselect.Text = string.Empty;
         }
 

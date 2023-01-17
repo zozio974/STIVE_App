@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppCUBES"
         mc:Ignorable="d"
-        Title="jobadd" Height="450" Width="800">
+        Title="jobadd" Height="222" Width="276">
     <Grid>
-        <TextBox x:Name="namejob" HorizontalAlignment="Left" Height="51" Margin="310,217,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="224"/>
-        <Button x:Name="validatejob" Content="valider" HorizontalAlignment="Left" Height="50" Margin="376,330,0,0" VerticalAlignment="Top" Width="92" Click="valjob_Click" />
-        <TextBlock HorizontalAlignment="Left" Height="51" Margin="138,217,0,0" TextWrapping="Wrap" Text="Entrez un nom" VerticalAlignment="Top" Width="132" RenderTransformOrigin="0.464,0.64"/>
-        <TextBlock x:Name="resjobadd" HorizontalAlignment="Left" Height="34" Margin="37,313,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="334"/>
-        <Button x:Name="returnjob" Content="Retour" HorizontalAlignment="Left" Height="45" Margin="376,130,0,0" VerticalAlignment="Top" Width="92" Click="returnjob_Click" />
+        <TextBox x:Name="namejob" HorizontalAlignment="Left" Height="51" Margin="114,17,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="117"/>
+        <Button x:Name="validatejob" Content="valider" HorizontalAlignment="Left" Height="45" Margin="139,80,0,0" VerticalAlignment="Top" Width="92" Click="valjob_Click" />
+        <TextBlock HorizontalAlignment="Left" Height="25" Margin="24,30,0,0" TextWrapping="Wrap" Text="Entrez un nom" VerticalAlignment="Top" Width="90" RenderTransformOrigin="0.464,0.64"/>
+        <TextBlock x:Name="resjobadd" HorizontalAlignment="Left" Height="34" Margin="24,141,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="207"/>
+        <Button x:Name="returnjob" Content="Retour" HorizontalAlignment="Left" Height="45" Margin="22,80,0,0" VerticalAlignment="Top" Width="92" Click="returnjob_Click" />
 
     </Grid>
 </Window>

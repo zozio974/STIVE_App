@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppCUBES"
         mc:Ignorable="d"
-        Title="supplieradd" Height="450" Width="800">
+        Title="supplieradd" Height="203" Width="301">
     <Grid>
-        <TextBox x:Name="namesupplier" HorizontalAlignment="Left" Height="51" Margin="310,217,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="224"/>
-        <Button x:Name="validatesupplier" Content="valider" HorizontalAlignment="Left" Height="50" Margin="376,330,0,0" VerticalAlignment="Top" Width="92" Click="valsupplier_Click" />
-        <TextBlock HorizontalAlignment="Left" Height="51" Margin="138,217,0,0" TextWrapping="Wrap" Text="Entrez un nom" VerticalAlignment="Top" Width="132" RenderTransformOrigin="0.464,0.64"/>
-        <TextBlock x:Name="ressupplieradd" HorizontalAlignment="Left" Height="34" Margin="37,313,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="334"/>
-        <Button x:Name="returnsupplier" Content="Retour" HorizontalAlignment="Left" Height="45" Margin="376,130,0,0" VerticalAlignment="Top" Width="92" Click="returnsupplier_Click" />
+        <TextBox x:Name="namesupplier" HorizontalAlignment="Left" Height="51" Margin="121,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133"/>
+        <Button x:Name="validatesupplier" Content="valider" HorizontalAlignment="Left" Height="45" Margin="162,77,0,0" VerticalAlignment="Top" Width="92" Click="valsupplier_Click" />
+        <TextBlock HorizontalAlignment="Left" Height="25" Margin="25,29,0,0" TextWrapping="Wrap" Text="Entrez un nom" VerticalAlignment="Top" Width="91" RenderTransformOrigin="0.464,0.64"/>
+        <TextBlock x:Name="ressupplieradd" HorizontalAlignment="Left" Height="34" Margin="25,127,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="229"/>
+        <Button x:Name="returnsupplier" Content="Retour" HorizontalAlignment="Left" Height="45" Margin="24,77,0,0" VerticalAlignment="Top" Width="92" Click="returnsupplier_Click" />
 
     </Grid>
 </Window>
