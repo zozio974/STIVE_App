@@ -118,8 +118,9 @@ namespace AppCUBES
             JArray detail = JArray.Parse(json);
             custo.nameputjob.Text = detail[0]["jobName"].ToString();   
             custo.invputjob.Text = a.ToString();
-            custo.ShowDialog();
             custo.validateputjob.Click += refreshjob_Click;
+
+            custo.ShowDialog();
             jobconditionselect.Text = string.Empty;
         }
 

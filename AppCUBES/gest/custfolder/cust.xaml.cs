@@ -129,9 +129,10 @@ namespace AppCUBES
             custo.custpasswordput.Text = detail[0]["passWordUser"].ToString();
             custo.custnameput.Text = detail[0]["nameUser"].ToString();
             custo.custfirstnameput.Text = detail[0]["firstNameUser"].ToString();
-            custo.inv.Text = a.ToString(); 
-            custo.ShowDialog();
+            custo.inv.Text = a.ToString();
             custo.custvalput.Click += Refreshcust_Click;
+
+            custo.ShowDialog();
             custconditionselect.Text = string.Empty;
         }
 
