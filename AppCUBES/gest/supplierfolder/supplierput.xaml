@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppCUBES"
         mc:Ignorable="d"
-        Title="supplierput" Height="450" Width="800">
+        Title="supplierput" Height="185" Width="313">
     <Grid>
-        <TextBox x:Name="nameputsupplier" HorizontalAlignment="Left" Height="51" Margin="310,217,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="224"/>
-        <Button x:Name="validateputsupplier" Content="Modifier" HorizontalAlignment="Left" Height="50" Margin="376,330,0,0" VerticalAlignment="Top" Width="92" Click="validateputsupplier_Click" />
-        <TextBlock HorizontalAlignment="Left" Height="51" Margin="138,217,0,0" TextWrapping="Wrap" Text="Entrez un nom" VerticalAlignment="Top" Width="132" RenderTransformOrigin="0.464,0.64"/>
-        <Button x:Name="returnsupplier" Content="Retour" HorizontalAlignment="Left" Height="45" Margin="376,130,0,0" VerticalAlignment="Top" Width="92" Click="returnsupplier_Click" />
+        <TextBox x:Name="nameputsupplier" HorizontalAlignment="Left" Height="51" Margin="129,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145"/>
+        <Button x:Name="validateputsupplier" Content="Modifier" HorizontalAlignment="Left" Height="45" Margin="162,83,0,0" VerticalAlignment="Top" Width="112" Click="validateputsupplier_Click" RenderTransformOrigin="-1.374,-3.919" />
+        <TextBlock HorizontalAlignment="Left" Height="25" Margin="25,33,0,0" TextWrapping="Wrap" Text="Entrez un nom" VerticalAlignment="Top" Width="99" RenderTransformOrigin="0.464,0.64"/>
+        <Button x:Name="returnsupplier" Content="Retour" HorizontalAlignment="Left" Height="45" Margin="25,83,0,0" VerticalAlignment="Top" Width="114" Click="returnsupplier_Click" />
         <TextBox x:Name="invputsupplier" HorizontalAlignment="Left" Margin="182,308,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
 
     </Grid>

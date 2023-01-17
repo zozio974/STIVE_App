@@ -5,19 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppCUBES"
         mc:Ignorable="d"
-        Title="custadd" Height="448" Width="400">
+        Title="custadd" Height="388" Width="400">
     <Grid Margin="0,0,0,-6">
-        <TextBox x:Name="custlogin" HorizontalAlignment="Left" Height="51" Margin="146,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225"/>
-        <TextBox x:Name="custpassword" HorizontalAlignment="Left" Height="51" Margin="146,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225"/>
-        <TextBox x:Name="custname" HorizontalAlignment="Left" Height="51" Margin="146,201,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225"/>
-        <TextBox x:Name="custfirstname" HorizontalAlignment="Left" Height="51" Margin="146,257,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225"/>
-        <Button x:Name="custval" Content="Valider" HorizontalAlignment="Left" Height="50" Margin="146,352,0,0" VerticalAlignment="Top" Width="92" Click="custval_Click"/>
-        <TextBlock x:Name="infologin" HorizontalAlignment="Left" Height="51" Margin="10,89,0,0" TextWrapping="Wrap" Text="Entrez un login" VerticalAlignment="Top" Width="131"/>
-        <TextBlock x:Name="infopass" HorizontalAlignment="Left" Height="51" Margin="10,145,0,0" TextWrapping="Wrap" Text="Entrez le mot de passe" VerticalAlignment="Top" Width="131"/>
-        <TextBlock HorizontalAlignment="Left" Height="51" Margin="10,201,0,0" TextWrapping="Wrap" Text="Entrez un nom" VerticalAlignment="Top" Width="131"/>
-        <TextBlock HorizontalAlignment="Left" Height="51" Margin="10,257,0,0" TextWrapping="Wrap" Text="Entrez un prénom" VerticalAlignment="Top" Width="131"/>
-        <TextBlock x:Name="rescustadd" HorizontalAlignment="Left" Height="34" Margin="37,313,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="334"/>
-        <Button x:Name="retourcust" Content="Retour" HorizontalAlignment="Left" Height="47" Margin="146,10,0,0" VerticalAlignment="Top" Width="92" Click="retourcust_Click"/>
+        <TextBox x:Name="custlogin" HorizontalAlignment="Left" Height="51" Margin="146,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225"/>
+        <TextBox x:Name="custpassword" HorizontalAlignment="Left" Height="51" Margin="146,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225"/>
+        <TextBox x:Name="custname" HorizontalAlignment="Left" Height="51" Margin="146,138,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225"/>
+        <TextBox x:Name="custfirstname" HorizontalAlignment="Left" Height="51" Margin="146,194,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225"/>
+        <Button x:Name="custval" Content="Valider" HorizontalAlignment="Left" Height="50" Margin="226,289,0,0" VerticalAlignment="Top" Width="125" Click="custval_Click"/>
+        <TextBlock x:Name="infologin" HorizontalAlignment="Left" Height="51" Margin="10,26,0,0" TextWrapping="Wrap" Text="Entrez un login" VerticalAlignment="Top" Width="131" RenderTransformOrigin="0.549,0.95"/>
+        <TextBlock x:Name="infopass" HorizontalAlignment="Left" Height="51" Margin="10,82,0,0" TextWrapping="Wrap" Text="Entrez le mot de passe" VerticalAlignment="Top" Width="131"/>
+        <TextBlock HorizontalAlignment="Left" Height="51" Margin="10,138,0,0" TextWrapping="Wrap" Text="Entrez un nom" VerticalAlignment="Top" Width="131"/>
+        <TextBlock HorizontalAlignment="Left" Height="51" Margin="10,194,0,0" TextWrapping="Wrap" Text="Entrez un prénom" VerticalAlignment="Top" Width="131"/>
+        <TextBlock x:Name="rescustadd" HorizontalAlignment="Center" Height="34" Margin="0,250,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="334"/>
+        <Button x:Name="retourcust" Content="Retour" HorizontalAlignment="Left" Height="47" Margin="33,289,0,0" VerticalAlignment="Top" Width="125" Click="retourcust_Click"/>
 
     </Grid>
 </Window>

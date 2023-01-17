@@ -274,9 +274,9 @@ namespace AppCUBES
                 string json = response.Content.ReadAsStringAsync().Result;
                 articlo.articlefamily.SelectedValue = json;
             }
+            articlo.validatearticleput.Click += refresharticle_Click;
 
             articlo.ShowDialog();
-            articlo.validatearticleput.Click += refresharticle_Click;
             articleconditionselect.Text = string.Empty;
         }
 

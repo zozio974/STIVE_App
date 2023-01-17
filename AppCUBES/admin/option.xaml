@@ -5,14 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppCUBES.admin"
         mc:Ignorable="d"
-        Title="option" Height="335" Width="485">
+        Title="option" Height="238" Width="458">
     <Grid>
-        <Button x:Name="changestockminadd" Content="Changer le montant commandé en automatique" HorizontalAlignment="Left" Height="65" Margin="50,59,0,0" VerticalAlignment="Top" Width="265" Click="changestockminadd_Click"/>
-        <TextBox x:Name="amountchangemin" HorizontalAlignment="Left" Height="65" Margin="332,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110"/>
-        <Button x:Name="commandauto" Content="Activer / desactiver la commande auto" HorizontalAlignment="Left" Height="48" Margin="50,169,0,0" VerticalAlignment="Top" Width="265" Click="commandauto_Click"/>
-        <Button x:Name="retouroption" Content="Retour" HorizontalAlignment="Left" Height="45" Margin="230,222,0,0" VerticalAlignment="Top" Width="85" Click="retouroption_Click"/>
-        <TextBlock x:Name="rescomauto" HorizontalAlignment="Left" Height="24" Margin="332,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71"/>
-        <TextBlock x:Name="resquantitychange" HorizontalAlignment="Left" Height="35" Margin="50,129,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="392"/>
+        <Button x:Name="changestockminadd" Content="Changer le montant commandé en automatique" HorizontalAlignment="Left" Height="65" Margin="28,27,0,0" VerticalAlignment="Top" Width="265" Click="changestockminadd_Click"/>
+        <TextBox x:Name="amountchangemin" HorizontalAlignment="Left" Height="65" Margin="298,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="129"/>
+        <Button x:Name="commandauto" Content="Activer / desactiver la commande auto" HorizontalAlignment="Left" Height="48" Margin="28,139,0,0" VerticalAlignment="Top" Width="265" Click="commandauto_Click"/>
+        <Button x:Name="retouroption" Content="Retour" HorizontalAlignment="Left" Height="48" Margin="374,140,0,0" VerticalAlignment="Top" Width="56" Click="retouroption_Click" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="-0.423"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="-0.45"/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <TextBlock x:Name="rescomauto" HorizontalAlignment="Left" Height="48" Margin="298,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70"/>
+        <TextBlock x:Name="resquantitychange" HorizontalAlignment="Left" Height="35" Margin="28,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="399"/>
 
     </Grid>
 </Window>

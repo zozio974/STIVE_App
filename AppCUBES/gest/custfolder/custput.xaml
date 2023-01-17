@@ -5,20 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppCUBES"
         mc:Ignorable="d"
-        Title="custput" Height="448" Width="400">
+        Title="custput" Height="393" Width="400">
     <Grid Margin="0,0,0,-6">
-        <TextBox x:Name="custloginput" HorizontalAlignment="Left" Height="51" Margin="146,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225"/>
-        <TextBox x:Name="custpasswordput" HorizontalAlignment="Left" Height="51" Margin="146,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225"/>
-        <TextBox x:Name="custnameput" HorizontalAlignment="Left" Height="51" Margin="146,201,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225"/>
-        <TextBox x:Name="custfirstnameput" HorizontalAlignment="Left" Height="51" Margin="146,257,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225"/>
-        <Button x:Name="custvalput" Content="Modifier" HorizontalAlignment="Left" Height="50" Margin="135,352,0,0" VerticalAlignment="Top" Width="92" Click="custval_Click"/>
-        <TextBlock x:Name="infologin" HorizontalAlignment="Left" Height="51" Margin="10,89,0,0" TextWrapping="Wrap" Text="Entrez un login" VerticalAlignment="Top" Width="131"/>
-        <TextBlock x:Name="infopass" HorizontalAlignment="Left" Height="51" Margin="10,145,0,0" TextWrapping="Wrap" Text="Entrez le mot de passe" VerticalAlignment="Top" Width="131"/>
-        <TextBlock HorizontalAlignment="Left" Height="51" Margin="10,201,0,0" TextWrapping="Wrap" Text="Entrez un nom" VerticalAlignment="Top" Width="131"/>
-        <TextBlock HorizontalAlignment="Left" Height="51" Margin="10,257,0,0" TextWrapping="Wrap" Text="Entrez un prénom" VerticalAlignment="Top" Width="131"/>
-        <TextBlock x:Name="rescustadd" HorizontalAlignment="Left" Height="34" Margin="37,313,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="334"/>
+        <TextBox x:Name="custloginput" HorizontalAlignment="Left" Height="51" Margin="146,32,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225"/>
+        <TextBox x:Name="custpasswordput" HorizontalAlignment="Left" Height="51" Margin="146,88,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225"/>
+        <TextBox x:Name="custnameput" HorizontalAlignment="Left" Height="51" Margin="146,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225"/>
+        <TextBox x:Name="custfirstnameput" HorizontalAlignment="Left" Height="51" Margin="146,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225"/>
+        <Button x:Name="custvalput" Content="Modifier" HorizontalAlignment="Left" Height="50" Margin="224,295,0,0" VerticalAlignment="Top" Width="112" Click="custval_Click"/>
+        <TextBlock x:Name="infologin" HorizontalAlignment="Left" Height="51" Margin="10,32,0,0" TextWrapping="Wrap" Text="Entrez un login" VerticalAlignment="Top" Width="131"/>
+        <TextBlock x:Name="infopass" HorizontalAlignment="Left" Height="51" Margin="10,88,0,0" TextWrapping="Wrap" Text="Entrez le mot de passe" VerticalAlignment="Top" Width="131" RenderTransformOrigin="0.511,0.662"/>
+        <TextBlock HorizontalAlignment="Left" Height="51" Margin="10,144,0,0" TextWrapping="Wrap" Text="Entrez un nom" VerticalAlignment="Top" Width="131"/>
+        <TextBlock HorizontalAlignment="Left" Height="51" Margin="10,200,0,0" TextWrapping="Wrap" Text="Entrez un prénom" VerticalAlignment="Top" Width="131"/>
+        <TextBlock x:Name="rescustadd" HorizontalAlignment="Left" Height="34" Margin="37,256,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="334"/>
         <TextBlock x:Name="inv" HorizontalAlignment="Left" Height="14" Margin="322,363,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="27" Visibility="Hidden"/>
-        <Button x:Name="returncust2" Content="Retour" HorizontalAlignment="Left" Height="45" Margin="135,25,0,0" VerticalAlignment="Top" Width="92" Click="returncust2_Click"/>
+        <Button x:Name="returncust2" Content="Retour" HorizontalAlignment="Left" Height="45" Margin="30,295,0,0" VerticalAlignment="Top" Width="111" Click="returncust2_Click"/>
 
     </Grid>
 </Window>

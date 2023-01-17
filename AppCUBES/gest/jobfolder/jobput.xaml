@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppCUBES"
         mc:Ignorable="d"
-        Title="jobput" Height="450" Width="800">
+        Title="jobput" Height="188" Width="298">
     <Grid>
-        <TextBox x:Name="nameputjob" HorizontalAlignment="Left" Height="51" Margin="310,217,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="224"/>
-        <Button x:Name="validateputjob" Content="Modifier" HorizontalAlignment="Left" Height="50" Margin="376,330,0,0" VerticalAlignment="Top" Width="92" Click="validateputjob_Click" />
-        <TextBlock HorizontalAlignment="Left" Height="51" Margin="138,217,0,0" TextWrapping="Wrap" Text="Entrez un nom" VerticalAlignment="Top" Width="132" RenderTransformOrigin="0.464,0.64"/>
-        <Button x:Name="returnjob" Content="Retour" HorizontalAlignment="Left" Height="45" Margin="376,130,0,0" VerticalAlignment="Top" Width="92" Click="returnjob_Click" />
+        <TextBox x:Name="nameputjob" HorizontalAlignment="Left" Height="51" Margin="116,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="126"/>
+        <Button x:Name="validateputjob" Content="Modifier" HorizontalAlignment="Left" Height="45" Margin="150,77,0,0" VerticalAlignment="Top" Width="92" Click="validateputjob_Click" />
+        <TextBlock HorizontalAlignment="Left" Height="25" Margin="27,25,0,0" TextWrapping="Wrap" Text="Entrez un nom" VerticalAlignment="Top" Width="89" RenderTransformOrigin="0.464,0.64"/>
+        <Button x:Name="returnjob" Content="Retour" HorizontalAlignment="Left" Height="45" Margin="24,77,0,0" VerticalAlignment="Top" Width="92" Click="returnjob_Click" />
         <TextBox x:Name="invputjob" HorizontalAlignment="Left" Margin="182,308,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
 
     </Grid>

@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppCUBES"
         mc:Ignorable="d"
-        Title="familyadd" Height="450" Width="800">
+        Title="familyadd" Height="192" Width="423">
     <Grid>
-        <TextBox x:Name="namefamily" HorizontalAlignment="Left" Height="51" Margin="310,217,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="224"/>
-        <Button x:Name="valfamefamily" Content="valider" HorizontalAlignment="Left" Height="50" Margin="376,330,0,0" VerticalAlignment="Top" Width="92" Click="valfamefamily_Click" />
-        <TextBlock HorizontalAlignment="Left" Height="51" Margin="138,217,0,0" TextWrapping="Wrap" Text="Entrez un nom" VerticalAlignment="Top" Width="132" RenderTransformOrigin="0.464,0.64"/>
-        <TextBlock x:Name="rescustadd" HorizontalAlignment="Left" Height="34" Margin="37,313,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="334"/>
-        <Button x:Name="returnfamily" Content="Retour" HorizontalAlignment="Left" Height="45" Margin="376,130,0,0" VerticalAlignment="Top" Width="92" Click="returnfamily_Click" />
+        <TextBox x:Name="namefamily" HorizontalAlignment="Left" Height="51" Margin="147,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="224"/>
+        <Button x:Name="valfamefamily" Content="valider" HorizontalAlignment="Left" Height="52" Margin="121,93,0,0" VerticalAlignment="Top" Width="92" Click="valfamefamily_Click" />
+        <TextBlock HorizontalAlignment="Left" Height="26" Margin="35,37,0,0" TextWrapping="Wrap" Text="Entrez un nom" VerticalAlignment="Top" Width="96" RenderTransformOrigin="0.464,0.64"/>
+        <TextBlock x:Name="rescustadd" HorizontalAlignment="Left" Height="50" Margin="231,95,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140"/>
+        <Button x:Name="returnfamily" Content="Retour" HorizontalAlignment="Left" Height="52" Margin="24,93,0,0" VerticalAlignment="Top" Width="92" Click="returnfamily_Click" />
 
     </Grid>
 </Window>

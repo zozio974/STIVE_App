@@ -6,16 +6,16 @@
         xmlns:local="clr-namespace:AppCUBES"
         mc:Ignorable="d"
 
-        Title="MainWindow" Height="249" Width="630">
+        Title="MainWindow" Height="221" Width="245">
     <Grid>
 
 
-        <Button Content="Connexion" Margin="142,104,0,0" Click="Button_Click" Height="63" VerticalAlignment="Top" HorizontalAlignment="Left" Width="407" />
-        <TextBlock x:Name="res" HorizontalAlignment="Left" Height="27" Margin="142,172,0,0" VerticalAlignment="Top" Width="407" />
-        <TextBox x:Name="login" Margin="142,37,0,0"   HorizontalAlignment="Left" Width="407" Height="27" VerticalAlignment="Top"/>
-        <TextBlock Margin="38,37,0,0"  Text="Identifiant" Height="16" VerticalAlignment="Top" HorizontalAlignment="Left" Width="74"/>
-        <TextBlock Margin="38,58,0,0"  Text="Mot de passe" HorizontalAlignment="Left" Width="74" Height="19" VerticalAlignment="Top"/>
-        <PasswordBox x:Name="password" Margin="142,69,0,0" HorizontalAlignment="Left" Width="407" Height="30" VerticalAlignment="Top" />
+        <Button Content="Connexion" Margin="84,104,0,0" Click="Button_Click" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="127" />
+        <TextBlock x:Name="res" HorizontalAlignment="Left" Height="46" Margin="84,141,0,0" VerticalAlignment="Top" Width="127" />
+        <TextBox x:Name="login" Margin="84,37,0,0"   HorizontalAlignment="Left" Width="127" Height="27" VerticalAlignment="Top"/>
+        <TextBlock Margin="26,42,0,0"  Text="Identifiant" Height="16" VerticalAlignment="Top" HorizontalAlignment="Left" Width="58"/>
+        <TextBlock Margin="10,74,0,0"  Text="Mot de passe" HorizontalAlignment="Left" Width="74" Height="20" VerticalAlignment="Top"/>
+        <PasswordBox x:Name="password" Margin="84,69,0,0" HorizontalAlignment="Left" Width="127" Height="30" VerticalAlignment="Top" />
 
     </Grid>
 </Window>

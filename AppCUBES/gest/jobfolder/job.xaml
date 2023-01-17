@@ -5,13 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppCUBES"
         mc:Ignorable="d"
-        Title="job" Height="450" Width="800">
+        Title="job" Height="443" Width="436">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="247*"/>
-            <RowDefinition Height="188*"/>
-        </Grid.RowDefinitions>
-        <DataGrid x:Name="datajob" HorizontalAlignment="Left" Height="295" Margin="46,121,0,0" VerticalAlignment="Top" Width="570" d:ItemsSource="{d:SampleData ItemCount=5}" IsReadOnly="True" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2">
+
+        <DataGrid x:Name="datajob" HorizontalAlignment="Left" Height="207" Margin="46,121,0,0" VerticalAlignment="Top" Width="217" d:ItemsSource="{d:SampleData ItemCount=5}" IsReadOnly="True" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2">
             <DataGrid.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -21,13 +18,13 @@
                 </TransformGroup>
             </DataGrid.RenderTransform>
         </DataGrid>
-        <Button x:Name="addjob"  Content="Ajouter" HorizontalAlignment="Left" Height="65" Margin="653,119,0,0" VerticalAlignment="Top" Width="116" Click="addjob_Click" />
+        <Button x:Name="addjob"  Content="Ajouter" HorizontalAlignment="Left" Height="65" Margin="267,123,0,0" VerticalAlignment="Top" Width="116" Click="addjob_Click" />
         <Button x:Name="refreshjob" Content="Actualiser" HorizontalAlignment="Left" Height="65" Margin="22,45,0,0" VerticalAlignment="Top" Width="116" Click="refreshjob_Click" Visibility="Hidden" />
-        <Button x:Name="deljob" Content="Supprimer" HorizontalAlignment="Left" Height="65" Margin="653,189,0,0" VerticalAlignment="Top" Width="116" Click="deljob_Click" Grid.RowSpan="2" />
-        <Button x:Name="putjob" Content="Modifier" HorizontalAlignment="Left" Height="65" Margin="653,12,0,0" VerticalAlignment="Top" Width="116" Click="putjob_Click" Grid.Row="1" />
-        <Button x:Name="precedentjob" Content="Retour" HorizontalAlignment="Left" Height="54" Margin="653,113,0,0" VerticalAlignment="Top" Width="116" Click="precedentjob_Click" Grid.Row="1" />
-        <TextBlock x:Name="jobconditionselect" HorizontalAlignment="Left" Height="65" Margin="653,32,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116"/>
-        <TextBox HorizontalAlignment="Left" HorizontalContentAlignment="Center" Height="72" Margin="45,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="570" FontSize="48" Text="Fonction" BorderBrush="Black" IsEnabled="False" />
+        <Button x:Name="deljob" Content="Supprimer" HorizontalAlignment="Left" Height="65" Margin="267,193,0,0" VerticalAlignment="Top" Width="116" Click="deljob_Click" Grid.RowSpan="2" />
+        <Button x:Name="putjob" Content="Modifier" HorizontalAlignment="Left" Height="65" Margin="267,263,0,0" VerticalAlignment="Top" Width="116" Click="putjob_Click" />
+        <Button x:Name="precedentjob" Content="Retour" HorizontalAlignment="Left" Height="54" Margin="45,331,0,0" VerticalAlignment="Top" Width="116" Click="precedentjob_Click" />
+        <TextBlock x:Name="jobconditionselect" HorizontalAlignment="Left" Height="54" Margin="166,333,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="217"/>
+        <TextBox HorizontalAlignment="Left" HorizontalContentAlignment="Center" Height="72" Margin="45,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="338" FontSize="48" Text="Fonction" BorderBrush="Black" IsEnabled="False" />
 
     </Grid>
 </Window>
