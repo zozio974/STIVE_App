@@ -72,6 +72,7 @@ namespace AppCUBES.admin
                 HttpResponseMessage response = client.PutAsync(parameters, null).Result;
             }
             rescomauto.Text = "Activé";
+            resquantitychange.Text = "";
         }
 
         private void changestockminadd_Click(object sender, RoutedEventArgs e)
@@ -88,7 +89,7 @@ namespace AppCUBES.admin
                 string parameters = $"CommandAuto/quantiteaddtostock?y={amountchangemin.Text}";
                 HttpResponseMessage response = client.PutAsync(parameters, null).Result;
             }
-            resquantitychange.Text = "";
+            resquantitychange.Text = $"La nouveau stock automatique ajouté est de {amountchangemin.Text}";
         }
         private bool isinteger(string str)
         {
