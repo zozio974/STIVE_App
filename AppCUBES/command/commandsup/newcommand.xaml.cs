@@ -36,7 +36,7 @@ namespace AppCUBES.command
         private void addline_Click(object sender, RoutedEventArgs e)
         {
             commandadd win = new commandadd();
-            win.Show();
+            win.ShowDialog();
             win.addlinecommand.Click += refreshnewcommand_Click;
 
         }
@@ -142,6 +142,15 @@ namespace AppCUBES.command
                     comms.Add(new CommandInfo(detail[i]["ref_Command"].ToString(), listname[i], detail[i]["quantity"].ToString(), detail[i]["price"].ToString()));
                 }
                 gridcomminfo.ItemsSource = comms;
+            }
+            using (HttpClient client = new HttpClient())
+            {
+                string Url = "https://localhost:7279/";
+                client.BaseAddress = new Uri(Url);
+                string parameters = $"Commands/displaytotalcommand?refe={VarCommand.refcom}";
+                HttpResponseMessage response = client.GetAsync(parameters).Result;
+                string json = response.Content.ReadAsStringAsync().Result;
+                rescomtotal.Text = $"Le total est de {json} euros";
             }
         }
 
