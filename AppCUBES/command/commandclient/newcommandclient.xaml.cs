@@ -36,8 +36,9 @@ namespace AppCUBES.command
         private void addline_Click(object sender, RoutedEventArgs e)
         {
             commandaddclient win = new commandaddclient();
-            win.ShowDialog();
             win.addlinecommand.Click += refreshnewcommand_Click;
+
+            win.ShowDialog();
 
         }
         public string createparameter(List<int> list)
