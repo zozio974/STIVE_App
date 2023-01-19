@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="commandadd" Height="450" Width="850">
     <Grid>
-        <DataGrid x:Name="gridinventory" HorizontalAlignment="Left" Height="298" Margin="23,99,0,0" VerticalAlignment="Top" Width="607" d:ItemsSource="{d:SampleData ItemCount=5}" RenderTransformOrigin="0.512,0.527" SelectionChanged="gridinventory_SelectionChanged" IsReadOnly="True"/>
+        <DataGrid x:Name="gridinventory" HorizontalAlignment="Left" Height="298" Margin="23,99,0,0" VerticalAlignment="Top" Width="607" d:ItemsSource="{d:SampleData ItemCount=5}" RenderTransformOrigin="0.512,0.527" SelectionChanged="gridinventory_SelectionChanged" IsReadOnly="True" CanUserSortColumns="False" CanUserReorderColumns="False" CanUserResizeColumns="False"/>
         <TextBlock x:Name="resinventory" HorizontalAlignment="Left" Height="42" Margin="645,314,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="105"/>
         <Button x:Name="inventoryrefresh" Content="Actualiser" HorizontalAlignment="Left" Height="30" Margin="645,326,0,0" VerticalAlignment="Top" Width="70" Click="inventoryrefresh_Click" Visibility="Hidden"/>
         <Button x:Name="invretmenu" Content="Retour" HorizontalAlignment="Left" Height="36" Margin="645,361,0,0" VerticalAlignment="Top" Width="105" Click="invretmenu_Click"/>

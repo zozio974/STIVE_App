@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="dispcommandclient" Height="420" Width="720">
     <Grid>
-        <DataGrid x:Name="gridcommand" HorizontalAlignment="Left" Height="295" Margin="30,56,0,0" VerticalAlignment="Top" Width="435" d:ItemsSource="{d:SampleData ItemCount=5}" IsReadOnly="True"/>
+        <DataGrid x:Name="gridcommand" HorizontalAlignment="Left" Height="295" Margin="30,56,0,0" VerticalAlignment="Top" Width="435" d:ItemsSource="{d:SampleData ItemCount=5}" IsReadOnly="True" CanUserSortColumns="False" CanUserReorderColumns="False" CanUserResizeColumns="False"/>
         <Button x:Name="retdispcommand" Content="Retour" HorizontalAlignment="Left" Height="22" Margin="470,329,0,0" VerticalAlignment="Top" Width="200" Click="retdispcommand_Click"/>
         <Button x:Name="validcommand" Content="Valider la commande" HorizontalAlignment="Left" Height="43" Margin="470,56,0,0" VerticalAlignment="Top" Width="200" Click="validcommand_Click"/>
         <Button x:Name="cominfo" Content="Detail de le commande" HorizontalAlignment="Left" Height="43" Margin="470,104,0,0" VerticalAlignment="Top" Width="200" Click="cominfo_Click"/>

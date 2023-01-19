@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="supplier" Height="424" Width="479">
     <Grid>
-        <DataGrid x:Name="datasupplier" HorizontalAlignment="Left" Height="204" Margin="36,115,0,0" VerticalAlignment="Top" Width="266" d:ItemsSource="{d:SampleData ItemCount=5}" IsReadOnly="True" RenderTransformOrigin="0.5,0.5">
+        <DataGrid x:Name="datasupplier" HorizontalAlignment="Left" Height="204" Margin="36,115,0,0" VerticalAlignment="Top" Width="266" d:ItemsSource="{d:SampleData ItemCount=5}" IsReadOnly="True" CanUserSortColumns="False" CanUserReorderColumns="False" CanUserResizeColumns="False">
             <DataGrid.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>

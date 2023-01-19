@@ -8,7 +8,7 @@
         Title="job" Height="443" Width="436">
     <Grid>
 
-        <DataGrid x:Name="datajob" HorizontalAlignment="Left" Height="207" Margin="46,121,0,0" VerticalAlignment="Top" Width="217" d:ItemsSource="{d:SampleData ItemCount=5}" IsReadOnly="True" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2">
+        <DataGrid x:Name="datajob" HorizontalAlignment="Left" Height="207" Margin="46,121,0,0" VerticalAlignment="Top" Width="217" d:ItemsSource="{d:SampleData ItemCount=5}" IsReadOnly="True" CanUserSortColumns="False" CanUserReorderColumns="False" CanUserResizeColumns="False">
             <DataGrid.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>

@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="commandinfoart" Height="140" Width="800">
     <Grid>
-        <DataGrid x:Name="gridartdet" HorizontalAlignment="Left" Height="79" Margin="35,10,0,0" VerticalAlignment="Top" Width="610" d:ItemsSource="{d:SampleData ItemCount=5}" IsReadOnly="True"/>
+        <DataGrid x:Name="gridartdet" HorizontalAlignment="Left" Height="79" Margin="35,10,0,0" VerticalAlignment="Top" Width="610" d:ItemsSource="{d:SampleData ItemCount=5}" IsReadOnly="True" CanUserSortColumns="False" CanUserReorderColumns="False" CanUserResizeColumns="False"/>
         <Button x:Name="retcommand" Content="Fermer" HorizontalAlignment="Left" Height="75" Margin="650,12,0,0" VerticalAlignment="Top" Width="95" Click="retcommand_Click"/>
 
     </Grid>

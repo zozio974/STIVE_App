@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="article" Height="420" Width="800">
     <Grid>
-        <DataGrid x:Name="articledata" HorizontalAlignment="Left" Height="280" Margin="55,72,0,0" VerticalAlignment="Top" Width="561" d:ItemsSource="{d:SampleData ItemCount=5}" IsReadOnly="True"/>
+        <DataGrid x:Name="articledata" HorizontalAlignment="Left" Height="280" Margin="55,72,0,0" VerticalAlignment="Top" Width="561" d:ItemsSource="{d:SampleData ItemCount=5}" IsReadOnly="True" CanUserSortColumns="False" CanUserReorderColumns="False" CanUserResizeColumns="False"/>
         <Button x:Name="addarticle" Content="Ajouter" HorizontalAlignment="Left" Height="52" Margin="636,72,0,0" VerticalAlignment="Top" Width="105" Click="addarticle_Click"/>
         <Button x:Name="deletearticle" Content="Supprimer" HorizontalAlignment="Left" Height="52" Margin="636,129,0,0" VerticalAlignment="Top" Width="105" Click="deletearticle_Click"/>
         <Button x:Name="putarticle" Content="Modifier" HorizontalAlignment="Left" Height="52" Margin="636,186,0,0" VerticalAlignment="Top" Width="105" Click="putarticle_Click"/>

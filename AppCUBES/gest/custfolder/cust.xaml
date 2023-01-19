@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="cust" Height="450" Width="800">
     <Grid>
-        <DataGrid x:Name="custdata" HorizontalAlignment="Left" Height="295" Margin="47,117,0,0" VerticalAlignment="Top" Width="570" d:ItemsSource="{d:SampleData ItemCount=5}"  IsReadOnly="True"/>
+        <DataGrid x:Name="custdata" HorizontalAlignment="Left" Height="295" Margin="47,117,0,0" VerticalAlignment="Top" Width="570" d:ItemsSource="{d:SampleData ItemCount=5}"  IsReadOnly="True" CanUserSortColumns="False" CanUserReorderColumns="False" CanUserResizeColumns="False"/>
         <Button x:Name="addcust" Content="Ajouter" HorizontalAlignment="Left" Height="65" Margin="644,116,0,0" VerticalAlignment="Top" Width="116" Click="addcust_Click"/>
         <Button x:Name="custrefresh" Content="Actualiser" HorizontalAlignment="Left" Height="56" Margin="615,296,0,0" VerticalAlignment="Top" Width="168" Click="Refreshcust_Click" RenderTransformOrigin="0.359,-0.762" Visibility="Hidden"/>
         <Button x:Name="delcust1" Content="Supprimer" HorizontalAlignment="Left" Height="65" Margin="644,186,0,0" VerticalAlignment="Top" Width="116" Click="Deletecust_Click"/>
