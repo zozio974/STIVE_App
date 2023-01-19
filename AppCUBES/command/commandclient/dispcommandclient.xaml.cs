@@ -255,5 +255,41 @@ namespace AppCUBES.command
             win.valcommand.Click += Refresh_comm_Click;
 
         }
+
+        private void cancelcom_Click(object sender, RoutedEventArgs e)
+        {
+            if (gridcommand.SelectedValue == null)
+            {
+                rescommand.Text = "Aucune valeur séléctionnée";
+                return;
+            }
+            string json = "";
+            int a = list[gridcommand.SelectedIndex];
+           
+            using (HttpClient client = new HttpClient())
+            {
+                string Url = "https://localhost:7279/";
+                client.BaseAddress = new Uri(Url);
+                string parameters = $"Check/checkstatuscommand?id={a}";
+                HttpResponseMessage response = client.GetAsync(parameters).Result;
+                json = response.Content.ReadAsStringAsync().Result;
+
+            }
+
+            if (json == "false")
+            {
+                rescommand.Text = "La commande est déjà validée";
+                return;
+            }
+            using (HttpClient client = new HttpClient())
+            {
+                string Url = "https://localhost:7279/";
+                client.BaseAddress = new Uri(Url);
+                string parameters = $"Commands/cancelcommandclient?id={a}";
+                HttpResponseMessage response = client.GetAsync(parameters).Result;
+
+            }
+            Refresh_comm_Click(sender, e);
+        }
     }
 }
