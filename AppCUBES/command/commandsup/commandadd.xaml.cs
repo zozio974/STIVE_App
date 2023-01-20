@@ -467,7 +467,7 @@ namespace AppCUBES
             {
                 string Url = "https://localhost:7279/";
                 client.BaseAddress = new Uri(Url);
-                string parameters = $"Commands/addlinecommandsup?idart={list[gridinventory.SelectedIndex]}&refcom={VarCommand.refcom}&quant={quantnewcom.Text}";
+                string parameters = $"Commands/addlinecommandsup?idart={list[gridinventory.SelectedIndex]}&refcom={VarCommand.refcom}&quant={quantnewcom.Text}&iduser={Connect.iduser}";
                 HttpResponseMessage response = client.PostAsync(parameters,null).Result;
 
             }
