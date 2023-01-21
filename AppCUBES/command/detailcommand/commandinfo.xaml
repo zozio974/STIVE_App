@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="commandinfo" Height="450" Width="310">
     <Grid>
-        <DataGrid x:Name="gridcomminfo" HorizontalAlignment="Left" Height="275" Margin="25,69,0,0" VerticalAlignment="Top" Width="230" d:ItemsSource="{d:SampleData ItemCount=5}" IsReadOnly="True"/>
+        <DataGrid x:Name="gridcomminfo" HorizontalAlignment="Left" Height="275" Margin="25,69,0,0" VerticalAlignment="Top" Width="230" d:ItemsSource="{d:SampleData ItemCount=5}" IsReadOnly="True" CanUserSortColumns="False" CanUserReorderColumns="False" CanUserResizeColumns="False"/>
         <Button x:Name="detarticle" Content="Détail Article" HorizontalAlignment="Left" Height="40" Margin="25,359,0,0" VerticalAlignment="Top" Width="230" Click="detarticle_Click"/>
         <Button x:Name="retcominfo" Content="Retour" HorizontalAlignment="Left" Height="40" Margin="25,14,0,0" VerticalAlignment="Top" Width="230" Click="retcominfo_Click"/>
         <TextBlock x:Name="resref" HorizontalAlignment="Center" Height="29" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" Visibility="Hidden"/>

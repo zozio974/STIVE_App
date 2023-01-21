@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="family" Height="403" Width="458">
     <Grid>
-        <DataGrid x:Name="datafamily" HorizontalAlignment="Left" Height="205" Margin="24,98,0,0" VerticalAlignment="Top" Width="265" d:ItemsSource="{d:SampleData ItemCount=5}" IsReadOnly="True"/>
+        <DataGrid x:Name="datafamily" HorizontalAlignment="Left" Height="205" Margin="24,98,0,0" VerticalAlignment="Top" Width="265" d:ItemsSource="{d:SampleData ItemCount=5}" IsReadOnly="True" CanUserSortColumns="False" CanUserReorderColumns="False" CanUserResizeColumns="False"/>
         <Button x:Name="addfamily" Content="Ajouter" HorizontalAlignment="Left" Height="65" Margin="304,98,0,0" VerticalAlignment="Top" Width="116" Click="addfamily_Click" />
         <Button x:Name="refreshfamily" Content="Actualiser" HorizontalAlignment="Left" Height="65" Margin="107,49,0,0" VerticalAlignment="Top" Width="116" Click="refreshfamily_Click" Visibility="Hidden" />
         <Button x:Name="delfamily" Content="Supprimer" HorizontalAlignment="Left" Height="65" Margin="304,168,0,0" VerticalAlignment="Top" Width="116" Click="delfamily_Click" />

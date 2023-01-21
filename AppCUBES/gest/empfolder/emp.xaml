@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="emp" Height="440" Width="800">
     <Grid>
-        <DataGrid x:Name="empdata" HorizontalAlignment="Left" Height="209" Margin="26,111,0,0" VerticalAlignment="Top" Width="570" d:ItemsSource="{d:SampleData ItemCount=5}"  IsReadOnly="True" SelectionChanged="empdata_SelectionChanged"/>
+        <DataGrid x:Name="empdata" HorizontalAlignment="Left" Height="209" Margin="26,111,0,0" VerticalAlignment="Top" Width="570" d:ItemsSource="{d:SampleData ItemCount=5}"  IsReadOnly="True" SelectionChanged="empdata_SelectionChanged" CanUserSortColumns="False" CanUserReorderColumns="False" CanUserResizeColumns="False"/>
         <Button x:Name="addemp" Content="Ajouter" HorizontalAlignment="Left" Height="65" Margin="615,111,0,0" VerticalAlignment="Top" Width="116" Click="addemp_Click"/>
         <Button x:Name="emprefresh" Content="Actualiser" HorizontalAlignment="Left" Height="65" Margin="10,46,0,0" VerticalAlignment="Top" Width="116" Click="Refreshemp_Click" Visibility="Hidden"/>
         <Button x:Name="deletemp" Content="Supprimer" HorizontalAlignment="Left" Height="65" Margin="615,0,0,0" VerticalAlignment="Center" Width="116" Click="Deleteemp_Click"/>

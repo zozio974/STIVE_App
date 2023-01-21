@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="newcommandclient" Height="375" Width="600">
     <Grid>
-        <DataGrid x:Name="gridcomminfo" HorizontalAlignment="Left" Height="253" Margin="25,26,0,0" VerticalAlignment="Top" Width="365" d:ItemsSource="{d:SampleData ItemCount=5}" IsReadOnly="True"/>
+        <DataGrid x:Name="gridcomminfo" HorizontalAlignment="Left" Height="253" Margin="25,26,0,0" VerticalAlignment="Top" Width="365" d:ItemsSource="{d:SampleData ItemCount=5}" IsReadOnly="True" CanUserSortColumns="False" CanUserReorderColumns="False" CanUserResizeColumns="False"/>
         <Button x:Name="addline" Content="Ajouter un article au panier" HorizontalAlignment="Left" Height="80" Margin="395,26,0,0" VerticalAlignment="Top" Width="160" Click="addline_Click"/>
         <Button x:Name="deleteline" Content="Supprimer la ligne" HorizontalAlignment="Left" Height="70" Margin="395,111,0,0" VerticalAlignment="Top" Width="160" Click="deleteline_Click"/>
         <Button x:Name="valcommand" Content="Valider la commande" HorizontalAlignment="Left" Height="70" Margin="395,186,0,0" VerticalAlignment="Top" Width="160" Click="valcommand_Click" RenderTransformOrigin="0.281,-0.014"/>
