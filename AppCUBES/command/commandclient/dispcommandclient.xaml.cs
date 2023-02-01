@@ -195,7 +195,7 @@ namespace AppCUBES.command
             {
                 string Url = "https://localhost:7279/";
                 client.BaseAddress = new Uri(Url);
-                string parameters = $"Commands/validatecommand?id={a}";
+                string parameters = $"Commands/validatecommandclient?id={a}";
                 HttpResponseMessage response = client.PostAsync(parameters,null).Result;
                 
             }
