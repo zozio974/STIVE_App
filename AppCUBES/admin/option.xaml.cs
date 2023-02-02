@@ -28,6 +28,15 @@ namespace AppCUBES.admin
             {
                 string Url = "https://localhost:7279/";
                 client.BaseAddress = new Uri(Url);
+                string parameters = "CommandAuto/displayquantadd";
+                HttpResponseMessage response = client.GetAsync(parameters).Result;
+                string json = response.Content.ReadAsStringAsync().Result;
+                amountchangemin.Text= json;
+            }
+                using (HttpClient client = new HttpClient())
+            {
+                string Url = "https://localhost:7279/";
+                client.BaseAddress = new Uri(Url);
                 string parameters = "CommandAuto/displayautovar";
                 HttpResponseMessage response = client.GetAsync(parameters).Result;
                 string json = response.Content.ReadAsStringAsync().Result;
