@@ -16,8 +16,10 @@ using System.Windows.Shapes;
 using AppCUBES.command;
 using Newtonsoft.Json.Linq;
 
+
 namespace AppCUBES
 {
+
     static class Connect
     {
         public static int iduser;
@@ -29,12 +31,14 @@ namespace AppCUBES
     /// </summary>
     public partial class MainWindow : Window
     {
+        
         public MainWindow()
         {
             InitializeComponent();
         }
-        
 
+       
+        
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             using (HttpClient client = new HttpClient())

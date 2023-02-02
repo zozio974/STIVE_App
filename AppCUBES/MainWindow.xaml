@@ -5,12 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppCUBES"
         mc:Ignorable="d"
-
         Title="MainWindow" Height="221" Width="245">
-    <Grid>
+    <Grid x:Name="gridmain">
 
 
-        <Button Content="Connexion" Margin="84,104,0,0" Click="Button_Click" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="127" />
+        <Button Margin="84,104,0,0" Click="Button_Click" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="127" Content="Connexion" >
+           
+        </Button>
         <TextBlock x:Name="res" HorizontalAlignment="Left" Height="46" Margin="84,141,0,0" VerticalAlignment="Top" Width="127" />
         <TextBox x:Name="login" Margin="84,37,0,0"   HorizontalAlignment="Left" Width="127" Height="27" VerticalAlignment="Top"/>
         <TextBlock Margin="26,42,0,0"  Text="Identifiant" Height="16" VerticalAlignment="Top" HorizontalAlignment="Left" Width="58"/>
