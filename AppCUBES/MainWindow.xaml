@@ -10,9 +10,9 @@
 
 
         <Button Margin="84,104,0,0" Click="Button_Click" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="127" Content="Connexion" >
-           
+
         </Button>
-        <TextBlock x:Name="res" HorizontalAlignment="Left" Height="46" Margin="84,141,0,0" VerticalAlignment="Top" Width="127" />
+        <TextBlock x:Name="res" HorizontalAlignment="Left" Height="46" Margin="10,141,0,0" VerticalAlignment="Top" Width="201" />
         <TextBox x:Name="login" Margin="84,37,0,0"   HorizontalAlignment="Left" Width="127" Height="27" VerticalAlignment="Top"/>
         <TextBlock Margin="26,42,0,0"  Text="Identifiant" Height="16" VerticalAlignment="Top" HorizontalAlignment="Left" Width="58"/>
         <TextBlock Margin="10,74,0,0"  Text="Mot de passe" HorizontalAlignment="Left" Width="74" Height="20" VerticalAlignment="Top"/>
